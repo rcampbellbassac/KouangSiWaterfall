@@ -1,5 +1,6 @@
 # Kouang Si Waterfall
-_Handwriten Lao Sign Font_
+_A Handwriten Lao Sign Font_
+
 Kouang Si Waterfall - an Open Source and Open Licensed Display Font 
 
 # Purpose
