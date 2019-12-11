@@ -1,19 +1,21 @@
 # Kouang Si Waterfall
 _A Hand Painted Lao Signage Font_
 
-Kouang Si Waterfall - an Open Source and Open Licensed Display Font 
+Kouang Si Waterfall - an Open Source and Open Licensed Display Font - SIL OFL v1.1 License
 
 # Check It Out
 You can view an example of this font with your web browser (works best on Chrome/Safari).
 [HTML Preview Service](https://htmlpreview.github.io/?https://github.com/rober42539/KouangSiWaterfall/blob/master/example.html)
 
+# Coverage
+This font only currently includes Lao. It doesn't have Latin numbers, symbols, and various other useful things. I plan to get around to them. Hey, why not beat me to it, make your own, and send a pull request?
 
 # Use the Font
 You can download and install the TTF on your computer, and use it freely:
 [Latest Kouang Si Waterfall TTF Font](https://github.com/rober42539/KouangSiWaterfall/raw/master/KouangSiWaterfall/OpenType-TT/KouangSiWaterfall-Regular.ttf)
 
 # Purpose
-Lao doesn't have a lot of font options. There are a couple decent fonts for general text that are open source/open licesned. There are some old fonts that aren't very modern, but do the job. But, there aren't many Lao display fonts, especially those designed to make headers and larger text more appealing for young people. This font is an attempt to change that.
+Lao doesn't have a lot of font options. There are a couple decent fonts for general text that are open source/open licesned (SIL OFL). There are some old fonts that aren't very modern, but do the job. But, there aren't many Lao display fonts, especially those designed to make headers and larger text more appealing for young people. This font is an attempt to change that.
 
 # Inspiration
 There's a sign for a waterfall in Luang Prabang, called Kouang Si Waterfall. Here is an example of the sign:
@@ -24,3 +26,14 @@ This is my first attempt to create a font. I love open source, and I thought thi
 
 # Work in Progress
 It's certainly not the prettiest. Certainly not the most demanding. It won't fold your laundry, or cook your food. If it makes a kid enjoy reading a little more, then it has served its purpose! But that doesn't mean it needs to stay stagnant. If you want to improve upon it, feel free to contribute, modify it, or use it as a template to create something great!
+
+
+
+# Contriubutors
+_Your name could be here!_
+
+A big shout out to those who helped provide me with some guidance, get me started, and put up with my newbieness:
+
+Dave Crossland (Google), Ben Mitchell (Fontpad), Dr John Durdin (LaoScript), Marc Durdin (Keyman),Sovichet Tep (Romnea Type), Fadhl Haqq (Alterna Type), Aditya Bayu Perdana, everyone else at the SEA Font Workshop 2019, Sengkeo Vangxiengvue (Saonatype), Andy McConnell, Victor Gaultney (SIL), and more...
+
+Journeys are always better together! :smile:
