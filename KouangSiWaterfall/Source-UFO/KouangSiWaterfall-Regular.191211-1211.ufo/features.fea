@@ -1,0 +1,351 @@
+#> classes
+#/> kernclasses
+@uni0EA7_1st = [uni0EA7 uni0ED0];
+@uni0E9D_1st = [uni0E9D uni0E9F];
+@uni0E96_1st = [uni0E96 uni0ED7];
+#/< kernclasses
+
+#/> vtags
+@ALL = [CR space uni000A uni0E81 uni0E82 uni0E84 uni0E87 uni0E88 uni0E8A uni0E8D uni0E94 uni0E95 uni0E96 uni0E97 uni0E99 uni0E9A uni0E9B uni0E9C uni0E9D uni0E9E uni0E9F uni0EA1 uni0EA2 uni0EA3 uni0EA5 uni0EA7 uni0EAA uni0EAB uni0EAD uni0EAE uni0EAF uni0EB0 uni0EB1 uni0EB2 uni0EB3 uni0EB4 uni0EB5 uni0EB6 uni0EB7 uni0EB8 uni0EB9 uni0EBB uni0EBC uni0EBD uni0EC0 uni0EC1 uni0EC2 uni0EC3 uni0EC4 uni0EC6 uni0EC8 uni0EC9 uni0ECA uni0ECB uni0ECC uni0ECD uni0ED0 uni0ED1 uni0ED2 uni0ED3 uni0ED4 uni0ED5 uni0ED6 uni0ED7 uni0ED8 uni0ED9 uni0EDC uni0EDD uni2009 uni200B uni20AD uni25CC];
+@blank = [CR space uni000A uni2009 uni200B];
+@composite = [uni2009];
+@fig = [uni0ED0 uni0ED1 uni0ED2 uni0ED3 uni0ED4 uni0ED5 uni0ED6 uni0ED7 uni0ED8 uni0ED9];
+@laoo = [uni0E81 uni0E82 uni0E84 uni0E87 uni0E88 uni0E8A uni0E8D uni0E94 uni0E95 uni0E96 uni0E97 uni0E99 uni0E9A uni0E9B uni0E9C uni0E9D uni0E9E uni0E9F uni0EA1 uni0EA2 uni0EA3 uni0EA5 uni0EA7 uni0EAA uni0EAB uni0EAD uni0EAE uni0EAF uni0EB0 uni0EB1 uni0EB2 uni0EB3 uni0EB4 uni0EB5 uni0EB6 uni0EB7 uni0EB8 uni0EB9 uni0EBB uni0EBC uni0EBD uni0EC0 uni0EC1 uni0EC2 uni0EC3 uni0EC4 uni0EC6 uni0EC8 uni0EC9 uni0ECA uni0ECB uni0ECC uni0ECD uni0ED0 uni0ED1 uni0ED2 uni0ED3 uni0ED4 uni0ED5 uni0ED6 uni0ED7 uni0ED8 uni0ED9 uni0EDC uni0EDD];
+@noblank = [uni0E81 uni0E82 uni0E84 uni0E87 uni0E88 uni0E8A uni0E8D uni0E94 uni0E95 uni0E96 uni0E97 uni0E99 uni0E9A uni0E9B uni0E9C uni0E9D uni0E9E uni0E9F uni0EA1 uni0EA2 uni0EA3 uni0EA5 uni0EA7 uni0EAA uni0EAB uni0EAD uni0EAE uni0EAF uni0EB0 uni0EB1 uni0EB2 uni0EB3 uni0EB4 uni0EB5 uni0EB6 uni0EB7 uni0EB8 uni0EB9 uni0EBB uni0EBC uni0EBD uni0EC0 uni0EC1 uni0EC2 uni0EC3 uni0EC4 uni0EC6 uni0EC8 uni0EC9 uni0ECA uni0ECB uni0ECC uni0ECD uni0ED0 uni0ED1 uni0ED2 uni0ED3 uni0ED4 uni0ED5 uni0ED6 uni0ED7 uni0ED8 uni0ED9 uni0EDC uni0EDD uni20AD uni25CC];
+@noncomposite = [uni0E81 uni0E82 uni0E84 uni0E87 uni0E88 uni0E8A uni0E8D uni0E94 uni0E95 uni0E96 uni0E97 uni0E99 uni0E9A uni0E9B uni0E9C uni0E9D uni0E9E uni0E9F uni0EA1 uni0EA2 uni0EA3 uni0EA5 uni0EA7 uni0EAA uni0EAB uni0EAD uni0EAE uni0EAF uni0EB0 uni0EB1 uni0EB2 uni0EB3 uni0EB4 uni0EB5 uni0EB6 uni0EB7 uni0EB8 uni0EB9 uni0EBB uni0EBC uni0EBD uni0EC0 uni0EC1 uni0EC2 uni0EC3 uni0EC4 uni0EC6 uni0EC8 uni0EC9 uni0ECA uni0ECB uni0ECC uni0ECD uni0ED0 uni0ED1 uni0ED2 uni0ED3 uni0ED4 uni0ED5 uni0ED6 uni0ED7 uni0ED8 uni0ED9 uni0EDC uni0EDD uni20AD uni25CC];
+@otnone = [CR space uni000A uni0E81 uni0E82 uni0E84 uni0E87 uni0E88 uni0E8A uni0E8D uni0E94 uni0E95 uni0E96 uni0E97 uni0E99 uni0E9A uni0E9B uni0E9C uni0E9D uni0E9E uni0E9F uni0EA1 uni0EA2 uni0EA3 uni0EA5 uni0EA7 uni0EAA uni0EAB uni0EAD uni0EAE uni0EAF uni0EB0 uni0EB1 uni0EB2 uni0EB3 uni0EB4 uni0EB5 uni0EB6 uni0EB7 uni0EB8 uni0EB9 uni0EBB uni0EBC uni0EBD uni0EC0 uni0EC1 uni0EC2 uni0EC3 uni0EC4 uni0EC6 uni0EC8 uni0EC9 uni0ECA uni0ECB uni0ECC uni0ECD uni0ED0 uni0ED1 uni0ED2 uni0ED3 uni0ED4 uni0ED5 uni0ED6 uni0ED7 uni0ED8 uni0ED9 uni0EDC uni0EDD uni2009 uni200B uni20AD uni25CC];
+#/< vtags
+#< classes
+
+@composite = [uni2009];
+@uni0EA7_1st = [uni0EA7 uni0ED0];
+@uni0E9D_1st = [uni0E9D uni0E9F];
+@uni0E96_1st = [uni0E96 uni0ED7];
+@ALL = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9 uni200B uni2009];
+@laoo = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9];
+@noblank = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9];
+@noncomposite = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9];
+@otnone = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9 uni200B uni2009];
+@blank = [uni200B uni2009];
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+feature mark {
+#> feature
+# GPOS feature : Mark Positioning
+    markClass uni0EB1 <anchor -236 520> @top;
+    markClass uni0EB4 <anchor -342 534> @top;
+    markClass uni0EB5 <anchor -251 553> @top;
+    markClass uni0EB6 <anchor -284 521> @top;
+    markClass uni0EB7 <anchor -276 525> @top;
+    markClass uni0EB8 <anchor -246 0> @bottom;
+    markClass uni0EB9 <anchor -295 0> @bottom;
+    markClass uni0EBB <anchor -298 558> @top;
+    markClass uni0EBC <anchor -283 0> @bottom;
+    markClass uni0EC8 <anchor -270 886> @tonemark;
+    markClass uni0EC8 <anchor -263 841> @top;
+    markClass uni0EC9 <anchor -275 828> @tonemark;
+    markClass uni0EC9 <anchor -275 777> @top;
+    markClass uni0ECA <anchor -532 790> @tonemark;
+    markClass uni0ECA <anchor -532 742> @top;
+    markClass uni0ECB <anchor -237 794> @tonemark;
+    markClass uni0ECB <anchor -237 745> @top;
+    markClass uni0ECC <anchor -205 882> @tonemark;
+    markClass uni0ECC <anchor -205 826> @top;
+    markClass uni0ECD <anchor -260 532> @top;
+
+  lookup markLTR1 {
+      pos base uni0E82
+          <anchor 308 -15> mark @bottom
+          <anchor 302 580> mark @top;
+      pos base uni0E84
+          <anchor 314 -15> mark @bottom
+          <anchor 310 539> mark @top;
+      pos base uni0E87
+          <anchor 189 -175> mark @bottom
+          <anchor 185 500> mark @top;
+      pos base uni0E88
+          <anchor 270 0> mark @bottom
+          <anchor 274 520> mark @top;
+      pos base uni0E8A
+          <anchor 245 -115> mark @bottom
+          <anchor 293 523> mark @top;
+      pos base uni0E8D
+          <anchor 312 -33> mark @bottom
+          <anchor 312 537> mark @top;
+      pos base uni0E94
+          <anchor 292 -13> mark @bottom
+          <anchor 290 500> mark @top;
+      pos base uni0E95
+          <anchor 406 0> mark @bottom
+          <anchor 412 500> mark @top;
+      pos base uni0E96
+          <anchor 302 -95> mark @bottom
+          <anchor 330 576> mark @top;
+      pos base uni0E97
+          <anchor 484 -30> mark @bottom
+          <anchor 484 500> mark @top;
+      pos base uni0E99
+          <anchor 348 -35> mark @bottom
+          <anchor 345 500> mark @top;
+      pos base uni0E9A
+          <anchor 378 -51> mark @bottom
+          <anchor 378 580> mark @top;
+      pos base uni0E9B
+          <anchor 356 -91> mark @bottom
+          <anchor 353 679> mark @top;
+      pos base uni0E9C
+          <anchor 374 -41> mark @bottom
+          <anchor 410 595> mark @top;
+      pos base uni0E9D
+          <anchor 431 -46> mark @bottom
+          <anchor 464 660> mark @top;
+      pos base uni0E9E
+          <anchor 471 -17> mark @bottom
+          <anchor 482 515> mark @top;
+      pos base uni0E9F
+          <anchor 477 -17> mark @bottom
+          <anchor 466 626> mark @top;
+      pos base uni0EA1
+          <anchor 347 -24> mark @bottom
+          <anchor 351 502> mark @top;
+      pos base uni0EA2
+          <anchor 359 0> mark @bottom
+          <anchor 314 646> mark @top;
+      pos base uni0EA3
+          <anchor 309 -20> mark @bottom
+          <anchor 309 531> mark @top;
+      pos base uni0EA5
+          <anchor 294 0> mark @bottom
+          <anchor 294 560> mark @top;
+      pos base uni0EA7
+          <anchor 283 0> mark @bottom
+          <anchor 281 488> mark @top;
+      pos base uni0EAA
+          <anchor 293 14> mark @bottom
+          <anchor 274 509> mark @top;
+      pos base uni0EAB
+          <anchor 535 -15> mark @bottom
+          <anchor 554 473> mark @top;
+      pos base uni0EAD
+          <anchor 295 -13> mark @bottom
+          <anchor 374 549> mark @top;
+      pos base uni0EAE
+          <anchor 321 -27> mark @bottom
+          <anchor 323 531> mark @top;
+      pos base uni0EDC
+          <anchor 752 -20> mark @bottom
+          <anchor 706 500> mark @top;
+      pos base uni0EDD
+          <anchor 742 -33> mark @bottom
+          <anchor 704 507> mark @top;
+      pos base uni25CC
+          <anchor 323 -22> mark @bottom
+          <anchor 323 606> mark @top;
+  } markLTR1;
+
+  lookup markLTR2 {
+      pos base uni0EB3
+          <anchor -196 827> mark @tonemark;
+  } markLTR2;
+
+  lookup markLTR1;
+  lookup markLTR2;
+#< feature
+} mark;
+feature mkmk {
+#> feature
+# GPOS feature : Mark to Mark Positioning
+    markClass uni0EB8 <anchor -246 12> @lvowel;
+    markClass uni0EB9 <anchor -295 13> @lvowel;
+#    markClass uni0EC8 <anchor -270 886> @tonemark;
+#    markClass uni0EC9 <anchor -275 828> @tonemark;
+#    markClass uni0ECA <anchor -532 790> @tonemark;
+#    markClass uni0ECB <anchor -237 794> @tonemark;
+#    markClass uni0ECC <anchor -205 882> @tonemark;
+
+  lookup mkmkLTR {
+      pos mark uni0EB1
+          <anchor -182 815> mark @tonemark;
+      pos mark uni0EB4
+          <anchor -282 885> mark @tonemark;
+      pos mark uni0EB5
+          <anchor -206 850> mark @tonemark;
+      pos mark uni0EB6
+          <anchor -230 864> mark @tonemark;
+      pos mark uni0EB7
+          <anchor -287 870> mark @tonemark;
+      pos mark uni0EBB
+          <anchor -214 837> mark @tonemark;
+      pos mark uni0EBC
+          <anchor -283 -188> mark @lvowel;
+      pos mark uni0ECD
+          <anchor -260 817> mark @tonemark;
+  } mkmkLTR;
+
+  lookup mkmkLTR;
+#< feature
+} mkmk;
+feature kern {
+#> feature
+
+  lookup KERN_LTR  {
+  lookupflag IgnoreMarks;
+    pos space uni0E81 -47;
+    pos space uni0E84 -47;
+    pos space uni0EA1 33;
+    pos space uni0EC4 -19;
+    pos uni0E81 uni0E9A -139;
+    pos uni0E81 uni0EA1 -116;
+    pos uni0E81 uni0EAB -63;
+    pos uni0E81 uni0EB5 -36;
+    pos uni0E81 uni0EC9 7;
+    pos uni0E82 uni0E94 -133;
+    pos uni0E82 uni0EAD -70;
+    pos uni0E84 uni0EA7 -41;
+    pos uni0E87 space -151;
+    pos uni0E87 uni0E99 -95;
+    pos uni0E87 uni0E9E -63;
+    pos uni0E87 uni0E9F -99;
+    pos uni0E87 uni0EC1 -46;
+    pos uni0E87 uni0EC3 -174;
+    pos uni0E8D uni0EB2 -46;
+    pos uni0E94 uni0E99 34;
+    pos uni0E94 uni0EA1 34;
+    pos uni0E94 uni0EAA -79;
+    pos uni0E94 uni0EAB -55;
+    pos uni0E94 uni0EAD -50;
+    pos uni0E94 uni0EB5 48;
+    pos uni0E94 uni0EC0 20;
+    pos uni0E95 uni0EA2 -47;
+    pos uni0E97 uni0EA1 -39;
+    pos uni0E97 uni0EB5 75;
+    pos uni0E97 uni0EB7 -82;
+    pos uni0E97 uni0EC9 -33;
+    pos uni0E99 space -113;
+    pos uni0E99 uni0E81 -75;
+    pos uni0E99 uni0E82 -39;
+    pos uni0E99 uni0E8D -102;
+    pos uni0E99 uni0E94 -85;
+    pos uni0E99 uni0E97 -122;
+    pos uni0E99 uni0E99 -141;
+    pos uni0E99 uni0EA1 -79;
+    pos uni0E99 uni0EA2 -115;
+    pos uni0E99 uni0EA7 -57;
+    pos uni0E99 uni0ED1 -53;
+    pos uni0E9A space -66;
+    pos uni0E9A uni0E9E -75;
+    pos uni0E9A uni0EAD -66;
+    pos uni0E9A uni0EAE -72;
+    pos uni0E9A uni0ECD 62;
+    pos uni0E9B uni0EB1 41;
+    pos uni0E9B uni0EB2 27;
+    pos uni0E9B uni0EB5 -40;
+    pos uni0E9B uni0EC2 107;
+    pos uni0E9B uni0EC3 148;
+    pos uni0E9C uni0EC8 -32;
+    pos uni0E9E uni0EA3 -42;
+    pos uni0E9E uni0EAA -80;
+    pos uni0E9E uni0EB0 -38;
+    pos uni0E9E uni0EB5 -38;
+    pos uni0EA1 uni0E95 -47;
+    pos uni0EA1 uni0EA1 -62;
+    pos uni0EA1 uni0EAB -75;
+    pos uni0EA1 uni0EB7 -28;
+    pos uni0EA1 uni0EB8 42;
+    pos uni0EA2 space -66;
+    pos uni0EA2 uni0EB2 20;
+    pos uni0EA2 uni0EB9 29;
+    pos uni0EA3 uni0EB0 -33;
+    pos uni0EA5 uni0E81 -65;
+    pos uni0EA5 uni0EB0 -39;
+    pos uni0EA5 uni0EB7 -32;
+    pos uni0EA7 uni0E8A -62;
+    pos uni0EA7 uni0EB2 -50;
+    pos uni0EA7 uni0EB5 1;
+    pos uni0EA7 uni0EBD -160;
+    pos uni0EAA uni0EB4 -86;
+    pos uni0EAB uni0E8D -69;
+    pos uni0EAB uni0E97 -55;
+    pos uni0EAB uni0EA1 -107;
+    pos uni0EAB uni0EB2 -58;
+    pos uni0EAB uni0EB8 -37;
+    pos uni0EAB uni0ECD -185;
+    pos uni0EAD uni0E81 -85;
+    pos uni0EAD uni0E87 -56;
+    pos uni0EAD uni0E9E -83;
+    pos uni0EAD uni0EB0 -48;
+    pos uni0EB0 uni0E9E -57;
+    pos uni0EB0 uni0EA1 -38;
+    pos uni0EB0 uni0EAA -38;
+    pos uni0EB0 uni0EAB -39;
+    pos uni0EB0 uni0EC0 47;
+    pos uni0EB1 uni0E94 -48;
+    pos uni0EB1 uni0E99 -110;
+    pos uni0EB1 uni0E9A -94;
+    pos uni0EB1 uni0EC9 -41;
+    pos uni0EB2 uni0E87 -47;
+    pos uni0EB2 uni0E8A -24;
+    pos uni0EB2 uni0E8D -63;
+    pos uni0EB2 uni0E97 -70;
+    pos uni0EB2 uni0E99 -65;
+    pos uni0EB2 uni0EA1 -10;
+    pos uni0EB2 uni0EA2 -82;
+    pos uni0EB2 uni0EA7 -35;
+    pos uni0EB2 uni0EAA -93;
+    pos uni0EB3 uni0E8A -37;
+    pos uni0EB4 uni0E87 -132;
+    pos uni0EB4 uni0E94 -56;
+    pos uni0EB4 uni0EA5 -63;
+    pos uni0EB4 uni0EC8 48;
+    pos uni0EB5 space -38;
+    pos uni0EB5 uni0E99 -162;
+    pos uni0EB5 uni0EA1 29;
+    pos uni0EB5 uni0EAE -72;
+    pos uni0EB5 uni0EC8 -84;
+    pos uni0EB7 uni0E94 -33;
+    pos uni0EB7 uni0EC8 -20;
+    pos uni0EB8 uni0E94 -109;
+    pos uni0EB9 uni0E9A -101;
+    pos uni0EB9 uni0EC8 -14;
+    pos uni0EBB uni0E87 -38;
+    pos uni0EBB uni0EC9 -54;
+    pos uni0EBD uni0E99 -122;
+    pos uni0EBD uni0EA7 -113;
+    pos uni0EC0 uni0E82 -56;
+    pos uni0EC0 uni0E88 -96;
+    pos uni0EC0 uni0E97 -79;
+    pos uni0EC0 uni0EA1 -38;
+    pos uni0EC0 uni0EA2 -76;
+    pos uni0EC0 uni0EA5 -79;
+    pos uni0EC0 uni0EA7 -22;
+    pos uni0EC0 uni0EAB -41;
+    pos uni0EC1 uni0E9C -67;
+    pos uni0EC1 uni0EA5 -86;
+    pos uni0EC2 uni0EA5 -90;
+    pos uni0EC3 uni0E99 -108;
+    pos uni0EC3 uni0EAB -83;
+    pos uni0EC3 uni0EC4 27;
+    pos uni0EC4 uni0E9E -128;
+    pos uni0EC8 space -208;
+    pos uni0EC8 uni0E81 205;
+    pos uni0EC8 uni0E87 -20;
+    pos uni0EC8 uni0E97 -157;
+    pos uni0EC8 uni0E99 -67;
+    pos uni0EC8 uni0EAD -32;
+    pos uni0EC8 uni0EB2 -80;
+    pos uni0EC8 uni0EBD -132;
+    pos uni0EC8 uni0EC0 -10;
+    pos uni0EC8 uni0EC4 -87;
+    pos uni0EC9 space -151;
+    pos uni0EC9 uni0E99 -68;
+    pos uni0EC9 uni0EA1 -28;
+    pos uni0EC9 uni0EA7 -87;
+    pos uni0EC9 uni0EAD -75;
+    pos uni0ECD uni0EB2 -95;
+    pos uni0ECD uni0EC8 -8;
+  lookupflag 0;
+  } KERN_LTR;
+
+  lookup KERN_LTR;
+#< feature
+} kern;
