@@ -14,4 +14,4 @@ https://www.flickr.com/photos/80050386@N07/35219072733/in/photolist-VEbXiX-4Z7ko
 This is my first attempt to create a font. I love open source, and I thought this might be a good way to contribute and help the Lao people. It started as a need for a better font for headers in kid-friendly materials. But why make something for myself and not share it with others?
 
 # Work in Progress
-It's certainly not the prettiest. Certainly not the most demanding. It won't fold your laundry, or cook your food. If it makes a kid enjoy reading a little more, then it has served its purpose! But that doesn't mean it needs to stay stagnant. If you want to improve upon it, feel free to contribute, modify it, or use it as a template to great something great!
+It's certainly not the prettiest. Certainly not the most demanding. It won't fold your laundry, or cook your food. If it makes a kid enjoy reading a little more, then it has served its purpose! But that doesn't mean it needs to stay stagnant. If you want to improve upon it, feel free to contribute, modify it, or use it as a template to create something great!
