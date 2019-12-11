@@ -3,6 +3,10 @@ _A Hand Painted Lao Signage Font_
 
 Kouang Si Waterfall - an Open Source and Open Licensed Display Font 
 
+# Check It Out
+You can view an example of this font with your web browser (works best on Chrome/Safari).
+https://htmlpreview.github.io/?https://github.com/rober42539/KouangSiWaterfall/blob/master/KouangSiWaterfall/Web-TT/KouangSiWaterfall-Regular.html
+
 # Purpose
 Lao doesn't have a lot of font options. There are a couple decent fonts for general text that are open source/open licesned. There are some old fonts that aren't very modern, but do the job. But, there aren't many Lao display fonts, especially those designed to make headers and larger text more appealing for young people. This font is an attempt to change that.
 
