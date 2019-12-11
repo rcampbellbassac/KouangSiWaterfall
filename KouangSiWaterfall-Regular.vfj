@@ -36,7 +36,7 @@
       {
         "name":"uni0E81",
         "unicode":"0e81",
-        "lastModified":"2019-11-26 09:07:29",
+        "lastModified":"2019-12-10 20:32:17",
         "colorFlag":1,
         "layers":[
           {
@@ -76,7 +76,8 @@
                       ]
                     }
                   ]
-                }
+                },
+                "active":true
               }
             ],
             "anchors":[
@@ -188,10 +189,10 @@
                   ]
                 },
                 "transform":{
-                  "xScale":3.86,
-                  "yScale":3.86,
-                  "xOffset":9.29,
-                  "yOffset":-94.53
+                  "xScale":3.8623,
+                  "yScale":3.8623,
+                  "xOffset":9.2943,
+                  "yOffset":-94.527
                 }
               }
             ],
@@ -244,10 +245,10 @@
                   ]
                 },
                 "transform":{
-                  "xScale":3.59,
-                  "yScale":-3.59,
-                  "xOffset":1.91,
-                  "yOffset":586.93
+                  "xScale":3.5911,
+                  "yScale":-3.5911,
+                  "xOffset":1.9073,
+                  "yOffset":586.927
                 }
               }
             ],
@@ -556,9 +557,9 @@
                   ]
                 },
                 "transform":{
-                  "xScale":3.70,
-                  "yScale":-3.70,
-                  "xOffset":-3.56,
+                  "xScale":3.7042,
+                  "yScale":-3.7042,
+                  "xOffset":-3.5624,
                   "yOffset":577.88
                 }
               }
@@ -686,10 +687,10 @@
                   ]
                 },
                 "transform":{
-                  "xScale":3.81,
-                  "yScale":-3.81,
-                  "xOffset":13.31,
-                  "yOffset":602.84
+                  "xScale":3.8064,
+                  "yScale":-3.8064,
+                  "xOffset":13.3072,
+                  "yOffset":602.838
                 }
               }
             ],
@@ -1216,10 +1217,10 @@
                   ]
                 },
                 "transform":{
-                  "xScale":3.69,
-                  "yScale":-3.69,
-                  "xOffset":14.67,
-                  "yOffset":586.97
+                  "xScale":3.6877,
+                  "yScale":-3.6877,
+                  "xOffset":14.6731,
+                  "yOffset":586.967
                 }
               }
             ],
@@ -1451,10 +1452,10 @@
                   ]
                 },
                 "transform":{
-                  "xScale":3.68,
-                  "yScale":-3.68,
-                  "xOffset":-24.70,
-                  "yOffset":588.57
+                  "xScale":3.685,
+                  "yScale":-3.685,
+                  "xOffset":-24.6999,
+                  "yOffset":588.573
                 },
                 "active":true
               }
@@ -1583,10 +1584,10 @@
                   ]
                 },
                 "transform":{
-                  "xScale":3.80,
-                  "yScale":-3.80,
-                  "xOffset":6.00,
-                  "yOffset":585.56
+                  "xScale":3.8002,
+                  "yScale":-3.8002,
+                  "xOffset":5.9973,
+                  "yOffset":585.562
                 },
                 "active":true
               }
@@ -1649,10 +1650,10 @@
                   ]
                 },
                 "transform":{
-                  "xScale":4.09,
-                  "yScale":-4.09,
-                  "xOffset":48.91,
-                  "yOffset":632.89
+                  "xScale":4.0922,
+                  "yScale":-4.0922,
+                  "xOffset":48.9078,
+                  "yOffset":632.894
                 }
               }
             ],
@@ -2427,10 +2428,10 @@
                   ]
                 },
                 "transform":{
-                  "xScale":3.94,
-                  "yScale":-3.94,
-                  "xOffset":54.28,
-                  "yOffset":594.14
+                  "xScale":3.9414,
+                  "yScale":-3.9414,
+                  "xOffset":54.2848,
+                  "yOffset":594.137
                 }
               }
             ],
@@ -3348,8 +3349,7 @@
             "color":"maroon",
             "active":true
           }
-        ],
-        "activeLayerIx":1
+        ]
       },
       {
         "name":"uni0ED6",
@@ -4009,7 +4009,7 @@
       {
         "name":"uni2009",
         "unicode":"2009",
-        "lastModified":"2019-11-26 09:07:29",
+        "lastModified":"2019-12-10 20:32:17",
         "colorFlag":241,
         "layers":[
           {
@@ -4034,19 +4034,19 @@
     "interpolationFlags":3,
     "openTypeFeatures":[
       {
-        "feature":"@composite = [uni2009];\n@uni0EA7_1st = [uni0EA7 uni0ED0];\n@uni0E9D_1st = [uni0E9D uni0E9F];\n@uni0E96_1st = [uni0E96 uni0ED7];\n@ALL = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9 uni200B uni2009];\n@laoo = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9];\n@noblank = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9];\n@noncomposite = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9];\n@otnone = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9 uni200B uni2009];\n@blank = [uni200B uni2009];\nlanguagesystem DFLT dflt;\nlanguagesystem latn dflt;\n"
+        "feature":"#> classes\n#/> kernclasses\n@uni0EA7_1st = [uni0EA7 uni0ED0];\n@uni0E9D_1st = [uni0E9D uni0E9F];\n@uni0E96_1st = [uni0E96 uni0ED7];\n#/< kernclasses\n\n#/> vtags\n@ALL = [CR space uni000A uni0E81 uni0E82 uni0E84 uni0E87 uni0E88 uni0E8A uni0E8D uni0E94 uni0E95 uni0E96 uni0E97 uni0E99 uni0E9A uni0E9B uni0E9C uni0E9D uni0E9E uni0E9F uni0EA1 uni0EA2 uni0EA3 uni0EA5 uni0EA7 uni0EAA uni0EAB uni0EAD uni0EAE uni0EAF uni0EB0 uni0EB1 uni0EB2 uni0EB3 uni0EB4 uni0EB5 uni0EB6 uni0EB7 uni0EB8 uni0EB9 uni0EBB uni0EBC uni0EBD uni0EC0 uni0EC1 uni0EC2 uni0EC3 uni0EC4 uni0EC6 uni0EC8 uni0EC9 uni0ECA uni0ECB uni0ECC uni0ECD uni0ED0 uni0ED1 uni0ED2 uni0ED3 uni0ED4 uni0ED5 uni0ED6 uni0ED7 uni0ED8 uni0ED9 uni0EDC uni0EDD uni2009 uni200B uni20AD uni25CC];\n@blank = [CR space uni000A uni2009 uni200B];\n@composite = [uni2009];\n@fig = [uni0ED0 uni0ED1 uni0ED2 uni0ED3 uni0ED4 uni0ED5 uni0ED6 uni0ED7 uni0ED8 uni0ED9];\n@laoo = [uni0E81 uni0E82 uni0E84 uni0E87 uni0E88 uni0E8A uni0E8D uni0E94 uni0E95 uni0E96 uni0E97 uni0E99 uni0E9A uni0E9B uni0E9C uni0E9D uni0E9E uni0E9F uni0EA1 uni0EA2 uni0EA3 uni0EA5 uni0EA7 uni0EAA uni0EAB uni0EAD uni0EAE uni0EAF uni0EB0 uni0EB1 uni0EB2 uni0EB3 uni0EB4 uni0EB5 uni0EB6 uni0EB7 uni0EB8 uni0EB9 uni0EBB uni0EBC uni0EBD uni0EC0 uni0EC1 uni0EC2 uni0EC3 uni0EC4 uni0EC6 uni0EC8 uni0EC9 uni0ECA uni0ECB uni0ECC uni0ECD uni0ED0 uni0ED1 uni0ED2 uni0ED3 uni0ED4 uni0ED5 uni0ED6 uni0ED7 uni0ED8 uni0ED9 uni0EDC uni0EDD];\n@noblank = [uni0E81 uni0E82 uni0E84 uni0E87 uni0E88 uni0E8A uni0E8D uni0E94 uni0E95 uni0E96 uni0E97 uni0E99 uni0E9A uni0E9B uni0E9C uni0E9D uni0E9E uni0E9F uni0EA1 uni0EA2 uni0EA3 uni0EA5 uni0EA7 uni0EAA uni0EAB uni0EAD uni0EAE uni0EAF uni0EB0 uni0EB1 uni0EB2 uni0EB3 uni0EB4 uni0EB5 uni0EB6 uni0EB7 uni0EB8 uni0EB9 uni0EBB uni0EBC uni0EBD uni0EC0 uni0EC1 uni0EC2 uni0EC3 uni0EC4 uni0EC6 uni0EC8 uni0EC9 uni0ECA uni0ECB uni0ECC uni0ECD uni0ED0 uni0ED1 uni0ED2 uni0ED3 uni0ED4 uni0ED5 uni0ED6 uni0ED7 uni0ED8 uni0ED9 uni0EDC uni0EDD uni20AD uni25CC];\n@noncomposite = [uni0E81 uni0E82 uni0E84 uni0E87 uni0E88 uni0E8A uni0E8D uni0E94 uni0E95 uni0E96 uni0E97 uni0E99 uni0E9A uni0E9B uni0E9C uni0E9D uni0E9E uni0E9F uni0EA1 uni0EA2 uni0EA3 uni0EA5 uni0EA7 uni0EAA uni0EAB uni0EAD uni0EAE uni0EAF uni0EB0 uni0EB1 uni0EB2 uni0EB3 uni0EB4 uni0EB5 uni0EB6 uni0EB7 uni0EB8 uni0EB9 uni0EBB uni0EBC uni0EBD uni0EC0 uni0EC1 uni0EC2 uni0EC3 uni0EC4 uni0EC6 uni0EC8 uni0EC9 uni0ECA uni0ECB uni0ECC uni0ECD uni0ED0 uni0ED1 uni0ED2 uni0ED3 uni0ED4 uni0ED5 uni0ED6 uni0ED7 uni0ED8 uni0ED9 uni0EDC uni0EDD uni20AD uni25CC];\n@otnone = [CR space uni000A uni0E81 uni0E82 uni0E84 uni0E87 uni0E88 uni0E8A uni0E8D uni0E94 uni0E95 uni0E96 uni0E97 uni0E99 uni0E9A uni0E9B uni0E9C uni0E9D uni0E9E uni0E9F uni0EA1 uni0EA2 uni0EA3 uni0EA5 uni0EA7 uni0EAA uni0EAB uni0EAD uni0EAE uni0EAF uni0EB0 uni0EB1 uni0EB2 uni0EB3 uni0EB4 uni0EB5 uni0EB6 uni0EB7 uni0EB8 uni0EB9 uni0EBB uni0EBC uni0EBD uni0EC0 uni0EC1 uni0EC2 uni0EC3 uni0EC4 uni0EC6 uni0EC8 uni0EC9 uni0ECA uni0ECB uni0ECC uni0ECD uni0ED0 uni0ED1 uni0ED2 uni0ED3 uni0ED4 uni0ED5 uni0ED6 uni0ED7 uni0ED8 uni0ED9 uni0EDC uni0EDD uni2009 uni200B uni20AD uni25CC];\n#/< vtags\n#< classes\n\n@composite = [uni2009];\n@uni0EA7_1st = [uni0EA7 uni0ED0];\n@uni0E9D_1st = [uni0E9D uni0E9F];\n@uni0E96_1st = [uni0E96 uni0ED7];\n@ALL = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9 uni200B uni2009];\n@laoo = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9];\n@noblank = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9];\n@noncomposite = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9];\n@otnone = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9 uni200B uni2009];\n@blank = [uni200B uni2009];\nlanguagesystem DFLT dflt;\nlanguagesystem latn dflt;\n"
       },
       {
         "name":"mark",
-        "feature":"feature mark {\n# GPOS feature : Mark Positioning\n    markClass uni0EB1 <anchor -236 520> @top;\n    markClass uni0EB4 <anchor -342 534> @top;\n    markClass uni0EB5 <anchor -251 553> @top;\n    markClass uni0EB6 <anchor -284 521> @top;\n    markClass uni0EB7 <anchor -276 525> @top;\n    markClass uni0EB8 <anchor -246 0> @bottom;\n    markClass uni0EB9 <anchor -295 0> @bottom;\n    markClass uni0EBB <anchor -298 558> @top;\n    markClass uni0EBC <anchor -283 0> @bottom;\n    markClass uni0EC8 <anchor -274 884> @tonemark;\n    markClass uni0EC8 <anchor -264 852> @top;\n    markClass uni0EC9 <anchor -275 828> @tonemark;\n    markClass uni0EC9 <anchor -275 777> @top;\n    markClass uni0ECA <anchor -532 790> @tonemark;\n    markClass uni0ECA <anchor -532 742> @top;\n    markClass uni0ECB <anchor -237 794> @tonemark;\n    markClass uni0ECB <anchor -237 745> @top;\n    markClass uni0ECC <anchor -205 882> @tonemark;\n    markClass uni0ECC <anchor -205 826> @top;\n    markClass uni0ECD <anchor -260 532> @top;\n\n  lookup markLTR1 {\n      pos base uni0E81\n          <anchor 320 -26> mark @bottom\n          <anchor 367 516> mark @top;\n      pos base uni0E82\n          <anchor 308 -15> mark @bottom\n          <anchor 302 580> mark @top;\n      pos base uni0E84\n          <anchor 314 -15> mark @bottom\n          <anchor 310 539> mark @top;\n      pos base uni0E87\n          <anchor 189 -175> mark @bottom\n          <anchor 185 500> mark @top;\n      pos base uni0E88\n          <anchor 270 0> mark @bottom\n          <anchor 274 520> mark @top;\n      pos base uni0E8A\n          <anchor 245 -115> mark @bottom\n          <anchor 293 523> mark @top;\n      pos base uni0E8D\n          <anchor 312 -33> mark @bottom\n          <anchor 312 537> mark @top;\n      pos base uni0E94\n          <anchor 292 -13> mark @bottom\n          <anchor 290 500> mark @top;\n      pos base uni0E95\n          <anchor 406 0> mark @bottom\n          <anchor 412 500> mark @top;\n      pos base uni0E96\n          <anchor 302 -95> mark @bottom\n          <anchor 330 576> mark @top;\n      pos base uni0E97\n          <anchor 484 -30> mark @bottom\n          <anchor 484 500> mark @top;\n      pos base uni0E99\n          <anchor 348 -35> mark @bottom\n          <anchor 345 500> mark @top;\n      pos base uni0E9A\n          <anchor 378 -51> mark @bottom\n          <anchor 378 580> mark @top;\n      pos base uni0E9B\n          <anchor 356 -91> mark @bottom\n          <anchor 353 679> mark @top;\n      pos base uni0E9C\n          <anchor 374 -41> mark @bottom\n          <anchor 410 595> mark @top;\n      pos base uni0E9D\n          <anchor 431 -46> mark @bottom\n          <anchor 464 660> mark @top;\n      pos base uni0E9E\n          <anchor 471 -17> mark @bottom\n          <anchor 482 515> mark @top;\n      pos base uni0E9F\n          <anchor 477 -17> mark @bottom\n          <anchor 466 626> mark @top;\n      pos base uni0EA1\n          <anchor 347 -24> mark @bottom\n          <anchor 351 502> mark @top;\n      pos base uni0EA2\n          <anchor 359 0> mark @bottom\n          <anchor 314 646> mark @top;\n      pos base uni0EA3\n          <anchor 309 -20> mark @bottom\n          <anchor 309 531> mark @top;\n      pos base uni0EA5\n          <anchor 294 0> mark @bottom\n          <anchor 294 560> mark @top;\n      pos base uni0EA7\n          <anchor 283 0> mark @bottom\n          <anchor 269 501> mark @top;\n      pos base uni0EAA\n          <anchor 293 14> mark @bottom\n          <anchor 274 509> mark @top;\n      pos base uni0EAB\n          <anchor 535 -15> mark @bottom\n          <anchor 554 473> mark @top;\n      pos base uni0EAD\n          <anchor 295 -13> mark @bottom\n          <anchor 374 549> mark @top;\n      pos base uni0EAE\n          <anchor 321 -27> mark @bottom\n          <anchor 323 531> mark @top;\n      pos base uni0EDC\n          <anchor 752 -20> mark @bottom\n          <anchor 706 500> mark @top;\n      pos base uni0EDD\n          <anchor 742 -33> mark @bottom\n          <anchor 704 507> mark @top;\n      pos base uni25CC\n          <anchor 323 -22> mark @bottom\n          <anchor 323 606> mark @top;\n  } markLTR1;\n\n  lookup markLTR2 {\n      pos base uni0EB3\n          <anchor -196 827> mark @tonemark;\n  } markLTR2;\n\n  lookup markLTR1;\n  lookup markLTR2;\n} mark;\n"
+        "feature":"feature mark {\n#> feature\n# GPOS feature : Mark Positioning\n    markClass uni0EB1 <anchor -236 520> @top;\n    markClass uni0EB4 <anchor -342 534> @top;\n    markClass uni0EB5 <anchor -251 553> @top;\n    markClass uni0EB6 <anchor -284 521> @top;\n    markClass uni0EB7 <anchor -276 525> @top;\n    markClass uni0EB8 <anchor -246 0> @bottom;\n    markClass uni0EB9 <anchor -295 0> @bottom;\n    markClass uni0EBB <anchor -298 558> @top;\n    markClass uni0EBC <anchor -283 0> @bottom;\n    markClass uni0EC8 <anchor -270 886> @tonemark;\n    markClass uni0EC8 <anchor -263 841> @top;\n    markClass uni0EC9 <anchor -275 828> @tonemark;\n    markClass uni0EC9 <anchor -275 777> @top;\n    markClass uni0ECA <anchor -532 790> @tonemark;\n    markClass uni0ECA <anchor -532 742> @top;\n    markClass uni0ECB <anchor -237 794> @tonemark;\n    markClass uni0ECB <anchor -237 745> @top;\n    markClass uni0ECC <anchor -205 882> @tonemark;\n    markClass uni0ECC <anchor -205 826> @top;\n    markClass uni0ECD <anchor -260 532> @top;\n\n  lookup markLTR1 {\n      pos base uni0E82\n          <anchor 308 -15> mark @bottom\n          <anchor 302 580> mark @top;\n      pos base uni0E84\n          <anchor 314 -15> mark @bottom\n          <anchor 310 539> mark @top;\n      pos base uni0E87\n          <anchor 189 -175> mark @bottom\n          <anchor 185 500> mark @top;\n      pos base uni0E88\n          <anchor 270 0> mark @bottom\n          <anchor 274 520> mark @top;\n      pos base uni0E8A\n          <anchor 245 -115> mark @bottom\n          <anchor 293 523> mark @top;\n      pos base uni0E8D\n          <anchor 312 -33> mark @bottom\n          <anchor 312 537> mark @top;\n      pos base uni0E94\n          <anchor 292 -13> mark @bottom\n          <anchor 290 500> mark @top;\n      pos base uni0E95\n          <anchor 406 0> mark @bottom\n          <anchor 412 500> mark @top;\n      pos base uni0E96\n          <anchor 302 -95> mark @bottom\n          <anchor 330 576> mark @top;\n      pos base uni0E97\n          <anchor 484 -30> mark @bottom\n          <anchor 484 500> mark @top;\n      pos base uni0E99\n          <anchor 348 -35> mark @bottom\n          <anchor 345 500> mark @top;\n      pos base uni0E9A\n          <anchor 378 -51> mark @bottom\n          <anchor 378 580> mark @top;\n      pos base uni0E9B\n          <anchor 356 -91> mark @bottom\n          <anchor 353 679> mark @top;\n      pos base uni0E9C\n          <anchor 374 -41> mark @bottom\n          <anchor 410 595> mark @top;\n      pos base uni0E9D\n          <anchor 431 -46> mark @bottom\n          <anchor 464 660> mark @top;\n      pos base uni0E9E\n          <anchor 471 -17> mark @bottom\n          <anchor 482 515> mark @top;\n      pos base uni0E9F\n          <anchor 477 -17> mark @bottom\n          <anchor 466 626> mark @top;\n      pos base uni0EA1\n          <anchor 347 -24> mark @bottom\n          <anchor 351 502> mark @top;\n      pos base uni0EA2\n          <anchor 359 0> mark @bottom\n          <anchor 314 646> mark @top;\n      pos base uni0EA3\n          <anchor 309 -20> mark @bottom\n          <anchor 309 531> mark @top;\n      pos base uni0EA5\n          <anchor 294 0> mark @bottom\n          <anchor 294 560> mark @top;\n      pos base uni0EA7\n          <anchor 283 0> mark @bottom\n          <anchor 281 488> mark @top;\n      pos base uni0EAA\n          <anchor 293 14> mark @bottom\n          <anchor 274 509> mark @top;\n      pos base uni0EAB\n          <anchor 535 -15> mark @bottom\n          <anchor 554 473> mark @top;\n      pos base uni0EAD\n          <anchor 295 -13> mark @bottom\n          <anchor 374 549> mark @top;\n      pos base uni0EAE\n          <anchor 321 -27> mark @bottom\n          <anchor 323 531> mark @top;\n      pos base uni0EDC\n          <anchor 752 -20> mark @bottom\n          <anchor 706 500> mark @top;\n      pos base uni0EDD\n          <anchor 742 -33> mark @bottom\n          <anchor 704 507> mark @top;\n      pos base uni25CC\n          <anchor 323 -22> mark @bottom\n          <anchor 323 606> mark @top;\n  } markLTR1;\n\n  lookup markLTR2 {\n      pos base uni0EB3\n          <anchor -196 827> mark @tonemark;\n  } markLTR2;\n\n  lookup markLTR1;\n  lookup markLTR2;\n#< feature\n} mark;\n"
       },
       {
         "name":"mkmk",
-        "feature":"feature mkmk {\n# GPOS feature : Mark to Mark Positioning\n    markClass uni0EB8 <anchor -246 12> @lvowel;\n    markClass uni0EB9 <anchor -295 13> @lvowel;\n#    markClass uni0EC8 <anchor -274 884> @tonemark;\n#    markClass uni0EC9 <anchor -275 828> @tonemark;\n#    markClass uni0ECA <anchor -532 790> @tonemark;\n#    markClass uni0ECB <anchor -237 794> @tonemark;\n#    markClass uni0ECC <anchor -205 882> @tonemark;\n\n  lookup mkmkLTR {\n      pos mark uni0EB1\n          <anchor -182 815> mark @tonemark;\n      pos mark uni0EB4\n          <anchor -282 885> mark @tonemark;\n      pos mark uni0EB5\n          <anchor -206 850> mark @tonemark;\n      pos mark uni0EB6\n          <anchor -230 864> mark @tonemark;\n      pos mark uni0EB7\n          <anchor -287 870> mark @tonemark;\n      pos mark uni0EBB\n          <anchor -214 837> mark @tonemark;\n      pos mark uni0EBC\n          <anchor -283 -188> mark @lvowel;\n      pos mark uni0ECD\n          <anchor -260 817> mark @tonemark;\n  } mkmkLTR;\n\n  lookup mkmkLTR;\n} mkmk;\n"
+        "feature":"feature mkmk {\n#> feature\n# GPOS feature : Mark to Mark Positioning\n    markClass uni0EB8 <anchor -246 12> @lvowel;\n    markClass uni0EB9 <anchor -295 13> @lvowel;\n#    markClass uni0EC8 <anchor -270 886> @tonemark;\n#    markClass uni0EC9 <anchor -275 828> @tonemark;\n#    markClass uni0ECA <anchor -532 790> @tonemark;\n#    markClass uni0ECB <anchor -237 794> @tonemark;\n#    markClass uni0ECC <anchor -205 882> @tonemark;\n\n  lookup mkmkLTR {\n      pos mark uni0EB1\n          <anchor -182 815> mark @tonemark;\n      pos mark uni0EB4\n          <anchor -282 885> mark @tonemark;\n      pos mark uni0EB5\n          <anchor -206 850> mark @tonemark;\n      pos mark uni0EB6\n          <anchor -230 864> mark @tonemark;\n      pos mark uni0EB7\n          <anchor -287 870> mark @tonemark;\n      pos mark uni0EBB\n          <anchor -214 837> mark @tonemark;\n      pos mark uni0EBC\n          <anchor -283 -188> mark @lvowel;\n      pos mark uni0ECD\n          <anchor -260 817> mark @tonemark;\n  } mkmkLTR;\n\n  lookup mkmkLTR;\n#< feature\n} mkmk;\n"
       },
       {
         "name":"kern",
-        "feature":"feature kern {\n\n\tlookup KERN_LTR  {\n\tlookupflag IgnoreMarks;\n\t\tpos space uni0E81 -47;\n\t\tpos space uni0E84 -47;\n\t\tpos space uni0EA1 33;\n\t\tpos space uni0EC4 -19;\n\t\tpos uni0E81 uni0E9A -139;\n\t\tpos uni0E81 uni0EA1 -116;\n\t\tpos uni0E81 uni0EAB -63;\n\t\tpos uni0E81 uni0EB5 -36;\n\t\tpos uni0E81 uni0EC9 7;\n\t\tpos uni0E82 uni0E94 -133;\n\t\tpos uni0E82 uni0EAD -70;\n\t\tpos uni0E84 uni0EA7 -41;\n\t\tpos uni0E87 space -151;\n\t\tpos uni0E87 uni0E99 -95;\n\t\tpos uni0E87 uni0E9E -63;\n\t\tpos uni0E87 uni0E9F -99;\n\t\tpos uni0E87 uni0EC1 -46;\n\t\tpos uni0E87 uni0EC3 -174;\n\t\tpos uni0E8D uni0EB2 -46;\n\t\tpos uni0E94 uni0E99 34;\n\t\tpos uni0E94 uni0EA1 34;\n\t\tpos uni0E94 uni0EAA -79;\n\t\tpos uni0E94 uni0EAB -55;\n\t\tpos uni0E94 uni0EAD -50;\n\t\tpos uni0E94 uni0EB5 48;\n\t\tpos uni0E94 uni0EC0 20;\n\t\tpos uni0E95 uni0EA2 -47;\n\t\tpos uni0E97 uni0EA1 -39;\n\t\tpos uni0E97 uni0EB5 75;\n\t\tpos uni0E97 uni0EB7 -82;\n\t\tpos uni0E97 uni0EC9 -33;\n\t\tpos uni0E99 space -113;\n\t\tpos uni0E99 uni0E81 -75;\n\t\tpos uni0E99 uni0E82 -39;\n\t\tpos uni0E99 uni0E8D -102;\n\t\tpos uni0E99 uni0E94 -85;\n\t\tpos uni0E99 uni0E97 -122;\n\t\tpos uni0E99 uni0E99 -141;\n\t\tpos uni0E99 uni0EA1 -79;\n\t\tpos uni0E99 uni0EA2 -115;\n\t\tpos uni0E99 uni0EA7 -57;\n\t\tpos uni0E99 uni0ED1 -53;\n\t\tpos uni0E9A space -66;\n\t\tpos uni0E9A uni0E9E -75;\n\t\tpos uni0E9A uni0EAD -66;\n\t\tpos uni0E9A uni0EAE -72;\n\t\tpos uni0E9A uni0ECD 62;\n\t\tpos uni0E9B uni0EB1 41;\n\t\tpos uni0E9B uni0EB2 27;\n\t\tpos uni0E9B uni0EB5 -40;\n\t\tpos uni0E9B uni0EC2 107;\n\t\tpos uni0E9B uni0EC3 148;\n\t\tpos uni0E9C uni0EC8 -32;\n\t\tpos uni0E9E uni0EA3 -42;\n\t\tpos uni0E9E uni0EAA -80;\n\t\tpos uni0E9E uni0EB0 -38;\n\t\tpos uni0E9E uni0EB5 -38;\n\t\tpos uni0EA1 uni0E95 -47;\n\t\tpos uni0EA1 uni0EA1 -62;\n\t\tpos uni0EA1 uni0EAB -75;\n\t\tpos uni0EA1 uni0EB7 -28;\n\t\tpos uni0EA1 uni0EB8 42;\n\t\tpos uni0EA2 space -66;\n\t\tpos uni0EA2 uni0EB2 20;\n\t\tpos uni0EA2 uni0EB9 29;\n\t\tpos uni0EA3 uni0EB0 -33;\n\t\tpos uni0EA5 uni0E81 -65;\n\t\tpos uni0EA5 uni0EB0 -39;\n\t\tpos uni0EA5 uni0EB7 -32;\n\t\tpos uni0EA7 uni0E8A -62;\n\t\tpos uni0EA7 uni0EB2 -50;\n\t\tpos uni0EA7 uni0EB5 1;\n\t\tpos uni0EA7 uni0EBD -160;\n\t\tpos uni0EAA uni0EB4 -86;\n\t\tpos uni0EAB uni0E8D -69;\n\t\tpos uni0EAB uni0E97 -55;\n\t\tpos uni0EAB uni0EA1 -107;\n\t\tpos uni0EAB uni0EB2 -58;\n\t\tpos uni0EAB uni0EB8 -37;\n\t\tpos uni0EAB uni0ECD -185;\n\t\tpos uni0EAD uni0E81 -85;\n\t\tpos uni0EAD uni0E87 -56;\n\t\tpos uni0EAD uni0E9E -83;\n\t\tpos uni0EAD uni0EB0 -48;\n\t\tpos uni0EB0 uni0E9E -57;\n\t\tpos uni0EB0 uni0EA1 -38;\n\t\tpos uni0EB0 uni0EAA -38;\n\t\tpos uni0EB0 uni0EAB -39;\n\t\tpos uni0EB0 uni0EC0 47;\n\t\tpos uni0EB1 uni0E94 -48;\n\t\tpos uni0EB1 uni0E99 -110;\n\t\tpos uni0EB1 uni0E9A -94;\n\t\tpos uni0EB1 uni0EC9 -41;\n\t\tpos uni0EB2 uni0E87 -47;\n\t\tpos uni0EB2 uni0E8A -24;\n\t\tpos uni0EB2 uni0E8D -63;\n\t\tpos uni0EB2 uni0E97 -70;\n\t\tpos uni0EB2 uni0E99 -65;\n\t\tpos uni0EB2 uni0EA1 -10;\n\t\tpos uni0EB2 uni0EA2 -82;\n\t\tpos uni0EB2 uni0EA7 -35;\n\t\tpos uni0EB2 uni0EAA -93;\n\t\tpos uni0EB3 uni0E8A -37;\n\t\tpos uni0EB4 uni0E87 -132;\n\t\tpos uni0EB4 uni0E94 -56;\n\t\tpos uni0EB4 uni0EA5 -63;\n\t\tpos uni0EB4 uni0EC8 48;\n\t\tpos uni0EB5 space -38;\n\t\tpos uni0EB5 uni0E99 -162;\n\t\tpos uni0EB5 uni0EA1 29;\n\t\tpos uni0EB5 uni0EAE -72;\n\t\tpos uni0EB5 uni0EC8 -84;\n\t\tpos uni0EB7 uni0E94 -33;\n\t\tpos uni0EB7 uni0EC8 -20;\n\t\tpos uni0EB8 uni0E94 -109;\n\t\tpos uni0EB9 uni0E9A -101;\n\t\tpos uni0EB9 uni0EC8 -14;\n\t\tpos uni0EBB uni0E87 -38;\n\t\tpos uni0EBB uni0EC9 -54;\n\t\tpos uni0EBD uni0E99 -122;\n\t\tpos uni0EBD uni0EA7 -113;\n\t\tpos uni0EC0 uni0E82 -56;\n\t\tpos uni0EC0 uni0E88 -96;\n\t\tpos uni0EC0 uni0E97 -79;\n\t\tpos uni0EC0 uni0EA1 -38;\n\t\tpos uni0EC0 uni0EA2 -76;\n\t\tpos uni0EC0 uni0EA5 -79;\n\t\tpos uni0EC0 uni0EA7 -22;\n\t\tpos uni0EC0 uni0EAB -41;\n\t\tpos uni0EC1 uni0E9C -67;\n\t\tpos uni0EC1 uni0EA5 -86;\n\t\tpos uni0EC2 uni0EA5 -90;\n\t\tpos uni0EC3 uni0E99 -108;\n\t\tpos uni0EC3 uni0EAB -83;\n\t\tpos uni0EC3 uni0EC4 27;\n\t\tpos uni0EC4 uni0E9E -128;\n\t\tpos uni0EC8 space -208;\n\t\tpos uni0EC8 uni0E81 205;\n\t\tpos uni0EC8 uni0E87 -20;\n\t\tpos uni0EC8 uni0E97 -157;\n\t\tpos uni0EC8 uni0E99 -67;\n\t\tpos uni0EC8 uni0EAD -32;\n\t\tpos uni0EC8 uni0EB2 -80;\n\t\tpos uni0EC8 uni0EBD -132;\n\t\tpos uni0EC8 uni0EC0 -10;\n\t\tpos uni0EC8 uni0EC4 -87;\n\t\tpos uni0EC9 space -151;\n\t\tpos uni0EC9 uni0E99 -68;\n\t\tpos uni0EC9 uni0EA1 -28;\n\t\tpos uni0EC9 uni0EA7 -87;\n\t\tpos uni0EC9 uni0EAD -75;\n\t\tpos uni0ECD uni0EB2 -95;\n\t\tpos uni0ECD uni0EC8 -8;\n\tlookupflag 0;\n\t} KERN_LTR;\n\n\tlookup KERN_LTR;\n} kern ;\n"
+        "feature":"feature kern {\n#> feature\n\n  lookup KERN_LTR  {\n  lookupflag IgnoreMarks;\n    pos space uni0E81 -47;\n    pos space uni0E84 -47;\n    pos space uni0EA1 33;\n    pos space uni0EC4 -19;\n    pos uni0E81 uni0E9A -139;\n    pos uni0E81 uni0EA1 -116;\n    pos uni0E81 uni0EAB -63;\n    pos uni0E81 uni0EB5 -36;\n    pos uni0E81 uni0EC9 7;\n    pos uni0E82 uni0E94 -133;\n    pos uni0E82 uni0EAD -70;\n    pos uni0E84 uni0EA7 -41;\n    pos uni0E87 space -151;\n    pos uni0E87 uni0E99 -95;\n    pos uni0E87 uni0E9E -63;\n    pos uni0E87 uni0E9F -99;\n    pos uni0E87 uni0EC1 -46;\n    pos uni0E87 uni0EC3 -174;\n    pos uni0E8D uni0EB2 -46;\n    pos uni0E94 uni0E99 34;\n    pos uni0E94 uni0EA1 34;\n    pos uni0E94 uni0EAA -79;\n    pos uni0E94 uni0EAB -55;\n    pos uni0E94 uni0EAD -50;\n    pos uni0E94 uni0EB5 48;\n    pos uni0E94 uni0EC0 20;\n    pos uni0E95 uni0EA2 -47;\n    pos uni0E97 uni0EA1 -39;\n    pos uni0E97 uni0EB5 75;\n    pos uni0E97 uni0EB7 -82;\n    pos uni0E97 uni0EC9 -33;\n    pos uni0E99 space -113;\n    pos uni0E99 uni0E81 -75;\n    pos uni0E99 uni0E82 -39;\n    pos uni0E99 uni0E8D -102;\n    pos uni0E99 uni0E94 -85;\n    pos uni0E99 uni0E97 -122;\n    pos uni0E99 uni0E99 -141;\n    pos uni0E99 uni0EA1 -79;\n    pos uni0E99 uni0EA2 -115;\n    pos uni0E99 uni0EA7 -57;\n    pos uni0E99 uni0ED1 -53;\n    pos uni0E9A space -66;\n    pos uni0E9A uni0E9E -75;\n    pos uni0E9A uni0EAD -66;\n    pos uni0E9A uni0EAE -72;\n    pos uni0E9A uni0ECD 62;\n    pos uni0E9B uni0EB1 41;\n    pos uni0E9B uni0EB2 27;\n    pos uni0E9B uni0EB5 -40;\n    pos uni0E9B uni0EC2 107;\n    pos uni0E9B uni0EC3 148;\n    pos uni0E9C uni0EC8 -32;\n    pos uni0E9E uni0EA3 -42;\n    pos uni0E9E uni0EAA -80;\n    pos uni0E9E uni0EB0 -38;\n    pos uni0E9E uni0EB5 -38;\n    pos uni0EA1 uni0E95 -47;\n    pos uni0EA1 uni0EA1 -62;\n    pos uni0EA1 uni0EAB -75;\n    pos uni0EA1 uni0EB7 -28;\n    pos uni0EA1 uni0EB8 42;\n    pos uni0EA2 space -66;\n    pos uni0EA2 uni0EB2 20;\n    pos uni0EA2 uni0EB9 29;\n    pos uni0EA3 uni0EB0 -33;\n    pos uni0EA5 uni0E81 -65;\n    pos uni0EA5 uni0EB0 -39;\n    pos uni0EA5 uni0EB7 -32;\n    pos uni0EA7 uni0E8A -62;\n    pos uni0EA7 uni0EB2 -50;\n    pos uni0EA7 uni0EB5 1;\n    pos uni0EA7 uni0EBD -160;\n    pos uni0EAA uni0EB4 -86;\n    pos uni0EAB uni0E8D -69;\n    pos uni0EAB uni0E97 -55;\n    pos uni0EAB uni0EA1 -107;\n    pos uni0EAB uni0EB2 -58;\n    pos uni0EAB uni0EB8 -37;\n    pos uni0EAB uni0ECD -185;\n    pos uni0EAD uni0E81 -85;\n    pos uni0EAD uni0E87 -56;\n    pos uni0EAD uni0E9E -83;\n    pos uni0EAD uni0EB0 -48;\n    pos uni0EB0 uni0E9E -57;\n    pos uni0EB0 uni0EA1 -38;\n    pos uni0EB0 uni0EAA -38;\n    pos uni0EB0 uni0EAB -39;\n    pos uni0EB0 uni0EC0 47;\n    pos uni0EB1 uni0E94 -48;\n    pos uni0EB1 uni0E99 -110;\n    pos uni0EB1 uni0E9A -94;\n    pos uni0EB1 uni0EC9 -41;\n    pos uni0EB2 uni0E87 -47;\n    pos uni0EB2 uni0E8A -24;\n    pos uni0EB2 uni0E8D -63;\n    pos uni0EB2 uni0E97 -70;\n    pos uni0EB2 uni0E99 -65;\n    pos uni0EB2 uni0EA1 -10;\n    pos uni0EB2 uni0EA2 -82;\n    pos uni0EB2 uni0EA7 -35;\n    pos uni0EB2 uni0EAA -93;\n    pos uni0EB3 uni0E8A -37;\n    pos uni0EB4 uni0E87 -132;\n    pos uni0EB4 uni0E94 -56;\n    pos uni0EB4 uni0EA5 -63;\n    pos uni0EB4 uni0EC8 48;\n    pos uni0EB5 space -38;\n    pos uni0EB5 uni0E99 -162;\n    pos uni0EB5 uni0EA1 29;\n    pos uni0EB5 uni0EAE -72;\n    pos uni0EB5 uni0EC8 -84;\n    pos uni0EB7 uni0E94 -33;\n    pos uni0EB7 uni0EC8 -20;\n    pos uni0EB8 uni0E94 -109;\n    pos uni0EB9 uni0E9A -101;\n    pos uni0EB9 uni0EC8 -14;\n    pos uni0EBB uni0E87 -38;\n    pos uni0EBB uni0EC9 -54;\n    pos uni0EBD uni0E99 -122;\n    pos uni0EBD uni0EA7 -113;\n    pos uni0EC0 uni0E82 -56;\n    pos uni0EC0 uni0E88 -96;\n    pos uni0EC0 uni0E97 -79;\n    pos uni0EC0 uni0EA1 -38;\n    pos uni0EC0 uni0EA2 -76;\n    pos uni0EC0 uni0EA5 -79;\n    pos uni0EC0 uni0EA7 -22;\n    pos uni0EC0 uni0EAB -41;\n    pos uni0EC1 uni0E9C -67;\n    pos uni0EC1 uni0EA5 -86;\n    pos uni0EC2 uni0EA5 -90;\n    pos uni0EC3 uni0E99 -108;\n    pos uni0EC3 uni0EAB -83;\n    pos uni0EC3 uni0EC4 27;\n    pos uni0EC4 uni0E9E -128;\n    pos uni0EC8 space -208;\n    pos uni0EC8 uni0E81 205;\n    pos uni0EC8 uni0E87 -20;\n    pos uni0EC8 uni0E97 -157;\n    pos uni0EC8 uni0E99 -67;\n    pos uni0EC8 uni0EAD -32;\n    pos uni0EC8 uni0EB2 -80;\n    pos uni0EC8 uni0EBD -132;\n    pos uni0EC8 uni0EC0 -10;\n    pos uni0EC8 uni0EC4 -87;\n    pos uni0EC9 space -151;\n    pos uni0EC9 uni0E99 -68;\n    pos uni0EC9 uni0EA1 -28;\n    pos uni0EC9 uni0EA7 -87;\n    pos uni0EC9 uni0EAD -75;\n    pos uni0ECD uni0EB2 -95;\n    pos uni0ECD uni0EC8 -8;\n  lookupflag 0;\n  } KERN_LTR;\n\n  lookup KERN_LTR;\n#< feature\n} kern;\n"
       }
     ],
     "hinting":{
@@ -4080,7 +4080,7 @@
     "meta":{
       "metaCreator":true,
       "metaFormatVersion":8,
-      "metaBuild":"7044"
+      "metaBuild":"7268"
     },
     "settings":{
     },
@@ -4106,7 +4106,7 @@
           "safeBottom":512,
           "underlineThickness":40,
           "underlinePosition":-252,
-          "curveTension":0.62,
+          "curveTension":0.617,
           "otherData":{
             "TtHinter":1,
             "TtHorizSmoothing":0,
@@ -4414,59 +4414,7 @@
           }
         }
       }
-    ]
-  },
-  "workspace":{
-    "xml":"<?xml version=\"1.0\"?><WindowManager><FrameWindow x=\"-9\" y=\"-9\" width=\"1920\" height=\"1013\" mainWindow=\"1\"><Window id=\"4ef7510c-38d1-4ae6-94e5-a655e07aaa63\" title=\" Kouang Si Waterfall Regular \" permanent=\"0\" active=\"1\" fl.columns=\"-320\" fl.list=\"false\" fl.list_width=\"150\" fl.property=\"true\" fl.sidebar=\"true\" fl.table=\"true\" fl.type=\"font\"/><Window id=\"4ef7510c-38d1-4ae6-94e5-a655e07aaa63\" title=\" ໃນ​​ ຕົ້ນ​… @ Kouang Si Waterfall Regular\" permanent=\"0\" active=\"0\" fl.alternative_view=\"false\" fl.echo=\"false\" fl.fontsize=\"40\" fl.mode=\"1\" fl.property=\"true\" fl.sidebar=\"false\" fl.text=\"ໃນ​​ ຕົ້ນ​ເດີມ​​ ນັ້ນ ພຣະ­ເຈົ້າ​ ຊົງ​​ນິ­​ລະ­ມິດ​​ ສ້າງ​ ​ແຜ່ນ­ດິນ ແລະ​ ສັບ­ພະ​ທຸກ​ສິ່ງ​ໃນ​ທ້ອງຟ້າ.&#10;ໂລກ​ບໍ່​ທັນ​ມີ​ຮູບ­ຮ່າງ​ເທື່ອ ຄວາມ​ມືດ​ຫຸ້ມ​ຫໍ່​ມະ­ຫາ​ສະ­ໝຸດ​ອັນ​ກວ້າງ​ໃຫຍ່​ໄພ­ສານ ແລະ​ພຣະ­ວິນ­ຍານ​ຂອງ​ພຣະ­ເຈົ້າ​ຊົງ​ວົນ­ວຽນ​ຢູ່​ເທິງ​ນ້ຳ.&#10;ພຣະ­ເຈົ້າ​ຊົງ​ສັ່ງ​ວ່າ, “ໃຫ້​ແສງ­ສະ­ຫວ່າງ​ເກີດ​ມີ​ຂຶ້ນ” ແສງ­ສະ­ຫວ່າງ​ກໍ​ມີ​ຂຶ້ນ​ມາ.&#10;ພຣະ­ອົງ​ຈຶ່ງ​ຊົງ​ທອດ​ພຣະ­ເນດ​ແສງ­ສະ­ຫວ່າງ​ດ້ວຍ​ຄວາມ​ພໍພຣະໄທ. ດັ່ງ­ນັ້ນ ຈຶ່ງ​ຊົງ​ແຍກ​ແສງ­ສະ­ຫວ່າງ​ອອກ­ຈາກ​ຄວາມ​ມືດ&#10;ພຣະ­ອົງ​ຊົງ​ເອີ້ນ​ແສງ­ສະ­ຫວ່າງ​ນັ້ນ​ວ່າ, “ກາງ­ເວັນ” ແລະ​ຊົງ​ເອີ້ນ​ຄວາມ​ມືດ​ນັ້ນ​ວ່າ, “ກາງ­ຄືນ” ມື້​ຄືນ​ຜ່ານ­ໄປ ມື້​ເຊົ້າ​ຕ່າວ​ມາ ແມ່ນ​ມື້​ທີ​ໜຶ່ງ.&#10;ຕໍ່​ມາ ພຣະ­ເຈົ້າ​ຊົງ​ສັ່ງ​ວ່າ, “ໃຫ້​ມີ​ວົງ​ໂຄ້ງ​ແຍກ​ນ້ຳ​ອອກ­ຈາກ​ກັນ​ເປັນ​ສອງ​ສ່ວນ ຄື: ນ້ຳ​ຢູ່​ເທິງ​ວົງ​ໂຄ້ງ ແລະ​ນ້ຳ​ຢູ່​ລຸ່ມ​ວົງ​ໂຄ້ງ.”&#10;ແລ້ວ​ສິ່ງ​ນັ້ນ​ກໍ­ເກີດ​ມີ​ມາ.&#10;ດັ່ງ­ນັ້ນ ພຣະ­ເຈົ້າ​ຈຶ່ງ​ຊົງ​ເຮັດ​ວົງ​ໂຄ້ງ ແລະ​ຊົງ​ເອີ້ນ​ວົງ​ໂຄ້ງ​ນັ້ນ​ວ່າ, “ຟ້າ” ມື້​ຄືນ​ຜ່ານ­ໄປ ແລະ​ມື້​ເຊົ້າ​ຕ່າວ​ມາ ແມ່ນ​ມື້​ທີ​ສອງ.&#10;ຕໍ່​ມາ​ອີກ ພຣະ­ເຈົ້າ​ຊົງ​ສັ່ງ​ວ່າ, “ໃຫ້​ນ້ຳ​ທີ່­ຢູ່​ລຸ່ມ​ທ້ອງ­ຟ້າ​ໂຮມ​ເຂົ້າ­ກັນ​ຢູ່​ບ່ອນ​ດຽວ ເພື່ອ​ໃຫ້​ມີ​ວັດ­ຖຸ​ແຫ້ງ​ປະ­ກົດ​ຂຶ້ນ” ແລ້ວ​ສິ່ງ​ນັ້ນ​ກໍ­ເກີດ​ມີ​ມາ.&#10;ພຣະ­ອົງ​ຊົງ​ເອີ້ນ​ວັດ­ຖຸ​ແຫ້ງ​ນັ້ນ​ວ່າ, “ແຜ່ນ­ດິນ” ແລະ​ຊົງ​ເອີ້ນ​ນ້ຳ​ທີ່​ໂຮມ​ເຂົ້າ­ກັນ​ນັ້ນ​ວ່າ, “ມະ­ຫາ​ສະ­ໝຸດ” ພຣະ­ອົງ​ຊົງ​ຊົມ​ສິ່ງ​ທີ່​ນິ­ລະ­ມິດ​ສ້າງ​ຂຶ້ນ​ມາ​ແລ້ວ​ນັ້ນ ກໍ​ຊົງ​ພໍພຣະໄທ.&#10;ຈຶ່ງ​ຊົງ​ສັ່ງ​ວ່າ, “ໃຫ້​ແຜ່ນ­ດິນ​ເກີດ​ພືດ​ທຸກ​ຊະ­ນິດ ທັງ​ແນວ​ເປັນ​ເມັດ ແລະ​ແນວ​ເປັນ​ໝາກ” ແລ້ວ​ທຸກ​ສິ່ງ​ກໍ­ເກີດ​ມີ​ມາ.&#10;ດັ່ງ­ນັ້ນ ພືດ​ທຸກ​ຊະ­ນິດ​ຈຶ່ງ​ເກີດ​ມີ​ຂຶ້ນ​ຕາມ​ທີ່​ພຣະ­ອົງ​ຊົງ​ສັ່ງ ພຣະ­ອົງ​ຊົງ​ທອດ​ພຣະ­ເນດ ສິ່ງ​ທີ່​ຊົງ​ນິ­ລະ­ມິດ​ສ້າງ​ກໍ​ຊົງ​ພໍພຣະໄທ.&#10;ມື້​ຄືນ​ຜ່ານ­ໄປ ແລະ​ມື້​ເຊົ້າ​ຕ່າວ​ມາ ແມ່ນ​ມື້​ທີ​ສາມ.&#10;ຕໍ່​ມາ ພຣະ­ເຈົ້າ​ຊົງ​ສັ່ງ​ວ່າ, “ໃຫ້​ມີ​ດວງ​ແຈ້ງ​ໃນ​ທ້ອງ­ຟ້າ ແຍກ​ກາງ­ເວັນ ແລະ​ກາງ­ຄືນ ແລະ​ໃຫ້​ກຳ­ນົດ​ເວ­ລາ​ຂອງ​ມື້ ຂອງ​ປີ ແລະ​ຂອງ​ລະດູການ.&#10;ພ້ອມ​ທັງ​ສົ່ງ​ແສງ​ລົງ­ມາ​ເທິງ­ແຜ່ນ­ດິນ­ໂລກ ແລ້ວ​ສິ່ງ​ນັ້ນ​ກໍ­ເກີດ​ມີ​ມາ.&#10;ດັ່ງ­ນັ້ນ ພຣະ­ເຈົ້າ ​ຈຶ່ງ​ຊົງ​ສ້າງ​ດວງ​ແຈ້ງ​ໃຫຍ່​ສອງ​ດວງ ຄື​ດວງ​ຕາ­ເວັນ ສຳ­ລັບ​ຄອບ­ຄອງ​ກາງ­ເວັນ ແລະ​ດວງ​ຈັນ​ສຳ­ລັບ​ຄອບ­ຄອງ​ກາງ­ຄືນ ພຣະ­ອົງ​ຍັງ​ໄດ້​ຊົງ​ສ້າງ​ໝູ່​ດວງ​ດາວ​ຕ່າງໆ ອີກ.&#10;\" fl.tracking_h=\"1000\" fl.tracking_w=\"0\" fl.type=\"glyph\" fl.wrap=\"1\"/><Toolbar id=\"1001\" visible=\"true\" dockEdge=\"2\"/></FrameWindow></WindowManager>\n",
-    "canvases":[
-      {
-        "properties":{
-          "uuid":"4ef7510c-38d1-4ae6-94e5-a655e07aaa63",
-          "view":{
-            "showGlyphGuides":3,
-            "showFontGuides":3,
-            "showElementGuides":1,
-            "showGlyphMetrics":15,
-            "showFontMetrics":1,
-            "showAnchors":1,
-            "showPins":1,
-            "showAnchorCloud":1,
-            "showKerningClass":4,
-            "showGrid":3,
-            "showElementFrame":1,
-            "showNodeLinks":1,
-            "showGlobalMask":1,
-            "showMask":1,
-            "showCurveControl":1,
-            "showTunniLines":1,
-            "showNodes":1,
-            "showHandles":1,
-            "showMetricsTable":2,
-            "showRulers":1,
-            "showCharacterPlaceholders":1,
-            "showContourDirection":1,
-            "lockFontMetrics":1,
-            "snapGlyphGuides":1,
-            "snapFontGuides":1,
-            "snapElementGuides":1,
-            "snapFontMetrics":1,
-            "snapHints":1,
-            "snapZones":1,
-            "snapGrid":1,
-            "snapGlobalMask":1,
-            "snapMask":1
-          }
-        },
-        "tx":{
-          "xScale":11.26,
-          "yScale":11.26,
-          "xOffset":675.25,
-          "yOffset":-74.06
-        },
-        "tool":16,
-        "ffn":"Kouang Si Waterfall Regular",
-        "text":"ໃນ​​ ຕົ້ນ​ເດີມ​​ ນັ້ນ ພຣະ­ເຈົ້າ​ ຊົງ​​ນິ­​ລະ­ມິດ​​ ສ້າງ​ ​ແຜ່ນ­ດິນ ແລະ​ ສັບ­ພະ​ທຸກ​ສິ່ງ​ໃນ​ທ້ອງຟ້າ.\nໂລກ​ບໍ່​ທັນ​ມີ​ຮູບ­ຮ່າງ​ເທື່ອ ຄວາມ​ມືດ​ຫຸ້ມ​ຫໍ່​ມະ­ຫາ​ສະ­ໝຸດ​ອັນ​ກວ້າງ​ໃຫຍ່​ໄພ­ສານ ແລະ​ພຣະ­ວິນ­ຍານ​ຂອງ​ພຣະ­ເຈົ້າ​ຊົງ​ວົນ­ວຽນ​ຢູ່​ເທິງ​ນ້ຳ.\nພຣະ­ເຈົ້າ​ຊົງ​ສັ່ງ​ວ່າ, “ໃຫ້​ແສງ­ສະ­ຫວ່າງ​ເກີດ​ມີ​ຂຶ້ນ” ແສງ­ສະ­ຫວ່າງ​ກໍ​ມີ​ຂຶ້ນ​ມາ.\nພຣະ­ອົງ​ຈຶ່ງ​ຊົງ​ທອດ​ພຣະ­ເນດ​ແສງ­ສະ­ຫວ່າງ​ດ້ວຍ​ຄວາມ​ພໍພຣະໄທ. ດັ່ງ­ນັ້ນ ຈຶ່ງ​ຊົງ​ແຍກ​ແສງ­ສະ­ຫວ່າງ​ອອກ­ຈາກ​ຄວາມ​ມືດ\nພຣະ­ອົງ​ຊົງ​ເອີ້ນ​ແສງ­ສະ­ຫວ່າງ​ນັ້ນ​ວ່າ, “ກາງ­ເວັນ” ແລະ​ຊົງ​ເອີ້ນ​ຄວາມ​ມືດ​ນັ້ນ​ວ່າ, “ກາງ­ຄືນ” ມື້​ຄືນ​ຜ່ານ­ໄປ ມື້​ເຊົ້າ​ຕ່າວ​ມາ ແມ່ນ​ມື້​ທີ​ໜຶ່ງ.\nຕໍ່​ມາ ພຣະ­ເຈົ້າ​ຊົງ​ສັ່ງ​ວ່າ, “ໃຫ້​ມີ​ວົງ​ໂຄ້ງ​ແຍກ​ນ້ຳ​ອອກ­ຈາກ​ກັນ​ເປັນ​ສອງ​ສ່ວນ ຄື: ນ້ຳ​ຢູ່​ເທິງ​ວົງ​ໂຄ້ງ ແລະ​ນ້ຳ​ຢູ່​ລຸ່ມ​ວົງ​ໂຄ້ງ.”\nແລ້ວ​ສິ່ງ​ນັ້ນ​ກໍ­ເກີດ​ມີ​ມາ.\nດັ່ງ­ນັ້ນ ພຣະ­ເຈົ້າ​ຈຶ່ງ​ຊົງ​ເຮັດ​ວົງ​ໂຄ້ງ ແລະ​ຊົງ​ເອີ້ນ​ວົງ​ໂຄ້ງ​ນັ້ນ​ວ່າ, “ຟ້າ” ມື້​ຄືນ​ຜ່ານ­ໄປ ແລະ​ມື້​ເຊົ້າ​ຕ່າວ​ມາ ແມ່ນ​ມື້​ທີ​ສອງ.\nຕໍ່​ມາ​ອີກ ພຣະ­ເຈົ້າ​ຊົງ​ສັ່ງ​ວ່າ, “ໃຫ້​ນ້ຳ​ທີ່­ຢູ່​ລຸ່ມ​ທ້ອງ­ຟ້າ​ໂຮມ​ເຂົ້າ­ກັນ​ຢູ່​ບ່ອນ​ດຽວ ເພື່ອ​ໃຫ້​ມີ​ວັດ­ຖຸ​ແຫ້ງ​ປະ­ກົດ​ຂຶ້ນ” ແລ້ວ​ສິ່ງ​ນັ້ນ​ກໍ­ເກີດ​ມີ​ມາ.\nພຣະ­ອົງ​ຊົງ​ເອີ້ນ​ວັດ­ຖຸ​ແຫ້ງ​ນັ້ນ​ວ່າ, “ແຜ່ນ­ດິນ” ແລະ​ຊົງ​ເອີ້ນ​ນ້ຳ​ທີ່​ໂຮມ​ເຂົ້າ­ກັນ​ນັ້ນ​ວ່າ, “ມະ­ຫາ​ສະ­ໝຸດ” ພຣະ­ອົງ​ຊົງ​ຊົມ​ສິ່ງ​ທີ່​ນິ­ລະ­ມິດ​ສ້າງ​ຂຶ້ນ​ມາ​ແລ້ວ​ນັ້ນ ກໍ​ຊົງ​ພໍພຣະໄທ.\nຈຶ່ງ​ຊົງ​ສັ່ງ​ວ່າ, “ໃຫ້​ແຜ່ນ­ດິນ​ເກີດ​ພືດ​ທຸກ​ຊະ­ນິດ ທັງ​ແນວ​ເປັນ​ເມັດ ແລະ​ແນວ​ເປັນ​ໝາກ” ແລ້ວ​ທຸກ​ສິ່ງ​ກໍ­ເກີດ​ມີ​ມາ.\nດັ່ງ­ນັ້ນ ພືດ​ທຸກ​ຊະ­ນິດ​ຈຶ່ງ​ເກີດ​ມີ​ຂຶ້ນ​ຕາມ​ທີ່​ພຣະ­ອົງ​ຊົງ​ສັ່ງ ພຣະ­ອົງ​ຊົງ​ທອດ​ພຣະ­ເນດ ສິ່ງ​ທີ່​ຊົງ​ນິ­ລະ­ມິດ​ສ້າງ​ກໍ​ຊົງ​ພໍພຣະໄທ.\nມື້​ຄືນ​ຜ່ານ­ໄປ ແລະ​ມື້​ເຊົ້າ​ຕ່າວ​ມາ ແມ່ນ​ມື້​ທີ​ສາມ.\nຕໍ່​ມາ ພຣະ­ເຈົ້າ​ຊົງ​ສັ່ງ​ວ່າ, “ໃຫ້​ມີ​ດວງ​ແຈ້ງ​ໃນ​ທ້ອງ­ຟ້າ ແຍກ​ກາງ­ເວັນ ແລະ​ກາງ­ຄືນ ແລະ​ໃຫ້​ກຳ­ນົດ​ເວ­ລາ​ຂອງ​ມື້ ຂອງ​ປີ ແລະ​ຂອງ​ລະດູການ.\nພ້ອມ​ທັງ​ສົ່ງ​ແສງ​ລົງ­ມາ​ເທິງ­ແຜ່ນ­ດິນ­ໂລກ ແລ້ວ​ສິ່ງ​ນັ້ນ​ກໍ­ເກີດ​ມີ​ມາ.\nດັ່ງ­ນັ້ນ ພຣະ­ເຈົ້າ ​ຈຶ່ງ​ຊົງ​ສ້າງ​ດວງ​ແຈ້ງ​ໃຫຍ່​ສອງ​ດວງ ຄື​ດວງ​ຕາ­ເວັນ ສຳ­ລັບ​ຄອບ­ຄອງ​ກາງ­ເວັນ ແລະ​ດວງ​ຈັນ​ສຳ­ລັບ​ຄອບ­ຄອງ​ກາງ­ຄືນ ພຣະ­ອົງ​ຍັງ​ໄດ້​ຊົງ​ສ້າງ​ໝູ່​ດວງ​ດາວ​ຕ່າງໆ ອີກ.\n"
-      }
-    ]
+    ],
+    "expressionsUpdated":true
   }
 }
