@@ -65,9 +65,5 @@
       <point x="158" y="14"/>
       <point x="223" y="-28"/>
     </contour>
-    <contour>
-      <point x="211" y="4" type="move"/>
-      <point x="211" y="5" type="line"/>
-    </contour>
   </outline>
 </glyph>
