@@ -1,11 +1,12 @@
 {
  "name": "Kouang Si Waterfall",
  "slug": "KouangSiWaterfall",
+ "note": "Lao is Robert's own drawing and is never generated (except letters the original lacks). Measured on it: body ~600 units, stems ~107 (stem/height 0.178). Each skeleton gets the round brush and scale that reproduce that weight and size: Mali stems 75 -> +32 brush, x 0.948 (Thai body 600); Mali Latin x-height 509 -> +30 brush (x-height ~540); Fasthand (normalised to 1000 upm) stems 80 / body 732 -> +61 brush, x 0.757. Fasthand is italic; Khmer is sheared back 9 degrees to stand upright like the Lao, with a slightly heavier brush (+70).",
  "bases": {
   "lao": "lao-looped",
-  "thai": "thai-looped",
-  "khmer": "khmer",
-  "latin": "latin"
+  "thai": "thai-mali",
+  "khmer": "khmer-fasthand",
+  "latin": "latin-mali"
  },
  "recipe": [
   {
@@ -23,25 +24,58 @@
   }
  ],
  "scale": 0.93,
- "note": "Soft-brush recipe matched to Robert's hand-drawn Lao (stems ~85-115 units). Lao itself is NOT generated except letters the original lacks.",
  "per_script": {
+  "thai": {
+   "recipe": [
+    {
+     "op": "wobble",
+     "amp": 3,
+     "wave": 280
+    },
+    {
+     "op": "nib",
+     "shape": "round",
+     "w": 34,
+     "min_hole": 800
+    }
+   ],
+   "scale": 0.948
+  },
   "latin": {
    "recipe": [
     {
      "op": "wobble",
-     "amp": 4,
-     "wave": 300
+     "amp": 3,
+     "wave": 280
     },
     {
      "op": "nib",
-     "shape": "ellipse",
-     "w": 112,
-     "h": 84,
-     "angle": 30,
-     "min_hole": 1500
+     "shape": "round",
+     "w": 30,
+     "min_hole": 800
     }
    ],
-   "scale": 0.88
+   "scale": 1.0
+  },
+  "khmer": {
+   "recipe": [
+    {
+     "op": "shear",
+     "deg": -9
+    },
+    {
+     "op": "wobble",
+     "amp": 3,
+     "wave": 280
+    },
+    {
+     "op": "nib",
+     "shape": "round",
+     "w": 70,
+     "min_hole": 800
+    }
+   ],
+   "scale": 0.757
   },
   "symbols": {
    "recipe": [
@@ -78,6 +112,46 @@
     }
    ],
    "scale": 0.88
+  }
+ },
+ "fill": {
+  "latin": {
+   "base": "latin",
+   "recipe": [
+    {
+     "op": "wobble",
+     "amp": 4,
+     "wave": 300
+    },
+    {
+     "op": "nib",
+     "shape": "ellipse",
+     "w": 112,
+     "h": 84,
+     "angle": 30,
+     "min_hole": 1500
+    }
+   ],
+   "scale": 0.88
+  },
+  "khmer": {
+   "base": "khmer",
+   "recipe": [
+    {
+     "op": "wobble",
+     "amp": 4,
+     "wave": 300
+    },
+    {
+     "op": "nib",
+     "shape": "ellipse",
+     "w": 86,
+     "h": 62,
+     "angle": 30,
+     "min_hole": 1500
+    }
+   ],
+   "scale": 0.93
   }
  }
 }

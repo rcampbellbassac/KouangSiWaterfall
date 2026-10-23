@@ -1,1 +1,1 @@
-PASS /home/rcampbell/Source/KouangSiWaterfall/fonts/KouangSiWaterfall-Regular.ttf: 653/653 required; 18 recommended missing; shaping NOT ASSESSED
+PASS fonts/KouangSiWaterfall-Regular.ttf: 653/653 required; 18 recommended missing; shaping NOT ASSESSED

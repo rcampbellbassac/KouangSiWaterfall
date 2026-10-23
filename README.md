@@ -1,11 +1,20 @@
 # Kouang Si Waterfall ນ້ຳຕົກຕາດກວາງຊີ
 _A Hand Painted Lao Signage Font, now with Thai, Khmer and Latin_
 
-**[Try it online](https://rcampbellbassac.github.io/KouangSiWaterfall/)** · **[Download version 0.100 (beta)](https://github.com/rcampbellbassac/KouangSiWaterfall/releases/latest/download/KouangSiWaterfall.zip)** · SIL Open Font License 1.1
+**[Try it online](https://rcampbellbassac.github.io/KouangSiWaterfall/)** · **[Download version 0.200 (beta)](https://github.com/rcampbellbassac/KouangSiWaterfall/releases/latest/download/KouangSiWaterfall.zip)** · SIL Open Font License 1.1
 
 ![Kouang Si Waterfall in Lao, Thai, Khmer and Latin](images/specimen.png)
 
-## What's new in 0.100 (beta)
+## What's new in 0.200 (beta)
+
+- **Thai, Khmer and Latin now match the Lao.** They are rebuilt on hand-lettered skeletons instead of Noto:
+  Thai, Latin, digits and punctuation on [Mali](https://github.com/cadsondemak/Mali), Khmer on
+  [Fasthand](https://github.com/danhhong/Fasthand) (both SIL OFL). Each gets the round brush and size measured from
+  the Lao (stems about 107 units on a 600-unit body), and Fasthand's slant is removed so Khmer stands upright like the Lao.
+- **Khmer shifters.** ៉ and ៊ before an above vowel now drop below the consonant, so they never collide.
+- Rare characters the skeletons lack (extended Latin, Khmer lunar-date signs, math and symbols) still come from Noto.
+
+## In 0.100 (beta)
 
 - **Thai, Khmer and Latin.** New letters drawn with a soft brush matched to the original Lao stroke
   (`scripts/recipe.json`) on the thin Noto designs, so one font now covers Lao, Thai, Khmer and English.
