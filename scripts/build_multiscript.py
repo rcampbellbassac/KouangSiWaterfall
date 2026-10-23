@@ -3,9 +3,11 @@
   python scripts/build_multiscript.py
 
 Lao: Robert's hand-drawn glyphs from OpenType-TT/KouangSiWaterfall-Regular.ttf (FontLab export, kept as
-drawn; hinting dropped). Thai, Khmer, Latin, symbols, and the Lao letters the original does not have yet are
-generated with a soft-brush recipe matched to the Lao stroke (scripts/recipe.json) on the thin Noto designs.
-Everything is merged into one font with consistent vertical metrics, names and OS/2 data.
+drawn; hinting dropped). Thai and Latin (letters, digits, punctuation) are built on Mali, and Khmer on Fasthand:
+hand-lettered OFL skeletons whose round loop heads and casual rhythm match the Lao, given the Lao's stroke weight
+and proportions by a measured brush (scripts/recipe.json). Characters those skeletons lack (rare Latin, Khmer
+lunar-date signs, math and symbols) and the Lao letters the original does not have yet come from Noto with the
+same brush. Everything is merged into one font with consistent vertical metrics, names and OS/2 data.
 """
 from __future__ import annotations
 
@@ -24,7 +26,7 @@ from fontTools.ttLib import TTFont  # noqa: E402
 ROOT = HERE.parents[0]
 SRC = ROOT / "KouangSiWaterfall/OpenType-TT/KouangSiWaterfall-Regular.ttf"
 OUT_TTF = ROOT / "fonts/KouangSiWaterfall-Regular.ttf"
-VERSION = "0.100"
+VERSION = "0.200"
 LAO = list(range(0x0E80, 0x0F00)) + [0x25CC]
 
 
@@ -39,22 +41,98 @@ def lao_original(tmp: Path) -> tuple[Path, set]:
     return p, have
 
 
-def generated(tmp: Path, spec: dict, script: str, only=None) -> Path:
+def generated(tmp: Path, spec: dict, script: str, only=None, tag="") -> Path:
+    keep = family.UNICODES[script]
     if only is not None:
-        keep = family.UNICODES[script]
         family.UNICODES[script] = [c for c in keep if c in only]
-    part = family.build_part(script, spec)
-    p = tmp / f"{script}{'-extra' if only else ''}.ttf"
+    try:
+        part = family.build_part(script, spec)
+    finally:
+        family.UNICODES[script] = keep
+    p = tmp / f"{script}{tag or ('-extra' if only else '')}.ttf"
     part.save(p)
     return p
+
+
+def styled_with_fill(tmp: Path, spec: dict, script: str) -> list[Path]:
+    """The hand-lettered skeleton for everything it covers, Noto (spec["fill"][script]) for the rest."""
+    base = family.BASES[spec["bases"][script]]
+    has = set(family._instance(base, 400).getBestCmap())
+    want = set(family.UNICODES[script])
+    parts = [generated(tmp, spec, script, only=want & has, tag="-hand")]
+    rest = want - has - {0x20, 0xA0}
+    if rest and script in spec.get("fill", {}):
+        fill = {**spec, "per_script": {script: spec["fill"][script]}}
+        parts.append(generated(tmp, fill, script, only=rest, tag="-fill"))
+    return parts
+
+
+KHMER_SHIFTER_FEA = """
+lookup shifter_below { sub uni17C9 by uni17BB; sub uni17CA by uni17BB; sub uni17C9.r by uni17BB; } shifter_below;
+feature abvs { script khmr; sub [uni17C9 uni17CA uni17C9.r]' lookup shifter_below
+  [uni17B7 uni17B8 uni17B9 uni17BA uni17BE uni17D0 uni17DD uni17B7_17CD uni17B7.a uni17B8.a uni17B9.a uni17BA.a uni17D0.a
+   uni17B7.r uni17B8.r uni17B9.r uni17BA.r]; } abvs;
+"""
+FEATURES_FOR_SHIFTER = ("abvs", "clig")   # Fasthand picks some vowel variants in clig, after abvs: catch both
+
+
+def add_khmer_shifter_rule(tt: TTFont):
+    """Khmer: a register shifter (៉ ៊) followed by an above vowel is written below the consonant (as the u-shape),
+    so the two never stack. Fasthand lacks this rule; add it to the merged GSUB without disturbing other lookups."""
+    from fontTools.feaLib.builder import addOpenTypeFeaturesFromString
+    from fontTools.ttLib.tables import otTables as ot
+    tmp = TTFont()
+    tmp.setGlyphOrder(tt.getGlyphOrder())
+    addOpenTypeFeaturesFromString(tmp, KHMER_SHIFTER_FEA, tables=["GSUB"])
+    G, N = tt["GSUB"].table, tmp["GSUB"].table
+    base = len(G.LookupList.Lookup)
+    for lk in N.LookupList.Lookup:
+        for st in lk.SubTable:
+            for rec in getattr(st, "SubstLookupRecord", []) or []:
+                rec.LookupListIndex += base
+        G.LookupList.Lookup.append(lk)
+    G.LookupList.LookupCount = len(G.LookupList.Lookup)
+    mine = [base + i for i, lk in enumerate(N.LookupList.Lookup) if lk.LookupType == 6]
+    # shapers use only the first feature record of a tag per language system, so extend Fasthand's own records
+    for sr in G.ScriptList.ScriptRecord:
+        if sr.ScriptTag != "khmr":
+            continue
+        for ls in [sr.Script.DefaultLangSys] + [r.LangSys for r in sr.Script.LangSysRecord]:
+            if ls is None:
+                continue
+            for tag in FEATURES_FOR_SHIFTER:
+                idx = [i for i in ls.FeatureIndex if G.FeatureList.FeatureRecord[i].FeatureTag == tag]
+                if idx:
+                    f = G.FeatureList.FeatureRecord[idx[0]].Feature
+                    f.LookupListIndex = sorted(set(f.LookupListIndex) | set(mine)); f.LookupCount = len(f.LookupListIndex)
+                else:
+                    fr = ot.FeatureRecord(); fr.FeatureTag = tag; fr.Feature = ot.Feature()
+                    fr.Feature.FeatureParams = None; fr.Feature.LookupListIndex = list(mine); fr.Feature.LookupCount = len(mine)
+                    G.FeatureList.FeatureRecord.append(fr); G.FeatureList.FeatureCount = len(G.FeatureList.FeatureRecord)
+                    ls.FeatureIndex.append(len(G.FeatureList.FeatureRecord) - 1); ls.FeatureCount = len(ls.FeatureIndex)
+
+
+def declare_khmer_gpos(tt: TTFont):
+    """Fasthand places Khmer marks by glyph design (no anchors), so GPOS has no 'khmr' script and shapers fall back
+    to DFLT. Declare 'khmr' with exactly DFLT's features: same rendering, explicit Khmer support (kerning etc.)."""
+    import copy
+    from fontTools.ttLib.tables import otTables as ot
+    S = tt["GPOS"].table.ScriptList
+    if any(r.ScriptTag == "khmr" for r in S.ScriptRecord):
+        return
+    dflt = next(r for r in S.ScriptRecord if r.ScriptTag == "DFLT")
+    rec = ot.ScriptRecord(); rec.ScriptTag = "khmr"; rec.Script = ot.Script()
+    rec.Script.DefaultLangSys = copy.deepcopy(dflt.Script.DefaultLangSys)
+    rec.Script.LangSysRecord = []; rec.Script.LangSysCount = 0
+    S.ScriptRecord.append(rec); S.ScriptRecord.sort(key=lambda r: r.ScriptTag); S.ScriptCount = len(S.ScriptRecord)
 
 
 def finish(tt: TTFont):
     nt = tt["name"]; nt.names = []
     fam = "Kouang Si Waterfall"
-    vals = {0: "Copyright 2019-2026 Robert Martin Campbell. Thai, Khmer, Latin and added Lao letters derived from "
-               "Noto Sans Lao Looped, Noto Sans Thai Looped, Noto Sans Khmer, Noto Sans and Noto Sans Math "
-               "(Copyright 2022 The Noto Project Authors).",
+    vals = {0: "Copyright 2019-2026 Robert Martin Campbell. Thai and Latin derived from Mali (Copyright 2018 The Mali "
+               "Project Authors), Khmer from Fasthand (Copyright 2020 The Fasthand Project Authors), other characters and added Lao letters "
+               "from the Noto fonts (Copyright 2022 The Noto Project Authors).",
             1: fam, 2: "Regular", 3: f"{VERSION};NONE;KouangSiWaterfall-Regular", 4: f"{fam} Regular",
             5: f"Version {VERSION}", 6: "KouangSiWaterfall-Regular", 8: "Southeast Asia SDA Media Library",
             9: "Robert Martin Campbell", 11: "https://sea-sda.org", 12: "https://sea-sda.org",
@@ -90,12 +168,15 @@ def build():
         d = Path(d)
         lao, have = lao_original(d)
         missing_lao = [c for c in LAO if c not in have and 0x0E80 <= c <= 0x0EFF]
-        parts = [generated(d, spec, "latin"), lao]
+        parts = styled_with_fill(d, spec, "latin") + [lao]
         if missing_lao:
             parts.append(generated(d, spec, "lao", only=set(missing_lao)))
-        parts += [generated(d, spec, s) for s in ("thai", "khmer", "symbols", "dingbats")]
+        parts += styled_with_fill(d, spec, "thai") + styled_with_fill(d, spec, "khmer")
+        parts += [generated(d, spec, s) for s in ("symbols", "dingbats")]
         merged = Merger().merge([str(p) for p in parts])
     family.add_missing_spaces(merged)
+    add_khmer_shifter_rule(merged)
+    declare_khmer_gpos(merged)
     finish(merged)
     OUT_TTF.parent.mkdir(exist_ok=True)
     merged.save(OUT_TTF)

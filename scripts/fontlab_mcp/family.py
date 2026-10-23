@@ -32,6 +32,11 @@ BASES = {
     "khmer": REF / "google-base/notosanskhmer/NotoSansKhmer[wdth,wght].ttf",
     "khmer-serif": REF / "google-base/notoserifkhmer/NotoSerifKhmer[wdth,wght].ttf",
     "latin": REF / "google-base/notosans/NotoSans[wdth,wght].ttf",
+    "latin-serif": REF / "google-base/notoserif/NotoSerif[wdth,wght].ttf",
+    # hand-lettered skeletons (static OFL fonts) for families whose style is handwriting, not Noto's
+    "latin-mali": REF / "google/mali/Mali-Regular.ttf",
+    "thai-mali": REF / "google/mali/Mali-Regular.ttf",
+    "khmer-fasthand": REF / "google/fasthand/Fasthand-Regular.ttf",
     "math": REF / "google-base/notosansmath/NotoSansMath-Regular.ttf",
     "symbols2": REF / "google-base/notosanssymbols2/NotoSansSymbols2-Regular.ttf",
 }
@@ -56,6 +61,9 @@ PRE_THIN = {"math": -25.0, "symbols2": -25.0}  # static Regular fonts: thin stro
 def _instance(path: Path, wght: float, wdth: float = 100) -> TTFont:
     vf = TTFont(path)
     if "fvar" not in vf:
+        if vf["head"].unitsPerEm != 1000:   # recipes are in 1000-unit terms and parts must share one em
+            from fontTools.ttLib.scaleUpem import scale_upem
+            scale_upem(vf, 1000)
         return vf
     axes = {a.axisTag: a for a in vf["fvar"].axes}
     loc = {"wght": max(axes["wght"].minValue, min(axes["wght"].maxValue, wght))}
@@ -158,7 +166,7 @@ def transform_anchors(tt: TTFont, xf: dict):
 
 def build_part(script: str, spec: dict, text: str | None = None) -> TTFont:
     ps = {**spec, **spec.get("per_script", {}).get(script, {})}
-    base_key = PART_BASE.get(script) or spec["bases"][script]
+    base_key = ps.get("base") or PART_BASE.get(script) or spec["bases"][script]
     tt = _instance(BASES[base_key], ps.get("wght", 100), ps.get("wdth", 100))
     _subset(tt, UNICODES[script], text)
     glyf, hmtx = tt["glyf"], tt["hmtx"]
@@ -185,6 +193,9 @@ def build_part(script: str, spec: dict, text: str | None = None) -> TTFont:
             polys, info = pen.apply_recipe_stacked(polys, recipe, seed=f"{spec['slug']}/{name}")
         else:
             polys, info = pen.apply_recipe(polys, recipe, seed=f"{spec['slug']}/{name}")
+        if not polys:  # pre-thinning or an effect ate thin ink such as the dotted circle: keep the nib-only shape
+            nib_only = [op for op in recipe if op["op"] == "nib"] or [{"op": "offset", "d": 0}]
+            polys, info = pen.apply_recipe(pen.from_ufo_points(contours), nib_only, seed=f"{spec['slug']}/{name}")
         dx = 0.0
         if adv > 0:
             dx = info["grow_left"]
