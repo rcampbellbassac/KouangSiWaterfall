@@ -28,6 +28,7 @@
 @otnone = [uni0EA7 uni0EAA uni0EAD uni0EB1 uni0EB4 uni0EB5 uni0EB7 uni0EBB uni0EC8 uni0EC9 uni200B uni2009];
 @blank = [uni200B uni2009];
 languagesystem DFLT dflt;
+languagesystem lao dflt;
 languagesystem latn dflt;
 feature mark {
 #> feature
