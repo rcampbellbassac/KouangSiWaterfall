@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kouang Si Waterfall ນ້ຳຕົກຕາດກວາງຊີ, a display font for Lao, Thai and Khmer</title>
+<meta name="description" content="Kouang Si Waterfall (ນ້ຳຕົກຕາດກວາງຊີ) is a free, open-source sign-painting display font for Lao, Thai, Khmer and English. SIL Open Font License. Beta.">
+<meta property="og:title" content="Kouang Si Waterfall ນ້ຳຕົກຕາດກວາງຊີ">
+<meta property="og:description" content="A free sign-painting display font for Lao, Thai, Khmer and English.">
+<meta property="og:image" content="https://rcampbellbassac.github.io/KouangSiWaterfall/og.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Noto+Sans+Lao:wght@400;600&family=Noto+Sans+Thai:wght@400;600&family=Noto+Sans+Khmer:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/KouangSiWaterfall-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Kouang Si Waterfall"; src: url("fonts/KouangSiWaterfall-Regular.woff2") format("woff2"); font-display: block; }
+:root {
+  --bg: #0b5d63; --ink: #f4fbf8; --accent: #7de3d6; --panel: #0e6d74; --muted: #bfe3de;
+  --display: "Kouang Si Waterfall", "Noto Sans Lao", "Noto Sans Thai", "Noto Sans Khmer", sans-serif;
+  --body: "Noto Sans", "Noto Sans Lao", "Noto Sans Thai", "Noto Sans Khmer", system-ui, sans-serif;
+  --gutter: clamp(16px, 4vw, 56px); --measure: 62ch;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 1.0625rem/1.65 var(--body); }
+html[lang=lo] body { font-family: "Noto Sans Lao", "Noto Sans", sans-serif; }
+html[lang=th] body { font-family: "Noto Sans Thai", "Noto Sans", sans-serif; }
+html[lang=km] body { font-family: "Noto Sans Khmer", "Noto Sans", sans-serif; line-height: 1.8; }
+a { color: var(--accent); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.bar { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; justify-content: space-between; padding: 18px var(--gutter); }
+.wordmark { font: 1.7rem/1.2 var(--display); color: var(--ink); text-decoration: none; }
+.langs { display: flex; gap: 6px; flex-wrap: wrap; }
+.langs button { font: 600 .95rem var(--body); cursor: pointer; background: transparent; color: var(--ink); border: 2px solid var(--ink); padding: 4px 12px; }
+.langs button[aria-pressed=true] { background: var(--ink); color: var(--bg); }
+.langs button:nth-child(2) { font-family: "Noto Sans Lao"; } .langs button:nth-child(3) { font-family: "Noto Sans Thai"; } .langs button:nth-child(4) { font-family: "Noto Sans Khmer"; }
+.hero { padding: 1vh var(--gutter) 0; position: relative; }
+.beta { display: inline-block; font: 600 .9rem var(--body); color: var(--bg); background: var(--accent); padding: 3px 12px; margin-bottom: .6rem; }
+.tester { font-family: var(--display); font-size: var(--size, 11vw); line-height: 1.45; color: var(--accent); margin: 0; padding: .1em 0 .15em; outline: none; overflow-wrap: anywhere; min-height: 1.4em; caret-color: var(--ink); }
+.tester:focus-visible { outline: 3px dashed var(--ink); outline-offset: 6px; }
+.tagline { font-size: clamp(1.15rem, 2.2vw, 1.5rem); font-weight: 600; max-width: 40ch; margin: .3em 0 .6rem; }
+.hint { color: var(--muted); margin: 0 0 1.2rem; }
+.controls { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-bottom: 1.3rem; }
+.controls label { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+input[type=range] { accent-color: var(--accent); width: min(220px, 50vw); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chip { font: 1.1rem var(--display); cursor: pointer; background: var(--panel); color: var(--ink); border: 2px solid var(--ink); padding: 4px 12px; }
+.chip:hover { background: var(--ink); color: var(--bg); }
+.reset { font: 600 .95rem var(--body); background: none; border: none; color: var(--accent); text-decoration: underline; cursor: pointer; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.download { font: 1.35rem/1 var(--display); background: var(--ink); color: var(--bg); text-decoration: none; padding: 16px 24px 14px; }
+.download:hover { background: var(--accent); color: var(--bg); }
+.beta-note { max-width: var(--measure); margin: 1.4rem 0 0; padding: 12px 16px; border-left: 6px solid var(--accent); background: var(--panel); }
+main section { padding: clamp(44px, 8vh, 90px) var(--gutter) 0; }
+h2 { font: clamp(1.8rem, 4vw, 3rem)/1.35 var(--display); margin: 0 0 .5rem; max-width: 24ch; }
+p { max-width: var(--measure); }
+.scriptlines { display: grid; gap: .2rem; margin-top: 1rem; }
+.scriptlines div { font: clamp(2rem, 6vw, 4.6rem)/1.6 var(--display); overflow-wrap: anywhere; }
+.scriptlines small { display: block; font: 600 .85rem var(--body); color: var(--muted); }
+.stack { font: clamp(2.4rem, 7vw, 5.6rem)/1.75 var(--display); word-spacing: .2em; margin-top: 1rem; overflow-wrap: anywhere; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 1rem; }
+.tabs button { font: 600 .95rem var(--body); cursor: pointer; background: transparent; color: var(--ink); border: 2px solid var(--ink); padding: 4px 14px; }
+.tabs button[aria-selected=true] { background: var(--ink); color: var(--bg); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 0; border-top: 2px solid var(--ink); border-left: 2px solid var(--ink); margin-top: 12px; }
+.cell { border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); background: var(--panel); aspect-ratio: 1 / 1.15; display: flex; flex-direction: column; justify-content: space-between; padding: 4px 6px; }
+.cell b { font: 400 2.3rem/1.6 var(--display); text-align: center; }
+.cell small { font-size: .68rem; color: var(--muted); }
+ol.steps { padding-left: 1.4em; max-width: var(--measure); }
+ol.steps li::marker { font-family: var(--display); color: var(--accent); }
+footer { padding: clamp(50px, 9vh, 100px) var(--gutter) 40px; }
+footer p, .mt { font-size: .9rem; color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) { .tester { transition: font-size .15s; } }
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="wordmark" href="#top">Kouang Si Waterfall</a>
+  <div class="langs" role="group" aria-label="Language">
+    <button type="button" data-lang="en">English</button><button type="button" data-lang="lo">ລາວ</button><button type="button" data-lang="th">ไทย</button><button type="button" data-lang="km">ខ្មែរ</button>
+  </div>
+</header>
+<main id="top">
+  <section class="hero" aria-label="Type tester">
+    <span class="beta" data-i18n="beta">Beta</span>
+    <h1 class="tester" id="tester" contenteditable="true" spellcheck="false" role="textbox" aria-multiline="true" aria-label="Editable sample text"></h1>
+    <p class="tagline" data-f="tagline"></p>
+    <p class="hint" data-i18n="tester_hint"></p>
+    <div class="controls">
+      <label><span data-i18n="size">Size</span> <input type="range" id="size" min="28" max="240" value="140"> <output id="sizeval"></output></label>
+      <div class="chips" role="group" aria-label="Samples"><span data-i18n="samples">Try a sample</span><button class="chip" type="button">ສະບາຍດີ</button><button class="chip" type="button">ນ້ຳຕົກຕາດ</button><button class="chip" type="button">สวัสดีครับ</button><button class="chip" type="button">ตลาดน้ำ</button><button class="chip" type="button">សួស្តី</button><button class="chip" type="button">អង្គរវត្ត</button></div>
+      <button class="reset" id="reset" type="button" data-i18n="reset">Reset text</button>
+    </div>
+    <div class="actions">
+      <a class="download" href="https://github.com/rcampbellbassac/KouangSiWaterfall/releases/latest/download/KouangSiWaterfall.zip" data-i18n="download">Download the font</a>
+      <a href="https://github.com/rcampbellbassac/KouangSiWaterfall" data-i18n="github">View the source on GitHub</a>
+    </div>
+    <p class="beta-note" data-i18n="beta_note"></p>
+  </section>
+  <section aria-labelledby="sc-h">
+    <h2 id="sc-h" data-i18n="scripts_title"></h2>
+    <p data-i18n="scripts_body"></p>
+    <div class="scriptlines">
+      <div lang="lo"><small data-i18n="lao">Lao</small>ສະບາຍດີ ຫຼວງພະບາງ ນ້ຳ</div>
+      <div lang="th"><small data-i18n="thai">Thai</small>สวัสดีครับ ตลาดน้ำ</div>
+      <div lang="km"><small data-i18n="khmer">Khmer</small>សួស្តី អង្គរវត្ត ស្ត្រី</div>
+      <div lang="en"><small data-i18n="latin">Latin</small>Hello Display 0123</div>
+    </div>
+  </section>
+  <section aria-labelledby="st-h">
+    <h2 id="st-h" data-i18n="stack_title"></h2>
+    <p data-i18n="stack_body"></p>
+    <div class="stack">ນ້ຳ ເຂົ້າ ກີ້ ນ້ຳ ปั่น กี้ ក្ដី ស្ត្រី</div>
+  </section>
+  <section aria-labelledby="ch-h">
+    <h2 id="ch-h" data-i18n="chars_title"></h2>
+    <div class="tabs" role="tablist">
+      <button role="tab" type="button" data-set="lao" aria-selected="true" data-i18n="lao">Lao</button>
+      <button role="tab" type="button" data-set="thai" aria-selected="false" data-i18n="thai">Thai</button>
+      <button role="tab" type="button" data-set="khmer" aria-selected="false" data-i18n="khmer">Khmer</button>
+      <button role="tab" type="button" data-set="latin" aria-selected="false" data-i18n="latin">Latin</button>
+    </div>
+    <div class="grid" id="grid" role="tabpanel"></div>
+  </section>
+  <section aria-labelledby="in-h">
+    <h2 id="in-h" data-i18n="install_title"></h2>
+    <ol class="steps"><li data-i18n="install_1"></li><li data-i18n="install_2"></li><li data-i18n="install_3"></li></ol>
+    <p data-i18n="install_web"></p>
+  </section>
+  <section aria-labelledby="ab-h">
+    <h2 id="ab-h" data-i18n="about_title"></h2>
+    <p data-f="about"></p>
+    <p data-i18n="license"></p>
+    <p data-i18n="credits"></p>
+    <p data-i18n="collection"></p>
+    <p><a href="https://github.com/rcampbellbassac/KouangSiWaterfall/issues" data-i18n="feedback"></a></p>
+  </section>
+</main>
+<footer>
+  <p data-i18n="made_by"></p>
+  <p class="mt" data-i18n="mt_note"></p>
+</footer>
+<script>
+const C = {"en": {"beta": "Beta", "beta_note": "This font is in beta. It was generated from Noto fonts with a simulated pen or brush, so some letters still need hand finishing. Your feedback helps make it better.", "download": "Download the font", "github": "View the source on GitHub", "tester_hint": "Click the big text and type in Lao, Thai, Khmer or English.", "size": "Size", "samples": "Try a sample", "reset": "Reset text", "scripts_title": "Four scripts, one style", "scripts_body": "Lao, Thai, Khmer and Latin letters share one design, so mixed text looks consistent.", "stack_title": "Marks stay in place", "stack_body": "Vowels, tone marks and Khmer subscript letters sit in the right place, even when they stack.", "chars_title": "Characters", "lao": "Lao", "thai": "Thai", "khmer": "Khmer", "latin": "Latin", "install_title": "How to install", "install_1": "Download the zip file from the latest release.", "install_2": "Unzip it and open the TTF file.", "install_3": "Click Install. The font is now in Word, LibreOffice, Canva and your other apps.", "install_web": "For websites, use the WOFF2 file.", "about_title": "About the font", "license": "Free to use, share and change under the SIL Open Font License 1.1, including for commercial work.", "credits": "Letters derived from Noto Sans Lao, Noto Sans Thai, Noto Sans Khmer and Noto Sans by the Noto Project Authors.", "feedback": "Found a problem with a letter? Open an issue on GitHub.", "made_by": "Designed by Robert Martin Campbell.", "collection": "Part of a collection of display fonts for Lao, Thai and Khmer.", "mt_note": "The Lao, Thai and Khmer text on this page was machine-translated with Google Translate and then partly corrected."}, "lo": {"beta": "ລຸ້ນທົດລອງ (Beta)", "beta_note": "ຟອນນີ້ຍັງຢູ່ໃນລຸ້ນທົດລອງ ໂດຍສ້າງຈາກຟອນ Noto ດ້ວຍການຈຳລອງລາຍເສັ້ນປາກກາ ຫຼື ຟອຍທາສີ ຕົວອັກສອນບາງຕົວຈຶ່ງຍັງຕ້ອງປັບແຕ່ງເພີ່ມເຕີມ ຄຳແນະນຳຂອງທ່ານຈະຊ່ວຍໃຫ້ຟອນນີ້ດີຂຶ້ນ.", "download": "ດາວໂຫຼດຟອນ", "github": "ເບິ່ງຊອດໂຄດໃນ GitHub", "tester_hint": "ຄລິກໃສ່ຂໍ້ຄວາມຂະໜາດໃຫຍ່ແລ້ວລອງພິມພາສາລາວ, ໄທ, ຂະເໝນ ຫຼື ອັງກິດ.", "size": "ຂະໜາດ", "samples": "ລອງຂໍ້ຄວາມຕົວຢ່າງ", "reset": "ລ້າງຂໍ້ຄວາມ", "scripts_title": "ສີ່ລະບົບອັກສອນ ໃນສະໄຕລ໌ດຽວ", "scripts_body": "ຕົວອັກສອນລາວ, ໄທ, ຂະເໝນ ແລະ ລາຕິນ ຖືກອອກແບບມາໃນແນວທາງດຽວກັນ ເຮັດໃຫ້ພິມປົນກັນໄດ້ຢ່າງກົມກືນ.", "stack_title": "ສະຫຼະ ແລະ ວັນນະຍຸດບໍ່ເຄື່ອນ", "stack_body": "ສະຫຼະ, ວັນນະຍຸດ ແລະ ຕົວຫ້ອຍຂະເໝນ ວາງຢູ່ໃນຕຳແໜ່ງທີ່ຖືກຕ້ອງ ເຖິງແມ່ນວ່າຈະຊ້ອນກັນຫຼາຍຊັ້ນກໍຕາມ.", "chars_title": "ຊຸດຕົວອັກສອນ", "lao": "ລາວ", "thai": "ໄທ", "khmer": "ຂະເໝນ", "latin": "ລາຕິນ", "install_title": "ວິທີຕິດຕັ້ງ", "install_1": "ດາວໂຫຼດໄຟລ໌ zip ຈາກລຸ້ນຫຼ້າສຸດ.", "install_2": "ແຕກໄຟລ໌ zip ແລ້ວເປີດໄຟລ໌ TTF.", "install_3": "ກົດຕິດຕັ້ງ (Install) ແລ້ວຟອນຈະພ້ອມໃຊ້ໃນ Word, LibreOffice, Canva ແລະ ໂປຣແກຣມອື່ນໆທັນທີ.", "install_web": "ສຳລັບເວັບໄຊ ໃຫ້ໃຊ້ໄຟລ໌ WOFF2.", "about_title": "ກ່ຽວກັບຟອນນີ້", "license": "ໃຊ້ງານ, ແບ່ງປັນ ແລະ ດັດແປງໄດ້ຟຣີພາຍໃຕ້ສັນຍາອະນຸຍາດ SIL Open Font License 1.1 ລວມເຖິງວຽກການຄ້າ.", "credits": "ພັດທະນາຕໍ່ຍອດຕົວອັກສອນຈາກ Noto Sans Lao, Noto Sans Thai, Noto Sans Khmer ແລະ Noto Sans ໂດຍກຸ່ມຜູ້ພັດທະນາໂຄງການ Noto.", "feedback": "ພົບບັນຫາກ່ຽວກັບຕົວອັກສອນບໍ? ແຈ້ງບັນຫາ (Issue) ໄດ້ໃນ GitHub.", "made_by": "ອອກແບບໂດຍ Robert Martin Campbell.", "collection": "ສ່ວນໜຶ່ງຂອງຊຸດຟອນພາດຫົວສຳລັບພາສາລາວ, ໄທ ແລະ ຂະເໝນ.", "mt_note": "ຂໍ້ຄວາມພາສາລາວ, ໄທ ແລະ ຂະເໝນໃນໜ້ານີ້ແປໂດຍຜູ້ຊ່ວຍ AI ແລະ ຍັງບໍ່ທັນໄດ້ຮັບການກວດກາຈາກເຈົ້າຂອງພາສາ."}, "th": {"beta": "รุ่นทดสอบ (Beta)", "beta_note": "ฟอนต์นี้อยู่ในรุ่นทดสอบ สร้างขึ้นจากฟอนต์ Noto ด้วยการจำลองเส้นปากกาหรือพู่กัน ตัวอักษรบางตัวจึงยังต้องเก็บรายละเอียดด้วยมือเพิ่มเติม ความคิดเห็นของคุณจะช่วยให้ฟอนต์นี้ดียิ่งขึ้น", "download": "ดาวน์โหลดฟอนต์", "github": "ดูซอร์สโค้ดบน GitHub", "tester_hint": "คลิกที่ข้อความขนาดใหญ่เพื่อลองพิมพ์ภาษาลาว ไทย เขมร หรืออังกฤษ", "size": "ขนาด", "samples": "ลองข้อความตัวอย่าง", "reset": "รีเซ็ตข้อความ", "scripts_title": "สี่ชุดอักษร ในสไตล์เดียว", "scripts_body": "ตัวอักษรลาว ไทย เขมร และละติน ออกแบบมาในทิศทางเดียวกัน เมื่อพิมพ์ผสมกันจึงดูกลมกลืนเป็นเนื้อเดียว", "stack_title": "สระและวรรณยุกต์ไม่ลอยหรือทับกัน", "stack_body": "สระ วรรณยุกต์ และเชิงอักษรเขมร อยู่ในตำแหน่งที่พอดี แม้จะซ้อนกันหลายชั้น", "chars_title": "ชุดตัวอักษร", "lao": "ลาว", "thai": "ไทย", "khmer": "เขมร", "latin": "ละติน", "install_title": "วิธีติดตั้ง", "install_1": "ดาวน์โหลดไฟล์ zip จากรุ่นล่าสุด", "install_2": "แตกไฟล์ zip แล้วเปิดไฟล์ TTF", "install_3": "คลิก ติดตั้ง (Install) ฟอนต์จะพร้อมใช้งานใน Word, LibreOffice, Canva และแอปอื่นๆ ทันที", "install_web": "สำหรับเว็บไซต์ ให้ใช้ไฟล์ WOFF2", "about_title": "เกี่ยวกับฟอนต์", "license": "ใช้งาน แชร์ และดัดแปลงได้ฟรีภายใต้สัญญาอนุญาต SIL Open Font License 1.1 รวมถึงงานเชิงพาณิชย์", "credits": "พัฒนาต่อยอดตัวอักษรจาก Noto Sans Lao, Noto Sans Thai, Noto Sans Khmer และ Noto Sans โดยคณะผู้พัฒนาโครงการ Noto", "feedback": "พบปัญหาตัวอักษรใช่ไหม? เปิด Issue แจ้งบน GitHub ได้เลย", "made_by": "ออกแบบโดย Robert Martin Campbell", "collection": "ส่วนหนึ่งของชุดฟอนต์พาดหัวสำหรับภาษาลาว ไทย และเขมร", "mt_note": "ข้อความภาษาลาว ไทย และเขมรในหน้านี้แปลโดยผู้ช่วย AI และยังไม่ได้รับการตรวจทานจากเจ้าของภาษา"}, "km": {"beta": "កំណែសាកល្បង (Beta)", "beta_note": "ពុម្ពអក្សរនេះស្ថិតក្នុងកំណែសាកល្បងនៅឡើយ។ វាត្រូវបានបង្កើតឡើងពីពុម្ពអក្សរ Noto ដោយប្រើបច្ចេកទេសត្រាប់តាមគំនូសប៊ិច ឬជក់ ដូច្នេះអក្សរខ្លះនៅត្រូវការកែសម្រួលដោយដៃបន្ថែមទៀត។ មតិយោបល់របស់អ្នកជួយឱ្យពុម្ពអក្សរនេះកាន់តែប្រសើរឡើង។", "download": "ទាញយកពុម្ពអក្សរ", "github": "មើលកូដដើមនៅលើ GitHub", "tester_hint": "ចុចលើអត្ថបទធំ រួចសាកល្បងវាយអក្សរឡាវ ថៃ ខ្មែរ ឬអង់គ្លេស។", "size": "ទំហំ", "samples": "សាកល្បងអត្ថបទគំរូ", "reset": "កំណត់អត្ថបទឡើងវិញ", "scripts_title": "តួអក្សរ चारភាសា ក្នុងរចនាបថតែមួយ", "scripts_body": "អក្សរឡាវ ថៃ ខ្មែរ និងឡាតាំង មានរចនាបថរួមគ្នា ធ្វើឱ្យការសរសេរលាយភាសាមើលទៅស៊ីសង្វាក់គ្នា។", "stack_title": "ស្រៈ និងជើងអក្សរស្ថិតនៅចំទីតាំង", "stack_body": "ស្រៈ វណ្ណយុត្ត និងជើងអក្សរខ្មែរ ស្ថិតនៅទីតាំងត្រឹមត្រូវ ទោះបីជាតម្រួតលើគ្នាច្រើនជាន់ក៏ដោយ។", "chars_title": "តួអក្សរទាំងអស់", "lao": "ឡាវ", "thai": "ថៃ", "khmer": "ខ្មែរ", "latin": "ឡាតាំង", "install_title": "របៀបដំឡើង", "install_1": "ទាញយកឯកសារ zip ពីកំណែចុងក្រោយបំផុត។", "install_2": "ពន្លាឯកសារ zip រួចបើកឯកសារ TTF។", "install_3": "ចុចដំឡើង (Install)។ ឥឡូវនេះអ្នកអាចប្រើពុម្ពអក្សរនេះក្នុង Word, LibreOffice, Canva និងកម្មវិធីផ្សេងទៀតបានហើយ។", "install_web": "សម្រាប់គេហទំព័រ សូមប្រើឯកសារ WOFF2។", "about_title": "អំពីពុម្ពអក្សរនេះ", "license": "អាចប្រើប្រាស់ ចែករំលែក និងកែប្រែបានដោយឥតគិតថ្លៃក្រោមអាជ្ញាប័ណ្ណ SIL Open Font License 1.1 រួមទាំងសម្រាប់ការងារពាណិជ្ជកម្មផងដែរ។", "credits": "តួអក្សរត្រូវបានអភិវឌ្ឍបន្តពី Noto Sans Lao, Noto Sans Thai, Noto Sans Khmer និង Noto Sans របស់ក្រុមអ្នកនិពន្ធគម្រោង Noto។", "feedback": "ប្រទះឃើញបញ្ហាលើតួអក្សរណាមួយមែនទេ? សូមបើក Issue នៅលើ GitHub។", "made_by": "រចនាដោយ Robert Martin Campbell។", "collection": "ផ្នែកមួយនៃកម្រងពុម្ពអក្សរក្បាច់សម្រាប់ភាសាឡាវ ថៃ និងខ្មែរ។", "mt_note": "អត្ថបទភាសាឡាវ ថៃ និងខ្មែរនៅលើទំព័រនេះ ត្រូវបានបកប្រែដោយជំនួយការ AI ហើយមិនទាន់ទទួលបានការត្រួតពិនិត្យដោយជនជាតិដើមនៅឡើយទេ។"}};
+const F = {"en": {"tagline": "A hand-painted signage display font for Lao, now with Thai, Khmer and English.", "about": "Kouang Si Waterfall started from the hand-painted sign at the Kouang Si waterfall near Luang Prabang. Robert Martin Campbell drew the Lao letters in 2019 to make headings and children's materials more fun to read. Version 0.100 adds Thai, Khmer and Latin letters drawn with a soft brush matched to the Lao stroke, so one font now works across the region."}, "lo": {"tagline": "ຟອນປ້າຍຂຽນດ້ວຍມືສຳລັບພາສາລາວ ບັດນີ້ຮອງຮັບພາສາໄທ, ຂະເໝນ ແລະ ອັງກິດແລ້ວ.", "about": "ຟອນ Kouang Si Waterfall ມີຕົ້ນກຳເນີດມາຈາກປ້າຍຂຽນດ້ວຍມືຢູ່ຕາດກວາງຊີ ໃກ້ກັບຫຼວງພະບາງ (Luang Prabang). Robert Martin Campbell ໄດ້ແຕ້ມຕົວອັກສອນລາວຂຶ້ນໃນປີ 2019 ເພື່ອໃຫ້ຫົວຂໍ້ ແລະ ປຶ້ມສຳລັບເດັກນ້ອຍອ່ານມ່ວນຍິ່ງຂຶ້ນ. ຮຸ່ນ 0.100 ນີ້ໄດ້ເພີ່ມຕົວອັກສອນໄທ, ຂະເໝນ ແລະ ລາຕິນ ທີ່ແຕ້ມດ້ວຍຟອຍອ່ອນໃຫ້ເຂົ້າກັບລາຍເສັ້ນພາສາລາວ ເຮັດໃຫ້ຟອນດຽວນີ້ສາມາດໃຊ້ຮ່ວມກັນໄດ້ທົ່ວທັງພາກພື້ນ."}, "th": {"tagline": "ฟอนต์ป้ายเขียนมือสำหรับภาษาลาว วันนี้รองรับภาษาไทย เขมร และอังกฤษแล้ว", "about": "ฟอนต์ Kouang Si Waterfall มีจุดเริ่มต้นจากป้ายเขียนมือที่น้ำตกกวางสี ใกล้เมืองหลวงพระบาง (Luang Prabang) โดย Robert Martin Campbell วาดตัวอักษรลาวขึ้นในปี 2019 เพื่อให้หัวข้อและสื่อสำหรับเด็กอ่านสนุกยิ่งขึ้น ในรุ่น 0.100 ได้เพิ่มตัวอักษรไทย เขมร และละติน ที่วาดด้วยฝีแปรงนุ่มนวลกลมกลืนกับเส้นสายภาษาลาว ทำให้ฟอนต์เดียวใช้งานได้ครอบคลุมทั้งภูมิภาค"}, "km": {"tagline": "ពុម្ពអក្សរស្លាកសញ្ញាគូរដោយដៃសម្រាប់ភាសាឡាវ ឥឡូវនេះមានភាសាថៃ ខ្មែរ និងអង់គ្លេស។", "about": "ពុម្ពអក្សរ Kouang Si Waterfall មានប្រភពចេញពីស្លាកសញ្ញាគូរដោយដៃនៅទឹកធ្លាក់កួងស៊ី ក្បែរទីក្រុងហ្លួងព្រះបាង (Luang Prabang)។ លោក Robert Martin Campbell បានគូរអក្សរឡាវនៅឆ្នាំ 2019 ដើម្បីឱ្យចំណងជើង និងសម្ភារៈសម្រាប់កុមារកាន់តែជក់ចិត្តក្នុងការអាន។ កំណែ 0.100 បានបន្ថែមអក្សរថៃ ខ្មែរ និងឡាតាំង ដែលគូរដោយជក់ទន់ស៊ីគ្នាជាមួយទម្រង់អក្សរឡាវ ធ្វើឱ្យពុម្ពអក្សរតែមួយនេះអាចប្រើប្រាស់បានទូទាំងតំបន់។"}};
+const DEFAULT = {"en": "Kouang Si Waterfall ນ້ຳຕົກຕາດກວາງຊີ", "lo": "ສະບາຍດີ ຫຼວງພະບາງ", "th": "สวัสดีครับ ตลาดน้ำ", "km": "សួស្តី អង្គរវត្ត"};
+const SETS = {
+  lao: [...Array(0x80).keys()].map(i => 0x0E80 + i),
+  thai: [...Array(0x5C).keys()].map(i => 0x0E00 + i),
+  khmer: [...Array(0x7E).keys()].map(i => 0x1780 + i),
+  latin: [...Array(0x5F).keys()].map(i => 0x20 + i).filter(c => c > 0x20),
+};
+const COVER = [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 567, 568, 569, 570, 571, 572, 573, 574, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 587, 588, 589, 590, 591, 700, 710, 711, 728, 729, 730, 731, 732, 733, 768, 769, 770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 818, 819, 820, 821, 822, 823, 824, 825, 826, 827, 828, 829, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856, 857, 858, 859, 860, 861, 862, 863, 864, 865, 866, 867, 868, 869, 870, 871, 872, 873, 874, 875, 876, 877, 878, 879, 916, 937, 956, 960, 3585, 3586, 3587, 3588, 3589, 3590, 3591, 3592, 3593, 3594, 3595, 3596, 3597, 3598, 3599, 3600, 3601, 3602, 3603, 3604, 3605, 3606, 3607, 3608, 3609, 3610, 3611, 3612, 3613, 3614, 3615, 3616, 3617, 3618, 3619, 3620, 3621, 3622, 3623, 3624, 3625, 3626, 3627, 3628, 3629, 3630, 3631, 3632, 3633, 3634, 3635, 3636, 3637, 3638, 3639, 3640, 3641, 3642, 3647, 3648, 3649, 3650, 3651, 3652, 3653, 3654, 3655, 3656, 3657, 3658, 3659, 3660, 3661, 3662, 3663, 3664, 3665, 3666, 3667, 3668, 3669, 3670, 3671, 3672, 3673, 3674, 3675, 3713, 3714, 3716, 3718, 3719, 3720, 3721, 3722, 3724, 3725, 3726, 3727, 3728, 3729, 3730, 3731, 3732, 3733, 3734, 3735, 3736, 3737, 3738, 3739, 3740, 3741, 3742, 3743, 3744, 3745, 3746, 3747, 3749, 3751, 3752, 3753, 3754, 3755, 3756, 3757, 3758, 3759, 3760, 3761, 3762, 3763, 3764, 3765, 3766, 3767, 3768, 3769, 3770, 3771, 3772, 3773, 3776, 3777, 3778, 3779, 3780, 3782, 3784, 3785, 3786, 3787, 3788, 3789, 3790, 3792, 3793, 3794, 3795, 3796, 3797, 3798, 3799, 3800, 3801, 3804, 3805, 3806, 3807, 6016, 6017, 6018, 6019, 6020, 6021, 6022, 6023, 6024, 6025, 6026, 6027, 6028, 6029, 6030, 6031, 6032, 6033, 6034, 6035, 6036, 6037, 6038, 6039, 6040, 6041, 6042, 6043, 6044, 6045, 6046, 6047, 6048, 6049, 6050, 6051, 6052, 6053, 6054, 6055, 6056, 6057, 6058, 6059, 6060, 6061, 6062, 6063, 6064, 6065, 6066, 6067, 6068, 6069, 6070, 6071, 6072, 6073, 6074, 6075, 6076, 6077, 6078, 6079, 6080, 6081, 6082, 6083, 6084, 6085, 6086, 6087, 6088, 6089, 6090, 6091, 6092, 6093, 6094, 6095, 6096, 6097, 6098, 6099, 6100, 6101, 6102, 6103, 6104, 6105, 6106, 6107, 6108, 6109, 6112, 6113, 6114, 6115, 6116, 6117, 6118, 6119, 6120, 6121, 6128, 6129, 6130, 6131, 6132, 6133, 6134, 6135, 6136, 6137, 6624, 6625, 6626, 6627, 6628, 6629, 6630, 6631, 6632, 6633, 6634, 6635, 6636, 6637, 6638, 6639, 6640, 6641, 6642, 6643, 6644, 6645, 6646, 6647, 6648, 6649, 6650, 6651, 6652, 6653, 6654, 6655, 7680, 7681, 7682, 7683, 7684, 7685, 7686, 7687, 7688, 7689, 7690, 7691, 7692, 7693, 7694, 7695, 7696, 7697, 7698, 7699, 7700, 7701, 7702, 7703, 7704, 7705, 7706, 7707, 7708, 7709, 7710, 7711, 7712, 7713, 7714, 7715, 7716, 7717, 7718, 7719, 7720, 7721, 7722, 7723, 7724, 7725, 7726, 7727, 7728, 7729, 7730, 7731, 7732, 7733, 7734, 7735, 7736, 7737, 7738, 7739, 7740, 7741, 7742, 7743, 7744, 7745, 7746, 7747, 7748, 7749, 7750, 7751, 7752, 7753, 7754, 7755, 7756, 7757, 7758, 7759, 7760, 7761, 7762, 7763, 7764, 7765, 7766, 7767, 7768, 7769, 7770, 7771, 7772, 7773, 7774, 7775, 7776, 7777, 7778, 7779, 7780, 7781, 7782, 7783, 7784, 7785, 7786, 7787, 7788, 7789, 7790, 7791, 7792, 7793, 7794, 7795, 7796, 7797, 7798, 7799, 7800, 7801, 7802, 7803, 7804, 7805, 7806, 7807, 7808, 7809, 7810, 7811, 7812, 7813, 7814, 7815, 7816, 7817, 7818, 7819, 7820, 7821, 7822, 7823, 7824, 7825, 7826, 7827, 7828, 7829, 7830, 7831, 7832, 7833, 7834, 7835, 7836, 7837, 7838, 7839, 7840, 7841, 7842, 7843, 7844, 7845, 7846, 7847, 7848, 7849, 7850, 7851, 7852, 7853, 7854, 7855, 7856, 7857, 7858, 7859, 7860, 7861, 7862, 7863, 7864, 7865, 7866, 7867, 7868, 7869, 7870, 7871, 7872, 7873, 7874, 7875, 7876, 7877, 7878, 7879, 7880, 7881, 7882, 7883, 7884, 7885, 7886, 7887, 7888, 7889, 7890, 7891, 7892, 7893, 7894, 7895, 7896, 7897, 7898, 7899, 7900, 7901, 7902, 7903, 7904, 7905, 7906, 7907, 7908, 7909, 7910, 7911, 7912, 7913, 7914, 7915, 7916, 7917, 7918, 7919, 7920, 7921, 7922, 7923, 7924, 7925, 7926, 7927, 7928, 7929, 7930, 7931, 7932, 7933, 7934, 7935, 8192, 8193, 8194, 8195, 8196, 8197, 8198, 8199, 8200, 8201, 8202, 8203, 8204, 8205, 8206, 8207, 8208, 8209, 8210, 8211, 8212, 8213, 8214, 8215, 8216, 8217, 8218, 8219, 8220, 8221, 8222, 8223, 8224, 8225, 8226, 8227, 8228, 8229, 8230, 8231, 8232, 8233, 8234, 8235, 8236, 8237, 8238, 8239, 8240, 8241, 8242, 8243, 8244, 8245, 8246, 8247, 8248, 8249, 8250, 8251, 8252, 8253, 8254, 8255, 8256, 8257, 8258, 8259, 8260, 8261, 8262, 8263, 8264, 8265, 8266, 8267, 8268, 8269, 8270, 8271, 8272, 8273, 8274, 8275, 8276, 8277, 8278, 8279, 8280, 8281, 8282, 8283, 8284, 8285, 8286, 8287, 8288, 8289, 8290, 8291, 8292, 8294, 8295, 8296, 8297, 8298, 8299, 8300, 8301, 8302, 8303, 8304, 8305, 8308, 8309, 8310, 8311, 8312, 8313, 8314, 8315, 8316, 8317, 8318, 8319, 8320, 8321, 8322, 8323, 8324, 8325, 8326, 8327, 8328, 8329, 8330, 8331, 8332, 8333, 8334, 8336, 8337, 8338, 8339, 8340, 8341, 8342, 8343, 8344, 8345, 8346, 8347, 8348, 8352, 8353, 8354, 8355, 8356, 8357, 8358, 8359, 8360, 8361, 8362, 8363, 8364, 8365, 8366, 8367, 8368, 8369, 8370, 8371, 8372, 8373, 8374, 8375, 8376, 8377, 8378, 8379, 8380, 8381, 8382, 8383, 8384, 8448, 8449, 8450, 8451, 8452, 8453, 8454, 8455, 8456, 8457, 8458, 8459, 8460, 8461, 8462, 8463, 8464, 8465, 8466, 8467, 8468, 8469, 8470, 8471, 8472, 8473, 8474, 8475, 8476, 8477, 8478, 8479, 8480, 8481, 8482, 8483, 8484, 8485, 8486, 8487, 8488, 8489, 8490, 8491, 8492, 8493, 8494, 8495, 8496, 8497, 8498, 8499, 8500, 8501, 8502, 8503, 8504, 8505, 8506, 8507, 8508, 8509, 8510, 8511, 8512, 8513, 8514, 8515, 8516, 8517, 8518, 8519, 8520, 8521, 8522, 8523, 8524, 8525, 8526, 8527, 8528, 8529, 8530, 8531, 8532, 8533, 8534, 8535, 8536, 8537, 8538, 8539, 8540, 8541, 8542, 8543, 8579, 8580, 8585, 8592, 8593, 8594, 8595, 8596, 8597, 8598, 8599, 8600, 8601, 8602, 8603, 8604, 8605, 8606, 8607, 8608, 8609, 8610, 8611, 8612, 8613, 8614, 8615, 8616, 8617, 8618, 8619, 8620, 8621, 8622, 8623, 8624, 8625, 8626, 8627, 8628, 8629, 8630, 8631, 8632, 8633, 8634, 8635, 8636, 8637, 8638, 8639, 8640, 8641, 8642, 8643, 8644, 8645, 8646, 8647, 8648, 8649, 8650, 8651, 8652, 8653, 8654, 8655, 8656, 8657, 8658, 8659, 8660, 8661, 8662, 8663, 8664, 8665, 8666, 8667, 8668, 8669, 8670, 8671, 8672, 8673, 8674, 8675, 8676, 8677, 8678, 8679, 8680, 8681, 8682, 8683, 8684, 8685, 8686, 8687, 8688, 8689, 8690, 8691, 8692, 8693, 8694, 8695, 8696, 8697, 8698, 8699, 8700, 8701, 8702, 8703, 8704, 8705, 8706, 8707, 8708, 8709, 8710, 8711, 8712, 8713, 8714, 8715, 8716, 8717, 8718, 8719, 8720, 8721, 8722, 8723, 8724, 8725, 8726, 8727, 8728, 8729, 8730, 8731, 8732, 8733, 8734, 8735, 8736, 8737, 8738, 8739, 8740, 8741, 8742, 8743, 8744, 8745, 8746, 8747, 8748, 8749, 8750, 8751, 8752, 8753, 8754, 8755, 8756, 8757, 8758, 8759, 8760, 8761, 8762, 8763, 8764, 8765, 8766, 8767, 8768, 8769, 8770, 8771, 8772, 8773, 8774, 8775, 8776, 8777, 8778, 8779, 8780, 8781, 8782, 8783, 8784, 8785, 8786, 8787, 8788, 8789, 8790, 8791, 8792, 8793, 8794, 8795, 8796, 8797, 8798, 8799, 8800, 8801, 8802, 8803, 8804, 8805, 8806, 8807, 8808, 8809, 8810, 8811, 8812, 8813, 8814, 8815, 8816, 8817, 8818, 8819, 8820, 8821, 8822, 8823, 8824, 8825, 8826, 8827, 8828, 8829, 8830, 8831, 8832, 8833, 8834, 8835, 8836, 8837, 8838, 8839, 8840, 8841, 8842, 8843, 8844, 8845, 8846, 8847, 8848, 8849, 8850, 8851, 8852, 8853, 8854, 8855, 8856, 8857, 8858, 8859, 8860, 8861, 8862, 8863, 8864, 8865, 8866, 8867, 8868, 8869, 8870, 8871, 8872, 8873, 8874, 8875, 8876, 8877, 8878, 8879, 8880, 8881, 8882, 8883, 8884, 8885, 8886, 8887, 8888, 8889, 8890, 8891, 8892, 8893, 8894, 8895, 8896, 8897, 8898, 8899, 8900, 8901, 8902, 8903, 8904, 8905, 8906, 8907, 8908, 8909, 8910, 8911, 8912, 8913, 8914, 8915, 8916, 8917, 8918, 8919, 8920, 8921, 8922, 8923, 8924, 8925, 8926, 8927, 8928, 8929, 8930, 8931, 8932, 8933, 8934, 8935, 8936, 8937, 8938, 8939, 8940, 8941, 8942, 8943, 8944, 8945, 8946, 8947, 8948, 8949, 8950, 8951, 8952, 8953, 8954, 8955, 8956, 8957, 8958, 8959, 8960, 8962, 8965, 8966, 8968, 8969, 8970, 8971, 9632, 9633, 9634, 9635, 9636, 9637, 9638, 9639, 9640, 9641, 9642, 9643, 9644, 9645, 9646, 9647, 9648, 9649, 9650, 9651, 9652, 9653, 9654, 9655, 9656, 9657, 9658, 9659, 9660, 9661, 9662, 9663, 9664, 9665, 9666, 9667, 9668, 9669, 9670, 9671, 9672, 9673, 9674, 9675, 9676, 9677, 9678, 9679, 9680, 9681, 9682, 9683, 9684, 9685, 9686, 9687, 9688, 9689, 9690, 9691, 9692, 9693, 9694, 9695, 9696, 9697, 9698, 9699, 9700, 9701, 9702, 9703, 9704, 9705, 9706, 9707, 9708, 9709, 9710, 9711, 9712, 9713, 9714, 9715, 9716, 9717, 9718, 9719, 9720, 9721, 9722, 9723, 9724, 9725, 9726, 9727, 9733, 9734, 10003, 10007, 10204, 10651, 10656, 10659, 10680, 10741, 10974, 10979, 10980, 10981, 10990, 11262, 65279, 65533];
+const MARK = /\p{M}/u;
+const tester = document.getElementById("tester");
+const size = document.getElementById("size"), sizeval = document.getElementById("sizeval");
+let lang = "en", edited = false, set = "lao";
+function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i18n]").forEach(el => { const s = (C[l] || C.en)[el.dataset.i18n] || C.en[el.dataset.i18n]; if (s) el.textContent = s; });
+  document.querySelectorAll("[data-f]").forEach(el => { const s = (F[l] || F.en)[el.dataset.f] || F.en[el.dataset.f]; if (s) el.textContent = s; });
+  document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  if (!edited) tester.textContent = DEFAULT[l];
+  store("fam-lang", l);
+}
+document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+function setSize(px) { tester.style.setProperty("--size", px + "px"); sizeval.textContent = px + " px"; }
+size.addEventListener("input", () => setSize(size.value));
+tester.addEventListener("input", () => { edited = true; });
+tester.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); tester.blur(); } });
+tester.addEventListener("paste", e => { e.preventDefault(); document.execCommand("insertText", false, (e.clipboardData || window.clipboardData).getData("text/plain")); });
+document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => { tester.textContent = c.textContent; edited = true; }));
+document.getElementById("reset").addEventListener("click", () => { edited = false; tester.textContent = DEFAULT[lang]; });
+function drawGrid() {
+  const grid = document.getElementById("grid"); grid.innerHTML = "";
+  for (const cp of SETS[set]) {
+    if (!COVER.includes(cp)) continue;
+    const ch = String.fromCodePoint(cp);
+    const cell = document.createElement("div"); cell.className = "cell";
+    const b = document.createElement("b"); b.textContent = MARK.test(ch) ? "◌" + ch : ch;
+    const s = document.createElement("small"); s.textContent = "U+" + cp.toString(16).toUpperCase().padStart(4, "0");
+    cell.append(b, s); grid.append(cell);
+  }
+}
+document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => {
+  set = b.dataset.set; document.querySelectorAll(".tabs button").forEach(x => x.setAttribute("aria-selected", x === b)); drawGrid();
+}));
+const px = Math.max(28, Math.min(240, Math.round(window.innerWidth * 0.11)));
+size.value = px; setSize(px); drawGrid();
+const p = new URLSearchParams(location.search).get("lang");
+const nav = (navigator.language || "").slice(0, 2);
+setLang(["en", "lo", "th", "km"].includes(p) ? p : load("fam-lang") || (["lo", "th", "km"].includes(nav) ? nav : "en"));
+</script>
+</body>
+</html>

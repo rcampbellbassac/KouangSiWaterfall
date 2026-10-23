@@ -1,0 +1,108 @@
+{
+ "lo-words": [],
+ "lo-stacks": [],
+ "lo-expanded": [],
+ "th-words": [
+  {
+   "cluster": 19,
+   "text": "ป",
+   "a": "uni0E1B",
+   "b": "uni0E31.narrow",
+   "overlap_units": [
+    362,
+    111
+   ]
+  }
+ ],
+ "th-stacks": [
+  {
+   "cluster": 24,
+   "text": "ป",
+   "a": "uni0E1B",
+   "b": "uni0E35.narrow",
+   "overlap_units": [
+    384,
+    107
+   ]
+  },
+  {
+   "cluster": 28,
+   "text": "ฝ",
+   "a": "uni0E1D",
+   "b": "uni0E34.narrow",
+   "overlap_units": [
+    353,
+    112
+   ]
+  },
+  {
+   "cluster": 32,
+   "text": "ฟ",
+   "a": "uni0E1F",
+   "b": "uni0E35.narrow",
+   "overlap_units": [
+    384,
+    110
+   ]
+  }
+ ],
+ "km-words": [
+  {
+   "cluster": 17,
+   "text": "ស",
+   "a": "uni17D2179A",
+   "b": "uni179F",
+   "overlap_units": [
+    28,
+    608
+   ]
+  }
+ ],
+ "km-vowels": [
+  {
+   "cluster": 27,
+   "text": "ក",
+   "a": "uni1780",
+   "b": "uni17BF.right1",
+   "overlap_units": [
+    123,
+    610
+   ]
+  },
+  {
+   "cluster": 30,
+   "text": "ក",
+   "a": "uni1780",
+   "b": "uni17C0.right1",
+   "overlap_units": [
+    31,
+    610
+   ]
+  }
+ ],
+ "km-shifters": [],
+ "lo-orphans": [],
+ "th-orphans": [],
+ "km-orphans": [],
+ "lo-controls": [],
+ "th-controls": [],
+ "km-controls": [],
+ "latin-nfc": [],
+ "latin-nfd": [],
+ "latin-mark-stacks": [],
+ "digits": [],
+ "currencies": [],
+ "symbols": [],
+ "mixed-line": [
+  {
+   "cluster": 23,
+   "text": "ស",
+   "a": "uni179F",
+   "b": "uni17D2",
+   "overlap_units": [
+    289,
+    39
+   ]
+  }
+ ]
+}

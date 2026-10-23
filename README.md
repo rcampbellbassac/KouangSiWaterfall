@@ -1,5 +1,34 @@
-# Kouang Si Waterfall
-_A Hand Painted Lao Signage Font_
+# Kouang Si Waterfall ນ້ຳຕົກຕາດກວາງຊີ
+_A Hand Painted Lao Signage Font, now with Thai, Khmer and Latin_
+
+**[Try it online](https://rcampbellbassac.github.io/KouangSiWaterfall/)** · **[Download version 0.100 (beta)](https://github.com/rcampbellbassac/KouangSiWaterfall/releases/latest/download/KouangSiWaterfall.zip)** · SIL Open Font License 1.1
+
+![Kouang Si Waterfall in Lao, Thai, Khmer and Latin](images/specimen.png)
+
+## What's new in 0.100 (beta)
+
+- **Thai, Khmer and Latin.** New letters drawn with a soft brush matched to the original Lao stroke
+  (`scripts/recipe.json`) on the thin Noto designs, so one font now covers Lao, Thai, Khmer and English.
+  The original hand-drawn Lao letters are unchanged.
+- **More Lao.** The Pali and Sanskrit letters, ໞ ໟ and U+0ECE were missing; they are now included
+  (generated to match, ready to be redrawn by hand).
+- **Modern font metrics.** The old vertical metrics (ascender 1450, x-height 1054 on a 1000-unit em) made
+  line spacing huge and inconsistent between apps. Typo, hhea and Windows metrics now agree, leave room for
+  stacked vowels and tone marks, and `USE_TYPO_METRICS` is set.
+- **Correct OpenType data.** `lao`, `thai` and `khmr` script tags, mark positioning for every script,
+  Unicode and code page ranges, installable embedding, complete name records.
+- **Web and desktop files.** `fonts/` has TTF, WOFF2 and WOFF. The demo page lives in `docs/`.
+- **QA.** Every case in a Lao/Thai/Khmer shaping corpus renders with no missing glyphs (`qa/`).
+
+![Vowels, tone marks and Khmer subscripts](images/stacking.png)
+
+Rebuild with `python scripts/build_multiscript.py` (Python 3.11+, `pip install fonttools pyclipper booleanOperations uharfbuzz pillow`).
+The Lao source of truth is still the FontLab/UFO/Glyphs sources in `KouangSiWaterfall/`.
+
+---
+
+## The original story
+
 
 Kouang Si Waterfall - an Open Source and Open Licensed Display Font - SIL OFL v1.1 License
 

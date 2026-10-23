@@ -1,0 +1,83 @@
+{
+ "name": "Kouang Si Waterfall",
+ "slug": "KouangSiWaterfall",
+ "bases": {
+  "lao": "lao-looped",
+  "thai": "thai-looped",
+  "khmer": "khmer",
+  "latin": "latin"
+ },
+ "recipe": [
+  {
+   "op": "wobble",
+   "amp": 4,
+   "wave": 300
+  },
+  {
+   "op": "nib",
+   "shape": "ellipse",
+   "w": 86,
+   "h": 62,
+   "angle": 30,
+   "min_hole": 1500
+  }
+ ],
+ "scale": 0.93,
+ "note": "Soft-brush recipe matched to Robert's hand-drawn Lao (stems ~85-115 units). Lao itself is NOT generated except letters the original lacks.",
+ "per_script": {
+  "latin": {
+   "recipe": [
+    {
+     "op": "wobble",
+     "amp": 4,
+     "wave": 300
+    },
+    {
+     "op": "nib",
+     "shape": "ellipse",
+     "w": 112,
+     "h": 84,
+     "angle": 30,
+     "min_hole": 1500
+    }
+   ],
+   "scale": 0.88
+  },
+  "symbols": {
+   "recipe": [
+    {
+     "op": "wobble",
+     "amp": 4,
+     "wave": 300
+    },
+    {
+     "op": "nib",
+     "shape": "ellipse",
+     "w": 112,
+     "h": 84,
+     "angle": 30,
+     "min_hole": 1500
+    }
+   ],
+   "scale": 0.88
+  },
+  "dingbats": {
+   "recipe": [
+    {
+     "op": "wobble",
+     "amp": 4,
+     "wave": 300
+    },
+    {
+     "op": "nib",
+     "shape": "ellipse",
+     "w": 112,
+     "h": 84,
+     "angle": 30,
+     "min_hole": 1500
+    }
+   ],
+   "scale": 0.88
+  }
+ }
+}
