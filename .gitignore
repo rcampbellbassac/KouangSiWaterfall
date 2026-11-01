@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# FontLab's automatic backups
+*.backup/
+KouangSiWaterfall/OpenType-TT/KouangSiWaterfall-Regular.26*.ttf
