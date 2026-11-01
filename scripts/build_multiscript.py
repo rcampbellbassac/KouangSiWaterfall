@@ -15,6 +15,7 @@ import json
 import re
 import sys
 import tempfile
+import unicodedata
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -147,6 +148,44 @@ def declare_khmer_gpos(tt: TTFont):
     S.ScriptRecord.append(rec); S.ScriptRecord.sort(key=lambda r: r.ScriptTag); S.ScriptCount = len(S.ScriptRecord)
 
 
+def rare_lao_anchors(tt: TTFont, added: list[int]):
+    """Give the Lao letters filled in from Noto (Pali letters, Khmu ໞ ໟ) a place in the hand-drawn Lao mark rules,
+    so vowels and tones attach to them too. Anchors follow the medians of Robert's own consonants: top centred and
+    33 units below the letter's top; bottom centred, 2 units above its lowest point, or at -100 beside a descender
+    (as on ຊ and ຖ)."""
+    from fontTools.pens.boundsPen import BoundsPen
+    from fontTools.ttLib.tables import otTables
+    cmap, gs, order = tt.getBestCmap(), tt.getGlyphSet(), tt.getGlyphOrder()
+    bases = [cmap[c] for c in added if c in cmap and unicodedata.category(chr(c)) == "Lo"]
+    st = None
+    for lk in tt["GPOS"].table.LookupList.Lookup:
+        for s in lk.SubTable:
+            s = getattr(s, "ExtSubTable", s)
+            if lk.LookupType in (4, 9) and getattr(s, "BaseCoverage", None) and "uni0E84" in s.BaseCoverage.glyphs \
+                    and "uni0EB4" in s.MarkCoverage.glyphs:
+                st = s
+    if st is None:
+        raise RuntimeError("Lao mark-to-base lookup not found")
+    ref = st.BaseArray.BaseRecord[st.BaseCoverage.glyphs.index("uni0E84")].BaseAnchor
+    top_i = max(range(len(ref)), key=lambda i: ref[i].YCoordinate if ref[i] else -9999)
+    records = dict(zip(st.BaseCoverage.glyphs, st.BaseArray.BaseRecord))
+    for g in bases:
+        if g in records:
+            continue
+        p = BoundsPen(gs); gs[g].draw(p); x0, y0, x1, y1 = p.bounds
+        cx = round((x0 + x1) / 2)
+        rec = otTables.BaseRecord(); rec.BaseAnchor = []
+        for i in range(len(ref)):
+            a = otTables.Anchor(); a.Format = 1
+            a.XCoordinate, a.YCoordinate = (cx, round(y1 - 33)) if i == top_i else (cx, round(y0 + 2) if y0 > -60 else -100)
+            rec.BaseAnchor.append(a)
+        records[g] = rec
+    glyphs = sorted(records, key=order.index)
+    st.BaseCoverage.glyphs = glyphs
+    st.BaseArray.BaseRecord = [records[g] for g in glyphs]
+    st.BaseArray.BaseCount = len(glyphs)
+
+
 def finish(tt: TTFont):
     nt = tt["name"]; nt.names = []
     fam = "Kouang Si Waterfall"
@@ -211,6 +250,7 @@ def build():
     family.add_missing_spaces(merged)
     add_khmer_shifter_rule(merged)
     declare_khmer_gpos(merged)
+    rare_lao_anchors(merged, missing_lao)
     finish(merged)
     OUT_TTF.parent.mkdir(exist_ok=True)
     merged.save(OUT_TTF)

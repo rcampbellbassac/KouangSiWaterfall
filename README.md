@@ -11,6 +11,7 @@ Mark placement fixes and font-wide fixes from a FontBakery review; no letter sha
 
 - **Vowels and tone marks on ກ now attach properly.** ກ was missing from the mark-positioning rules, so its tone marks floated high and
   its vowels sat a little high; ກ໊, ກ່, ກີ່ and the rest now sit like every other consonant.
+- **Vowels and tones attach to the rarer letters too**: the Pali letters (ຆ ຉ ຌ ຎ ຏ ຐ ຑ ຒ ຓ ຘ ຠ ຨ ຩ ຬ) and Khmu ໞ ໟ.
 - **Marks on ຫ are centred over the letter** instead of hanging off its right side.
 - **ຼ followed by a tone mark** (ຫຼ່, ຫຼ້) now puts the tone on top instead of near the baseline.
 - Mark positioning is now built from the FontLab source (`KouangSiWaterfall-Regular.vfj`), with the `lao` script tag declared there.
