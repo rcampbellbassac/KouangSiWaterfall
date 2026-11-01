@@ -21,12 +21,13 @@ sys.path.insert(0, str(HERE))
 from fontlab_mcp import family  # noqa: E402  (vendored)
 from fontTools import subset  # noqa: E402
 from fontTools.merge import Merger  # noqa: E402
-from fontTools.ttLib import TTFont  # noqa: E402
+from fontTools.ttLib import TTFont, newTable  # noqa: E402
+from fontTools.ttLib.tables import ttProgram  # noqa: E402
 
 ROOT = HERE.parents[0]
 SRC = ROOT / "KouangSiWaterfall/OpenType-TT/KouangSiWaterfall-Regular.ttf"
 OUT_TTF = ROOT / "fonts/KouangSiWaterfall-Regular.ttf"
-VERSION = "0.200"
+VERSION = "0.210"
 LAO = list(range(0x0E80, 0x0F00)) + [0x25CC]
 
 
@@ -138,6 +139,9 @@ def finish(tt: TTFont):
             9: "Robert Martin Campbell", 11: "https://sea-sda.org", 12: "https://sea-sda.org",
             13: "This Font Software is licensed under the SIL Open Font License, Version 1.1.",
             14: "https://openfontlicense.org", 19: "ນ້ຳຕົກຕາດກວາງຊີ  น้ำตก  ទឹកធ្លាក់  Kouang Si"}
+    # ss02 (UINameID 257) merges Noto Lao Looped "Alternate lla" and Noto Math "Straight integrals";
+    # the label must survive the name-table reset (FontBakery ttx_roundtrip).
+    vals[257] = "Alternate lla and straight integrals"
     for nid, v in vals.items():
         nt.setName(v, nid, 3, 1, 0x409)
     tt["head"].fontRevision = float(VERSION)
@@ -148,18 +152,29 @@ def finish(tt: TTFont):
         return getattr(glyf[cmap[ord(ch)]], "yMax", 0)
     os2, hhea = tt["OS/2"], tt["hhea"]
     os2.sxHeight, os2.sCapHeight = top("x"), top("H")
-    os2.sTypoAscender, os2.sTypoDescender, os2.sTypoLineGap = 1100, -400, 0   # room for stacked Lao/Thai marks
-    os2.usWinAscent, os2.usWinDescent = max(ymax, 1100), max(-ymin, 400)       # no clipping on Windows
-    hhea.ascent, hhea.descent, hhea.lineGap = os2.usWinAscent, -os2.usWinDescent, 0
+    # One line height everywhere (1.70 em, Robert's choice 2026-11-01): typo == hhea so Mac/iOS match Windows,
+    # Android and the web; win covers the tallest stacked Thai/Lao marks so nothing clips on Windows.
+    os2.sTypoAscender, os2.sTypoDescender, os2.sTypoLineGap = 1250, -450, 0
+    os2.usWinAscent, os2.usWinDescent = max(ymax, 1250), max(-ymin, 450)
+    hhea.ascent, hhea.descent, hhea.lineGap = os2.sTypoAscender, os2.sTypoDescender, 0
     os2.fsSelection = (os2.fsSelection | (1 << 7) | (1 << 6)) & ~((1 << 0) | (1 << 5))  # USE_TYPO_METRICS, REGULAR
     os2.fsType = 0                       # installable embedding
-    os2.usWeightClass, os2.usWidthClass = 700, 5
+    os2.usWeightClass, os2.usWidthClass = 400, 5  # the style is named Regular, so 400 (was 700)
     os2.achVendID = "NONE"
     os2.recalcUnicodeRanges(tt)
     os2.recalcCodePageRanges(tt)
     tt["post"].formatType = 2.0
     tt["post"].italicAngle, tt["post"].isFixedPitch = 0, 0
     tt["head"].flags |= 1 << 3           # integer ppem
+    # Unhinted font: smart dropout control + gasp "smooth everything" (what gftools fix-nonhinting does).
+    prep = newTable("prep")
+    prep.program = ttProgram.Program()
+    prep.program.fromAssembly(["PUSHW[]", "511", "SCANCTRL[]", "PUSHB[]", "4", "SCANTYPE[]"])
+    tt["prep"] = prep
+    gasp = newTable("gasp")
+    gasp.gaspRange = {0xFFFF: 0x000F}
+    tt["gasp"] = gasp
+    tt["maxp"].maxStackElements = max(tt["maxp"].maxStackElements, 2)
 
 
 def build():

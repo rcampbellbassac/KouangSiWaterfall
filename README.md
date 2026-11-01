@@ -1,11 +1,20 @@
 # Kouang Si Waterfall ນ້ຳຕົກຕາດກວາງຊີ
 _A Hand Painted Lao Signage Font, now with Thai, Khmer and Latin_
 
-**[Try it online](https://rcampbellbassac.github.io/KouangSiWaterfall/)** · **[Download version 0.200 (beta)](https://github.com/rcampbellbassac/KouangSiWaterfall/releases/latest/download/KouangSiWaterfall.zip)** · SIL Open Font License 1.1
+**[Try it online](https://rcampbellbassac.github.io/KouangSiWaterfall/)** · **[Download version 0.210 (beta)](https://github.com/rcampbellbassac/KouangSiWaterfall/releases/latest/download/KouangSiWaterfall.zip)** · SIL Open Font License 1.1
 
 ![Kouang Si Waterfall in Lao, Thai, Khmer and Latin](images/specimen.png)
 
-## What's new in 0.200 (beta)
+## What's new in 0.210 (beta)
+
+Font-wide fixes from a FontBakery review; no letter shapes changed.
+
+- **The same line height everywhere (1.7 em).** Mac and iOS used to space lines at 1.86 em and Windows, Android and the web at 1.5 em; stacked Lao and Thai tone marks now have the same comfortable room on every platform, and nothing clips on Windows.
+- **Weight class 400**, so apps list the font as Regular instead of Bold.
+- **Smoother rendering at small sizes**: the `gasp` and smart-dropout settings Google Fonts recommends for unhinted fonts.
+- **The ss02 stylistic set has a name again** ("Alternate lla and straight integrals").
+
+## In 0.200 (beta)
 
 - **Thai, Khmer and Latin now match the Lao.** They are rebuilt on hand-lettered skeletons instead of Noto:
   Thai, Latin, digits and punctuation on [Mali](https://github.com/cadsondemak/Mali), Khmer on
