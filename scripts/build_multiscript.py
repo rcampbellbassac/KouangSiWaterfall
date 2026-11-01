@@ -31,7 +31,7 @@ ROOT = HERE.parents[0]
 SRC = ROOT / "KouangSiWaterfall/OpenType-TT/KouangSiWaterfall-Regular.ttf"
 VFJ = ROOT / "KouangSiWaterfall-Regular.vfj"   # anchors + kern/mark/mkmk feature code (source of truth)
 OUT_TTF = ROOT / "fonts/KouangSiWaterfall-Regular.ttf"
-VERSION = "0.210"
+VERSION = "0.220"
 LAO = list(range(0x0E80, 0x0F00)) + [0x25CC]
 
 
@@ -189,9 +189,10 @@ def rare_lao_anchors(tt: TTFont, added: list[int]):
 def finish(tt: TTFont):
     nt = tt["name"]; nt.names = []
     fam = "Kouang Si Waterfall"
-    vals = {0: "Copyright 2019-2026 Robert Martin Campbell. Thai and Latin derived from Mali (Copyright 2018 The Mali "
-               "Project Authors), Khmer from Fasthand (Copyright 2020 The Fasthand Project Authors), other characters and added Lao letters "
-               "from the Noto fonts (Copyright 2022 The Noto Project Authors).",
+    vals = {0: "Copyright 2019-2026 The Kouang Si Waterfall Project Authors (https://github.com/rcampbellbassac/KouangSiWaterfall). "
+               "Thai and Latin derived from Mali (Copyright 2018 The Mali Project Authors), Khmer from Fasthand (Copyright 2020 "
+               "The Fasthand Project Authors), other characters and added Lao letters from the Noto fonts (Copyright 2022 The Noto "
+               "Project Authors).",
             1: fam, 2: "Regular", 3: f"{VERSION};NONE;KouangSiWaterfall-Regular", 4: f"{fam} Regular",
             5: f"Version {VERSION}", 6: "KouangSiWaterfall-Regular", 8: "Southeast Asia SDA Media Library",
             9: "Robert Martin Campbell", 11: "https://sea-sda.org", 12: "https://sea-sda.org",

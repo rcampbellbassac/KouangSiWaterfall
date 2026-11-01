@@ -1,0 +1,11 @@
+# This is the official list of project authors for copyright purposes.
+# This file is distinct from the CONTRIBUTORS.txt file.
+# See the latter for an explanation.
+#
+# Names should be added to this file as:
+# Name or Organization <email address>
+
+Robert Martin Campbell
+
+# Parts are derived from other OFL projects, whose authors keep their copyright (see LICENSE):
+# The Mali Project Authors (Thai, Latin), The Fasthand Project Authors (Khmer), The Noto Project Authors.

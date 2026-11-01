@@ -1,11 +1,19 @@
 # Kouang Si Waterfall ນ້ຳຕົກຕາດກວາງຊີ
 _A Hand Painted Lao Signage Font, now with Thai, Khmer and Latin_
 
-**[Try it online](https://rcampbellbassac.github.io/KouangSiWaterfall/)** · **[Download version 0.210 (beta)](https://github.com/rcampbellbassac/KouangSiWaterfall/releases/latest/download/KouangSiWaterfall.zip)** · SIL Open Font License 1.1
+**[Try it online](https://rcampbellbassac.github.io/KouangSiWaterfall/)** · **[Download version 0.220 (beta)](https://github.com/rcampbellbassac/KouangSiWaterfall/releases/latest/download/KouangSiWaterfall.zip)** · SIL Open Font License 1.1
 
 ![Kouang Si Waterfall in Lao, Thai, Khmer and Latin](images/specimen.png)
 
-## What's new in 0.210 (beta)
+## What's new in 0.220 (beta)
+
+- **Cleaner outlines.** Tracing debris removed in the FontLab source: 62 fixes in 26 Lao glyphs (points a few units
+  apart merged, curve handles made smooth) and four stray zero-size points. No glyph moves more than 2 units and no
+  spacing or mark position changes.
+- **Copyright in the Google Fonts form**: "The Kouang Si Waterfall Project Authors", with `AUTHORS.txt` and
+  `CONTRIBUTORS.txt`; the Mali, Fasthand and Noto notices stay in the font and in `LICENSE`.
+
+## In 0.210 (beta)
 
 Mark placement fixes and font-wide fixes from a FontBakery review; no letter shapes changed.
 
