@@ -7,8 +7,13 @@ _A Hand Painted Lao Signage Font, now with Thai, Khmer and Latin_
 
 ## What's new in 0.210 (beta)
 
-Font-wide fixes from a FontBakery review; no letter shapes changed.
+Mark placement fixes and font-wide fixes from a FontBakery review; no letter shapes changed.
 
+- **Vowels and tone marks on ກ now attach properly.** ກ was missing from the mark-positioning rules, so its tone marks floated high and
+  its vowels sat a little high; ກ໊, ກ່, ກີ່ and the rest now sit like every other consonant.
+- **Marks on ຫ are centred over the letter** instead of hanging off its right side.
+- **ຼ followed by a tone mark** (ຫຼ່, ຫຼ້) now puts the tone on top instead of near the baseline.
+- Mark positioning is now built from the FontLab source (`KouangSiWaterfall-Regular.vfj`), with the `lao` script tag declared there.
 - **The same line height everywhere (1.7 em).** Mac and iOS used to space lines at 1.86 em and Windows, Android and the web at 1.5 em; stacked Lao and Thai tone marks now have the same comfortable room on every platform, and nothing clips on Windows.
 - **Weight class 400**, so apps list the font as Regular instead of Bold.
 - **Smoother rendering at small sizes**: the `gasp` and smart-dropout settings Google Fonts recommends for unhinted fonts.

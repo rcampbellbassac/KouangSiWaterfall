@@ -12,6 +12,7 @@ same brush. Everything is merged into one font with consistent vertical metrics,
 from __future__ import annotations
 
 import json
+import re
 import sys
 import tempfile
 from pathlib import Path
@@ -20,19 +21,37 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from fontlab_mcp import family  # noqa: E402  (vendored)
 from fontTools import subset  # noqa: E402
+from fontTools.feaLib.builder import addOpenTypeFeaturesFromString  # noqa: E402
 from fontTools.merge import Merger  # noqa: E402
 from fontTools.ttLib import TTFont, newTable  # noqa: E402
 from fontTools.ttLib.tables import ttProgram  # noqa: E402
 
 ROOT = HERE.parents[0]
 SRC = ROOT / "KouangSiWaterfall/OpenType-TT/KouangSiWaterfall-Regular.ttf"
+VFJ = ROOT / "KouangSiWaterfall-Regular.vfj"   # anchors + kern/mark/mkmk feature code (source of truth)
 OUT_TTF = ROOT / "fonts/KouangSiWaterfall-Regular.ttf"
 VERSION = "0.210"
 LAO = list(range(0x0E80, 0x0F00)) + [0x25CC]
 
 
+def source_features(tt: TTFont) -> None:
+    """Rebuild the Lao GPOS (kern, mark, mkmk) from the feature code in the FontLab source (.vfj), so anchor and
+    kerning fixes made there reach the font without re-exporting from FontLab. Class members the exported TTF does
+    not contain (CR, uni000A) are dropped; the export has no GSUB."""
+    of = json.loads(VFJ.read_text())["font"]["openTypeFeatures"]
+    fea = "\n".join(x["feature"] for x in of)
+    names = set(tt.getGlyphOrder())
+    fea = re.sub(r"(@\w+\s*=\s*)\[([^\]]*)\];",
+                 lambda m: f"{m.group(1)}[{' '.join(t for t in m.group(2).split() if t in names)}];", fea)
+    for tag in ("GPOS", "GSUB", "GDEF"):
+        if tag in tt:
+            del tt[tag]
+    addOpenTypeFeaturesFromString(tt, fea)
+
+
 def lao_original(tmp: Path) -> tuple[Path, set]:
     tt = TTFont(SRC)
+    source_features(tt)
     o = subset.Options(); o.layout_features = ["*"]; o.name_IDs = ["*"]; o.glyph_names = True
     o.notdef_outline = True; o.hinting = False; o.drop_tables += ["DSIG", "gasp", "vhea", "vmtx"]
     s = subset.Subsetter(o); s.populate(unicodes=LAO + [0x20, 0xA0, 0x200B]); s.subset(tt)
