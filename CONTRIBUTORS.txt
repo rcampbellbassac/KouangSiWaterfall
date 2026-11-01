@@ -1,0 +1,9 @@
+# This is the list of people who have contributed to this project,
+# and includes those not listed in AUTHORS.txt because they are not
+# copyright authors.
+#
+# Names should be added to this file as:
+# Name <email address>
+
+Robert Martin Campbell (Lao design, hand-drawn from the Kouang Si waterfall sign)
+Claude, Anthropic (Thai, Khmer and Latin adaptation, build tooling and QA, working with Robert)
