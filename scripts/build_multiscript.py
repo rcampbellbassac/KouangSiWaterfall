@@ -12,26 +12,47 @@ same brush. Everything is merged into one font with consistent vertical metrics,
 from __future__ import annotations
 
 import json
+import re
 import sys
 import tempfile
+import unicodedata
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from fontlab_mcp import family  # noqa: E402  (vendored)
 from fontTools import subset  # noqa: E402
+from fontTools.feaLib.builder import addOpenTypeFeaturesFromString  # noqa: E402
 from fontTools.merge import Merger  # noqa: E402
-from fontTools.ttLib import TTFont  # noqa: E402
+from fontTools.ttLib import TTFont, newTable  # noqa: E402
+from fontTools.ttLib.tables import ttProgram  # noqa: E402
 
 ROOT = HERE.parents[0]
 SRC = ROOT / "KouangSiWaterfall/OpenType-TT/KouangSiWaterfall-Regular.ttf"
+VFJ = ROOT / "KouangSiWaterfall-Regular.vfj"   # anchors + kern/mark/mkmk feature code (source of truth)
 OUT_TTF = ROOT / "fonts/KouangSiWaterfall-Regular.ttf"
-VERSION = "0.200"
+VERSION = "0.210"
 LAO = list(range(0x0E80, 0x0F00)) + [0x25CC]
+
+
+def source_features(tt: TTFont) -> None:
+    """Rebuild the Lao GPOS (kern, mark, mkmk) from the feature code in the FontLab source (.vfj), so anchor and
+    kerning fixes made there reach the font without re-exporting from FontLab. Class members the exported TTF does
+    not contain (CR, uni000A) are dropped; the export has no GSUB."""
+    of = json.loads(VFJ.read_text())["font"]["openTypeFeatures"]
+    fea = "\n".join(x["feature"] for x in of)
+    names = set(tt.getGlyphOrder())
+    fea = re.sub(r"(@\w+\s*=\s*)\[([^\]]*)\];",
+                 lambda m: f"{m.group(1)}[{' '.join(t for t in m.group(2).split() if t in names)}];", fea)
+    for tag in ("GPOS", "GSUB", "GDEF"):
+        if tag in tt:
+            del tt[tag]
+    addOpenTypeFeaturesFromString(tt, fea)
 
 
 def lao_original(tmp: Path) -> tuple[Path, set]:
     tt = TTFont(SRC)
+    source_features(tt)
     o = subset.Options(); o.layout_features = ["*"]; o.name_IDs = ["*"]; o.glyph_names = True
     o.notdef_outline = True; o.hinting = False; o.drop_tables += ["DSIG", "gasp", "vhea", "vmtx"]
     s = subset.Subsetter(o); s.populate(unicodes=LAO + [0x20, 0xA0, 0x200B]); s.subset(tt)
@@ -127,6 +148,44 @@ def declare_khmer_gpos(tt: TTFont):
     S.ScriptRecord.append(rec); S.ScriptRecord.sort(key=lambda r: r.ScriptTag); S.ScriptCount = len(S.ScriptRecord)
 
 
+def rare_lao_anchors(tt: TTFont, added: list[int]):
+    """Give the Lao letters filled in from Noto (Pali letters, Khmu ໞ ໟ) a place in the hand-drawn Lao mark rules,
+    so vowels and tones attach to them too. Anchors follow the medians of Robert's own consonants: top centred and
+    33 units below the letter's top; bottom centred, 2 units above its lowest point, or at -100 beside a descender
+    (as on ຊ and ຖ)."""
+    from fontTools.pens.boundsPen import BoundsPen
+    from fontTools.ttLib.tables import otTables
+    cmap, gs, order = tt.getBestCmap(), tt.getGlyphSet(), tt.getGlyphOrder()
+    bases = [cmap[c] for c in added if c in cmap and unicodedata.category(chr(c)) == "Lo"]
+    st = None
+    for lk in tt["GPOS"].table.LookupList.Lookup:
+        for s in lk.SubTable:
+            s = getattr(s, "ExtSubTable", s)
+            if lk.LookupType in (4, 9) and getattr(s, "BaseCoverage", None) and "uni0E84" in s.BaseCoverage.glyphs \
+                    and "uni0EB4" in s.MarkCoverage.glyphs:
+                st = s
+    if st is None:
+        raise RuntimeError("Lao mark-to-base lookup not found")
+    ref = st.BaseArray.BaseRecord[st.BaseCoverage.glyphs.index("uni0E84")].BaseAnchor
+    top_i = max(range(len(ref)), key=lambda i: ref[i].YCoordinate if ref[i] else -9999)
+    records = dict(zip(st.BaseCoverage.glyphs, st.BaseArray.BaseRecord))
+    for g in bases:
+        if g in records:
+            continue
+        p = BoundsPen(gs); gs[g].draw(p); x0, y0, x1, y1 = p.bounds
+        cx = round((x0 + x1) / 2)
+        rec = otTables.BaseRecord(); rec.BaseAnchor = []
+        for i in range(len(ref)):
+            a = otTables.Anchor(); a.Format = 1
+            a.XCoordinate, a.YCoordinate = (cx, round(y1 - 33)) if i == top_i else (cx, round(y0 + 2) if y0 > -60 else -100)
+            rec.BaseAnchor.append(a)
+        records[g] = rec
+    glyphs = sorted(records, key=order.index)
+    st.BaseCoverage.glyphs = glyphs
+    st.BaseArray.BaseRecord = [records[g] for g in glyphs]
+    st.BaseArray.BaseCount = len(glyphs)
+
+
 def finish(tt: TTFont):
     nt = tt["name"]; nt.names = []
     fam = "Kouang Si Waterfall"
@@ -138,6 +197,9 @@ def finish(tt: TTFont):
             9: "Robert Martin Campbell", 11: "https://sea-sda.org", 12: "https://sea-sda.org",
             13: "This Font Software is licensed under the SIL Open Font License, Version 1.1.",
             14: "https://openfontlicense.org", 19: "ນ້ຳຕົກຕາດກວາງຊີ  น้ำตก  ទឹកធ្លាក់  Kouang Si"}
+    # ss02 (UINameID 257) merges Noto Lao Looped "Alternate lla" and Noto Math "Straight integrals";
+    # the label must survive the name-table reset (FontBakery ttx_roundtrip).
+    vals[257] = "Alternate lla and straight integrals"
     for nid, v in vals.items():
         nt.setName(v, nid, 3, 1, 0x409)
     tt["head"].fontRevision = float(VERSION)
@@ -148,18 +210,29 @@ def finish(tt: TTFont):
         return getattr(glyf[cmap[ord(ch)]], "yMax", 0)
     os2, hhea = tt["OS/2"], tt["hhea"]
     os2.sxHeight, os2.sCapHeight = top("x"), top("H")
-    os2.sTypoAscender, os2.sTypoDescender, os2.sTypoLineGap = 1100, -400, 0   # room for stacked Lao/Thai marks
-    os2.usWinAscent, os2.usWinDescent = max(ymax, 1100), max(-ymin, 400)       # no clipping on Windows
-    hhea.ascent, hhea.descent, hhea.lineGap = os2.usWinAscent, -os2.usWinDescent, 0
+    # One line height everywhere (1.70 em, Robert's choice 2026-11-01): typo == hhea so Mac/iOS match Windows,
+    # Android and the web; win covers the tallest stacked Thai/Lao marks so nothing clips on Windows.
+    os2.sTypoAscender, os2.sTypoDescender, os2.sTypoLineGap = 1250, -450, 0
+    os2.usWinAscent, os2.usWinDescent = max(ymax, 1250), max(-ymin, 450)
+    hhea.ascent, hhea.descent, hhea.lineGap = os2.sTypoAscender, os2.sTypoDescender, 0
     os2.fsSelection = (os2.fsSelection | (1 << 7) | (1 << 6)) & ~((1 << 0) | (1 << 5))  # USE_TYPO_METRICS, REGULAR
     os2.fsType = 0                       # installable embedding
-    os2.usWeightClass, os2.usWidthClass = 700, 5
+    os2.usWeightClass, os2.usWidthClass = 400, 5  # the style is named Regular, so 400 (was 700)
     os2.achVendID = "NONE"
     os2.recalcUnicodeRanges(tt)
     os2.recalcCodePageRanges(tt)
     tt["post"].formatType = 2.0
     tt["post"].italicAngle, tt["post"].isFixedPitch = 0, 0
     tt["head"].flags |= 1 << 3           # integer ppem
+    # Unhinted font: smart dropout control + gasp "smooth everything" (what gftools fix-nonhinting does).
+    prep = newTable("prep")
+    prep.program = ttProgram.Program()
+    prep.program.fromAssembly(["PUSHW[]", "511", "SCANCTRL[]", "PUSHB[]", "4", "SCANTYPE[]"])
+    tt["prep"] = prep
+    gasp = newTable("gasp")
+    gasp.gaspRange = {0xFFFF: 0x000F}
+    tt["gasp"] = gasp
+    tt["maxp"].maxStackElements = max(tt["maxp"].maxStackElements, 2)
 
 
 def build():
@@ -177,6 +250,7 @@ def build():
     family.add_missing_spaces(merged)
     add_khmer_shifter_rule(merged)
     declare_khmer_gpos(merged)
+    rare_lao_anchors(merged, missing_lao)
     finish(merged)
     OUT_TTF.parent.mkdir(exist_ok=True)
     merged.save(OUT_TTF)
