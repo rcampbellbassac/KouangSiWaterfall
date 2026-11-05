@@ -1,11 +1,21 @@
 # Kouang Si Waterfall ນ້ຳຕົກຕາດກວາງຊີ
 _A Hand Painted Lao Signage Font, now with Thai, Khmer and Latin_
 
-**[Try it online](https://rcampbellbassac.github.io/KouangSiWaterfall/)** · **[Download version 0.220 (beta)](https://github.com/rcampbellbassac/KouangSiWaterfall/releases/latest/download/KouangSiWaterfall.zip)** · SIL Open Font License 1.1
+**[Try it online](https://rcampbellbassac.github.io/KouangSiWaterfall/)** · **[Download version 0.230 (beta)](https://github.com/rcampbellbassac/KouangSiWaterfall/releases/latest/download/KouangSiWaterfall.zip)** · SIL Open Font License 1.1
 
 ![Kouang Si Waterfall in Lao, Thai, Khmer and Latin](images/specimen.png)
 
-## What's new in 0.220 (beta)
+## What's new in 0.230 (beta)
+
+- **African Latin.** The font now covers Google Fonts' Latin Core and Latin African sets: Ɓɓ Ɗɗ Ɖɖ Ɛɛ Ɔɔ Ɲɲ Əə Ɨɨ Ʉʉ
+  Ʊʊ Ʋʋ Ɣɣ Ʒʒ and more, modifier letters (ʷ ʸ ᵃ ᵉ …), the tone marks U+1DC4–1DC7 and ʻ, for languages such as
+  Hausa, Fula, Bambara, Twi, Ewe and Dan. These letters are drawn the same way as the other Noto-based extras;
+  **Ɤ** (U+A7CB) is built from this font's ɤ until it is drawn properly. Ʀ Ⱥ Ⱦ were removed (no lowercase in the font).
+- **Accents attach to every Latin letter** and to the dotted circle ◌, including Thai marks on ◌.
+- Small-caps lookups now run before ligatures.
+- FontBakery (googlefonts): 1 FAIL left, the beta version number. No change to the Lao, Thai or Khmer letters.
+
+## In 0.220 (beta)
 
 - **Cleaner outlines.** Tracing debris removed in the FontLab source: 62 fixes in 26 Lao glyphs (points a few units
   apart merged, curve handles made smooth) and four stray zero-size points. No glyph moves more than 2 units and no

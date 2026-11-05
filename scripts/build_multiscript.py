@@ -31,8 +31,17 @@ ROOT = HERE.parents[0]
 SRC = ROOT / "KouangSiWaterfall/OpenType-TT/KouangSiWaterfall-Regular.ttf"
 VFJ = ROOT / "KouangSiWaterfall-Regular.vfj"   # anchors + kern/mark/mkmk feature code (source of truth)
 OUT_TTF = ROOT / "fonts/KouangSiWaterfall-Regular.ttf"
-VERSION = "0.220"
+VERSION = "0.230"
 LAO = list(range(0x0E80, 0x0F00)) + [0x25CC]
+# Google Fonts GF_Latin_African (Robert, 2026-11-04: complete it). These 80 come from the Noto Sans fill (Ⓐ ⓐ from Noto
+# Sans Symbols); Ɤ (U+A7CB) exists in no reference font yet. Ʀ Ⱥ Ⱦ are not African Latin and would lack lowercase
+# (FontBakery case_mapping), so they stay out.
+AFRICAN = {0x0189, 0x018F, 0x0193, 0x0194, 0x0196, 0x0197, 0x019C, 0x019F, 0x01A9, 0x01AE, 0x01B1, 0x01B2, 0x01B7, 0x0244, 0x0245, 0x0250, 0x0251, 0x0256, 0x0259, 0x0260, 0x0263, 0x0264, 0x0265, 0x0266, 0x0268, 0x0269, 0x026A, 0x026F, 0x0275, 0x027D, 0x0283, 0x0288, 0x0289, 0x028A, 0x028B, 0x028C, 0x0292, 0x0294, 0x0295, 0x0298, 0x029D, 0x02B7, 0x02C0, 0x02C8, 0x02D7, 0x02EE, 0x1D43, 0x1D49, 0x1D4B, 0x1D52, 0x1D53, 0x1D58, 0x1D7D, 0x1DA4, 0x1DB6, 0x1DC4, 0x1DC5, 0x1DC6, 0x1DC7, 0x24B6, 0x24D0, 0x2C63, 0x2C64, 0x2C6D, 0x2C6F, 0x2C72, 0x2C73, 0xA789, 0xA78A, 0xA78B, 0xA78C, 0xA78D, 0xA7AA, 0xA7AE, 0xA7B2, 0xA7B4, 0xA7B5, 0xA7B6, 0xA7B7, 0xA7C7, 0xA7C8, 0xA7CB}
+AFRICAN |= {0x0253, 0x0254, 0x0257, 0x025B, 0x0272}  # Latin Core lowercase partners of Ɓ Ɔ Ɗ Ɛ Ɲ
+AFRICAN |= {0x02BB, 0x02B8, 0x02C1}  # ʻ (Gbari), ʸ ˁ (Zenaga): FontBakery shape_languages
+NOT_IN_FONT = {0x01A6, 0x023A, 0x023E}
+CIRCLED = [0x24B6, 0x24D0]
+
 
 
 def source_features(tt: TTFont) -> None:
@@ -148,6 +157,39 @@ def declare_khmer_gpos(tt: TTFont):
     S.ScriptRecord.append(rec); S.ScriptRecord.sort(key=lambda r: r.ScriptTag); S.ScriptCount = len(S.ScriptRecord)
 
 
+def add_rams_horn_capital(tt: TTFont):
+    """U+A7CB Ɤ (Dan, Goo) exists in no reference font yet: build it from this font's ɤ, scaled to capital height
+    (vertical H/x ratio) and 1.25x wide so the strokes stay close in weight. A stand-in for Robert to review/redraw."""
+    from fontTools.pens.boundsPen import BoundsPen
+    from fontTools.pens.transformPen import TransformPen
+    from fontTools.pens.ttGlyphPen import TTGlyphPen
+    cmap, gs = tt.getBestCmap(), tt.getGlyphSet()
+    if 0xA7CB in cmap or 0x0264 not in cmap:
+        return
+
+    def box(g):
+        p = BoundsPen(gs); gs[g].draw(p); return p.bounds
+
+    src = cmap[0x0264]
+    sy = box(cmap[ord("H")])[3] / box(cmap[ord("x")])[3]
+    sx = 1.25
+    x0 = box(src)[0]
+    pen = TTGlyphPen(gs)
+    gs[src].draw(TransformPen(pen, (sx, 0, 0, sy, 40 - x0 * sx, 0)))
+    name = "uniA7CB"
+    order = tt.getGlyphOrder() + [name]
+    tt.setGlyphOrder(order)
+    tt["glyf"].glyphOrder = order  # glyf keeps its own copy of the order
+    tt["glyf"][name] = pen.glyph()
+    g = tt["glyf"][name]; g.recalcBounds(tt["glyf"])
+    tt["hmtx"][name] = (g.xMax + 40, g.xMin)
+    for sub in tt["cmap"].tables:
+        if sub.isUnicode():
+            sub.cmap[0xA7CB] = name
+    if "GDEF" in tt and tt["GDEF"].table.GlyphClassDef:
+        tt["GDEF"].table.GlyphClassDef.classDefs[name] = 1
+
+
 def rare_lao_anchors(tt: TTFont, added: list[int]):
     """Give the Lao letters filled in from Noto (Pali letters, Khmu ໞ ໟ) a place in the hand-drawn Lao mark rules,
     so vowels and tones attach to them too. Anchors follow the medians of Robert's own consonants: top centred and
@@ -168,7 +210,7 @@ def rare_lao_anchors(tt: TTFont, added: list[int]):
         raise RuntimeError("Lao mark-to-base lookup not found")
     ref = st.BaseArray.BaseRecord[st.BaseCoverage.glyphs.index("uni0E84")].BaseAnchor
     top_i = max(range(len(ref)), key=lambda i: ref[i].YCoordinate if ref[i] else -9999)
-    records = dict(zip(st.BaseCoverage.glyphs, st.BaseArray.BaseRecord))
+    records = dict(zip(st.BaseCoverage.glyphs, st.BaseArray.BaseRecord, strict=True))
     for g in bases:
         if g in records:
             continue
@@ -184,6 +226,205 @@ def rare_lao_anchors(tt: TTFont, added: list[int]):
     st.BaseCoverage.glyphs = glyphs
     st.BaseArray.BaseRecord = [records[g] for g in glyphs]
     st.BaseArray.BaseCount = len(glyphs)
+
+
+def _subtables(lookup):
+    for s in lookup.SubTable:
+        yield getattr(s, "ExtSubTable", s)
+
+
+def dotted_circle_bases(tt: TTFont):
+    """Let every mark that attaches to a letter attach to the dotted circle U+25CC too (FontBakery dotted_circle), so
+    a mark typed alone shows correctly. In each mark-to-base subtable that lacks ◌, its anchors copy a reference letter
+    of that subtable (o for Latin): same horizontal offset from the centre, same gap above the top or below the bottom."""
+    from fontTools.pens.boundsPen import BoundsPen
+    from fontTools.ttLib.tables import otTables
+    cmap, gs, order = tt.getBestCmap(), tt.getGlyphSet(), tt.getGlyphOrder()
+    dc = cmap.get(0x25CC)
+    if not dc:
+        return
+
+    def box(g):
+        p = BoundsPen(gs); gs[g].draw(p); return p.bounds
+
+    dx0, dy0, dx1, dy1 = box(dc)
+    lookups = [lk for lk in tt["GPOS"].table.LookupList.Lookup if lk.LookupType in (4, 9)]
+    attached = {m for lk in lookups for st in _subtables(lk)
+                if hasattr(st, "BaseCoverage") and dc in st.BaseCoverage.glyphs for m in st.MarkCoverage.glyphs}
+    for lk in lookups:
+        for st in _subtables(lk):
+            if not hasattr(st, "BaseCoverage") or dc in st.BaseCoverage.glyphs:
+                continue
+            if attached & set(st.MarkCoverage.glyphs):
+                continue  # these marks already attach to ◌ in their own rules (e.g. Robert's Lao): don't shadow them
+            records = dict(zip(st.BaseCoverage.glyphs, st.BaseArray.BaseRecord, strict=True))
+            ref = next((g for g in ("o", "uni0E01", "uni1780", "uni0E81", "a") if g in records and box(g)),
+                       next((g for g in records if box(g)), None))
+            if ref is None:
+                continue
+            rx0, ry0, rx1, ry1 = box(ref)
+            rec = otTables.BaseRecord(); rec.BaseAnchor = []
+            for a in records[ref].BaseAnchor:
+                if a is None:
+                    rec.BaseAnchor.append(None); continue
+                n = otTables.Anchor(); n.Format = 1
+                n.XCoordinate = round((dx0 + dx1) / 2 + a.XCoordinate - (rx0 + rx1) / 2)
+                above = a.YCoordinate >= (ry0 + ry1) / 2
+                n.YCoordinate = round(dy1 + a.YCoordinate - ry1) if above else round(dy0 + a.YCoordinate - ry0)
+                rec.BaseAnchor.append(n)
+            records[dc] = rec
+            attached |= set(st.MarkCoverage.glyphs)
+            glyphs = sorted(records, key=order.index)
+            st.BaseCoverage.glyphs = glyphs
+            st.BaseArray.BaseRecord = [records[g] for g in glyphs]
+            st.BaseArray.BaseCount = len(glyphs)
+
+
+def latin_accents_everywhere(tt: TTFont):
+    """Every Latin letter joins every Latin mark-to-base rule set it is missing from, so any combining accent attaches
+    to any letter (the merged parts each only knew their own letters and marks). Anchors are copied from the letter's
+    base (ȩ from e) or a look-alike (ɛ from e, ɔ from o, ...), else o / O: same offset from the centre, same gap above
+    the top or below the bottom."""
+    from fontTools.pens.boundsPen import BoundsPen
+    from fontTools.ttLib.tables import otTables
+    cmap, gs, order = tt.getBestCmap(), tt.getGlyphSet(), tt.getGlyphOrder()
+    rev = {g: c for c, g in cmap.items()}
+    look = {"ɓ": "b", "Ɓ": "B", "ɗ": "d", "Ɗ": "D", "ɖ": "d", "Ɖ": "D", "ɛ": "e", "Ɛ": "E", "ə": "e", "Ə": "E",
+            "ɔ": "o", "Ɔ": "O", "ɲ": "n", "Ɲ": "N", "ɨ": "i", "Ɨ": "I", "ʉ": "u", "Ʉ": "U", "ʊ": "u", "Ʊ": "U",
+            "ʋ": "v", "Ʋ": "V", "ɣ": "y", "Ɣ": "Y", "ɩ": "i", "Ɩ": "I", "ʌ": "v", "Ʌ": "V", "ɑ": "a", "Ɑ": "A"}
+    boxes = {}
+
+    def box(g):
+        if g not in boxes:
+            p = BoundsPen(gs); gs[g].draw(p); boxes[g] = p.bounds
+        return boxes[g]
+
+    # Letters newer than the running Python's Unicode data (Ɤ U+A7CB is Unicode 16, Python 3.13+).
+    newer = {0xA7CB: ("Lu", "LATIN CAPITAL LETTER RAMS HORN")}
+
+    def cat(ch):
+        return newer.get(ord(ch), (unicodedata.category(ch),))[0]
+
+    def is_upper(ch):
+        return cat(ch) in ("Lu", "Lt")
+
+    def latin_letter(g):
+        c = rev.get(g)
+        if c is None:
+            return False
+        ch = chr(c)
+        name = newer.get(c, (None, unicodedata.name(ch, "")))[1]
+        # Lo covers uncased Latin letters such as ʔ
+        return cat(ch) in ("Lu", "Ll", "Lt", "Lo") and "LATIN" in name and bool(box(g))
+
+    letters = [g for g in order if latin_letter(g)]
+
+    def latin_mark(g):
+        c = rev.get(g)
+        return c is not None and (0x0300 <= c <= 0x036F or 0x1AB0 <= c <= 0x1AFF or 0x1DC0 <= c <= 0x1DFF)
+
+    def reference(g, records):
+        ch = chr(rev[g])
+        d = unicodedata.decomposition(ch).split()
+        cands = []
+        if d and not d[0].startswith("<"):
+            cands.append(cmap.get(int(d[0], 16)))
+        if ch in look:
+            cands.append(cmap.get(ord(look[ch])))
+        cands.append("O" if is_upper(ch) else "o")
+        hit = next((r for r in cands if r and r in records and box(r)), None)
+        if hit:
+            return hit
+        same_case = [r for r in records if r in rev and is_upper(chr(rev[r])) == is_upper(ch) and box(r)]
+        return same_case[0] if same_case else None
+
+    for lk in tt["GPOS"].table.LookupList.Lookup:
+        if lk.LookupType not in (4, 9):
+            continue
+        for st in _subtables(lk):
+            if not hasattr(st, "BaseCoverage"):
+                continue
+            records = dict(zip(st.BaseCoverage.glyphs, st.BaseArray.BaseRecord, strict=True))
+            if not any(latin_mark(m) for m in st.MarkCoverage.glyphs):
+                continue  # not a Latin rule set
+            changed = False
+            for g in letters:
+                if g in records:
+                    continue
+                ref = reference(g, records)
+                if ref is None:
+                    continue
+                (gx0, gy0, gx1, gy1), (rx0, ry0, rx1, ry1) = box(g), box(ref)
+                rec = otTables.BaseRecord(); rec.BaseAnchor = []
+                for a in records[ref].BaseAnchor:
+                    if a is None:
+                        rec.BaseAnchor.append(None); continue
+                    n = otTables.Anchor(); n.Format = 1
+                    n.XCoordinate = round((gx0 + gx1) / 2 + a.XCoordinate - (rx0 + rx1) / 2)
+                    above = a.YCoordinate >= (ry0 + ry1) / 2
+                    n.YCoordinate = round(gy1 + a.YCoordinate - ry1) if above else round(gy0 + a.YCoordinate - ry0)
+                    rec.BaseAnchor.append(n)
+                records[g] = rec; changed = True
+            if changed:
+                glyphs = sorted(records, key=order.index)
+                st.BaseCoverage.glyphs = glyphs
+                st.BaseArray.BaseRecord = [records[x] for x in glyphs]
+                st.BaseArray.BaseCount = len(glyphs)
+
+
+def smcp_before_liga(tt: TTFont):
+    """Move the small-caps lookups to just before the first ligature lookup (FontBakery smallcaps_before_ligatures),
+    so small caps apply before ligatures form. All lookup references (features, contextual rules) are renumbered."""
+    gsub = tt["GSUB"].table
+    feats = gsub.FeatureList.FeatureRecord
+    smcp = sorted({i for f in feats if f.FeatureTag == "smcp" for i in f.Feature.LookupListIndex})
+    liga = [i for f in feats if f.FeatureTag == "liga" for i in f.Feature.LookupListIndex]
+    if not smcp or not liga or min(smcp) < min(liga):
+        return
+    first = min(liga)
+    n = len(gsub.LookupList.Lookup)
+    new_order = [i for i in range(first) if i not in smcp] + smcp + [i for i in range(first, n) if i not in smcp]
+    remap = {old: new for new, old in enumerate(new_order)}
+    gsub.LookupList.Lookup = [gsub.LookupList.Lookup[i] for i in new_order]
+    for f in feats:
+        f.Feature.LookupListIndex = [remap[i] for i in f.Feature.LookupListIndex]
+
+    def walk(obj, seen):
+        if id(obj) in seen or not hasattr(obj, "__dict__"):
+            return
+        seen.add(id(obj))
+        if type(obj).__name__ in ("SubstLookupRecord", "LookupRecord") and hasattr(obj, "LookupListIndex"):
+            obj.LookupListIndex = remap[obj.LookupListIndex]
+            return
+        for v in vars(obj).values():
+            for x in (v if isinstance(v, list) else [v]):
+                if hasattr(x, "__dict__"):
+                    walk(x, seen)
+    seen = set()
+    for lk in gsub.LookupList.Lookup:
+        for st in lk.SubTable:
+            walk(st, seen)
+
+
+def widen_zero_width_bases(tt: TTFont):
+    """Spacing characters that came out with zero advance (e.g. U+02C8 ˈ) get their ink width plus 60-unit sidebearings
+    (FontBakery base_has_width). Marks (GDEF class 3) keep zero width."""
+    gdef = tt["GDEF"].table.GlyphClassDef.classDefs if "GDEF" in tt and tt["GDEF"].table.GlyphClassDef else {}
+    glyf, hmtx = tt["glyf"], tt["hmtx"]
+    for c, g in tt.getBestCmap().items():
+        if hmtx[g][0] != 0 or gdef.get(g) == 3 or unicodedata.category(chr(c)).startswith("M"):
+            continue
+        gl = glyf[g]
+        if not gl.numberOfContours:
+            continue
+        gl.recalcBounds(glyf)
+        dx = 60 - gl.xMin
+        if gl.isComposite():
+            continue
+        coords = gl.coordinates
+        coords.translate((dx, 0))
+        gl.recalcBounds(glyf)
+        hmtx[g] = (gl.xMax + 60, gl.xMin)
 
 
 def finish(tt: TTFont):
@@ -238,6 +479,11 @@ def finish(tt: TTFont):
 
 def build():
     spec = json.loads((HERE / "recipe.json").read_text())
+    latin = (set(family.UNICODES["latin"]) | AFRICAN) - NOT_IN_FONT - set(CIRCLED)
+    family.UNICODES["latin"] = sorted(latin)
+    family.BASES["symbols1"] = family.REF / "google-base/notosanssymbols/NotoSansSymbols[wght].ttf"
+    family.PART_BASE["circled"] = "symbols1"
+    family.UNICODES["circled"] = CIRCLED
     with tempfile.TemporaryDirectory() as d:
         d = Path(d)
         lao, have = lao_original(d)
@@ -246,12 +492,17 @@ def build():
         if missing_lao:
             parts.append(generated(d, spec, "lao", only=set(missing_lao)))
         parts += styled_with_fill(d, spec, "thai") + styled_with_fill(d, spec, "khmer")
-        parts += [generated(d, spec, s) for s in ("symbols", "dingbats")]
+        parts += [generated(d, spec, s) for s in ("symbols", "dingbats", "circled")]
         merged = Merger().merge([str(p) for p in parts])
     family.add_missing_spaces(merged)
+    add_rams_horn_capital(merged)
     add_khmer_shifter_rule(merged)
     declare_khmer_gpos(merged)
     rare_lao_anchors(merged, missing_lao)
+    dotted_circle_bases(merged)
+    latin_accents_everywhere(merged)
+    smcp_before_liga(merged)
+    widen_zero_width_bases(merged)
     finish(merged)
     OUT_TTF.parent.mkdir(exist_ok=True)
     merged.save(OUT_TTF)
