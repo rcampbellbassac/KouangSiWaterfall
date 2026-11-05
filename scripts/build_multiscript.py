@@ -299,12 +299,23 @@ def latin_accents_everywhere(tt: TTFont):
             p = BoundsPen(gs); gs[g].draw(p); boxes[g] = p.bounds
         return boxes[g]
 
+    # Letters newer than the running Python's Unicode data (Ɤ U+A7CB is Unicode 16, Python 3.13+).
+    newer = {0xA7CB: ("Lu", "LATIN CAPITAL LETTER RAMS HORN")}
+
+    def cat(ch):
+        return newer.get(ord(ch), (unicodedata.category(ch),))[0]
+
+    def is_upper(ch):
+        return cat(ch) in ("Lu", "Lt")
+
     def latin_letter(g):
         c = rev.get(g)
         if c is None:
             return False
         ch = chr(c)
-        return unicodedata.category(ch) in ("Lu", "Ll", "Lt") and "LATIN" in unicodedata.name(ch, "") and bool(box(g))
+        name = newer.get(c, (None, unicodedata.name(ch, "")))[1]
+        # Lo covers uncased Latin letters such as ʔ
+        return cat(ch) in ("Lu", "Ll", "Lt", "Lo") and "LATIN" in name and bool(box(g))
 
     letters = [g for g in order if latin_letter(g)]
 
@@ -320,11 +331,11 @@ def latin_accents_everywhere(tt: TTFont):
             cands.append(cmap.get(int(d[0], 16)))
         if ch in look:
             cands.append(cmap.get(ord(look[ch])))
-        cands.append("O" if ch.isupper() else "o")
+        cands.append("O" if is_upper(ch) else "o")
         hit = next((r for r in cands if r and r in records and box(r)), None)
         if hit:
             return hit
-        same_case = [r for r in records if r in rev and chr(rev[r]).isupper() == ch.isupper() and box(r)]
+        same_case = [r for r in records if r in rev and is_upper(chr(rev[r])) == is_upper(ch) and box(r)]
         return same_case[0] if same_case else None
 
     for lk in tt["GPOS"].table.LookupList.Lookup:
