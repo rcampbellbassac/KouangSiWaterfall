@@ -31,7 +31,7 @@ ROOT = HERE.parents[0]
 SRC = ROOT / "KouangSiWaterfall/OpenType-TT/KouangSiWaterfall-Regular.ttf"
 VFJ = ROOT / "KouangSiWaterfall-Regular.vfj"   # anchors + kern/mark/mkmk feature code (source of truth)
 OUT_TTF = ROOT / "fonts/KouangSiWaterfall-Regular.ttf"
-VERSION = "0.230"
+VERSION = "0.240"
 LAO = list(range(0x0E80, 0x0F00)) + [0x25CC]
 # Google Fonts GF_Latin_African (Robert, 2026-11-04: complete it). These 80 come from the Noto Sans fill (Ⓐ ⓐ from Noto
 # Sans Symbols); Ɤ (U+A7CB) exists in no reference font yet. Ʀ Ⱥ Ⱦ are not African Latin and would lack lowercase
@@ -158,31 +158,33 @@ def declare_khmer_gpos(tt: TTFont):
 
 
 def add_rams_horn_capital(tt: TTFont):
-    """U+A7CB Ɤ (Dan, Goo) exists in no reference font yet: build it from this font's ɤ, scaled to capital height
-    (vertical H/x ratio) and 1.25x wide so the strokes stay close in weight. A stand-in for Robert to review/redraw."""
+    """U+A7CB Ɤ (Dan, Goo) exists in no reference font yet. Build it from this font's hand-drawn capital Ɣ, which has
+    the right stroke weight and an open loop: scaled vertically so the loop rests on the baseline (round overshoot, as
+    on o) and the arms reach cap height (H). Ɣ itself descends in this font, so the two stay distinct. (0.230 scaled
+    the lowercase ɤ instead, whose loop is filled; that came out heavy.)"""
     from fontTools.pens.boundsPen import BoundsPen
     from fontTools.pens.transformPen import TransformPen
     from fontTools.pens.ttGlyphPen import TTGlyphPen
     cmap, gs = tt.getBestCmap(), tt.getGlyphSet()
-    if 0xA7CB in cmap or 0x0264 not in cmap:
+    if 0xA7CB in cmap or 0x0194 not in cmap:
         return
 
     def box(g):
         p = BoundsPen(gs); gs[g].draw(p); return p.bounds
 
-    src = cmap[0x0264]
-    sy = box(cmap[ord("H")])[3] / box(cmap[ord("x")])[3]
-    sx = 1.25
-    x0 = box(src)[0]
+    src = cmap[0x0194]
+    _, y0, _, y1 = box(src)
+    base, cap = box(cmap[ord("o")])[1], box(cmap[ord("H")])[3]
+    k = (cap - base) / (y1 - y0)
     pen = TTGlyphPen(gs)
-    gs[src].draw(TransformPen(pen, (sx, 0, 0, sy, 40 - x0 * sx, 0)))
+    gs[src].draw(TransformPen(pen, (1, 0, 0, k, 0, base - y0 * k)))
     name = "uniA7CB"
     order = tt.getGlyphOrder() + [name]
     tt.setGlyphOrder(order)
     tt["glyf"].glyphOrder = order  # glyf keeps its own copy of the order
     tt["glyf"][name] = pen.glyph()
     g = tt["glyf"][name]; g.recalcBounds(tt["glyf"])
-    tt["hmtx"][name] = (g.xMax + 40, g.xMin)
+    tt["hmtx"][name] = (tt["hmtx"][src][0], g.xMin)
     for sub in tt["cmap"].tables:
         if sub.isUnicode():
             sub.cmap[0xA7CB] = name
@@ -372,6 +374,152 @@ def latin_accents_everywhere(tt: TTFont):
                 st.BaseArray.BaseCount = len(glyphs)
 
 
+def repair_latin_mark_positions(tt: TTFont):
+    """Check where each Latin accent's ink actually lands on each Latin letter, and move the anchors that put it off
+    the letter or into it. The borrowed Latin part had bad anchors for some letters (accents on ɨ ị ȋ ĳ at the
+    bottom left, on b ɓ through the ascender, on ɩ ţ far off the glyph). Rules, per letter and accent class:
+    - the accent's centre must lie over the letter's ink (else it is centred on the letter);
+    - an above accent must clear the letter's outline under it by the gap it has on o (40-120 units), and not
+      float more than 120 units beyond that (a below accent likewise).
+    Anchors that already pass are left exactly as they are. Lao, Thai and Khmer rules are not touched."""
+    from fontTools.pens.boundsPen import BoundsPen
+    from fontTools.pens.recordingPen import DecomposingRecordingPen
+    from fontTools.ttLib.tables import otTables
+    cmap, gs = tt.getBestCmap(), tt.getGlyphSet()
+    rev = {g: c for c, g in cmap.items()}
+    newer = {0xA7CB: ("Lu", "LATIN CAPITAL LETTER RAMS HORN")}
+    boxes, pts = {}, {}
+
+    def box(g):
+        if g not in boxes:
+            p = BoundsPen(gs); gs[g].draw(p); boxes[g] = p.bounds
+        return boxes[g]
+
+    def points(g):
+        if g not in pts:
+            rp = DecomposingRecordingPen(gs); gs[g].draw(rp)
+            pts[g] = [pt for _, args in rp.value for pt in args if pt is not None]
+        return pts[g]
+
+    def latin_letter(g):
+        c = rev.get(g)
+        if c is None or not box(g):
+            return False
+        cat, name = newer.get(c, (unicodedata.category(chr(c)), unicodedata.name(chr(c), "")))
+        return cat in ("Lu", "Ll", "Lt", "Lo") and "LATIN" in name
+
+    def latin_mark(g):
+        c = rev.get(g)
+        return c is not None and (0x0300 <= c <= 0x036F or 0x1AB0 <= c <= 0x1AFF or 0x1DC0 <= c <= 0x1DFF)
+
+    def extent(g, x0, x1, top):
+        """Highest (top=True) or lowest point of g's outline between x0 and x1, else of the whole glyph."""
+        ys = [y for x, y in points(g) if x0 <= x <= x1]
+        b = box(g)
+        return (max(ys) if top else min(ys)) if ys else (b[3] if top else b[1])
+
+    def side(m):
+        """Unicode's combining class says where a mark goes: 230 above, 220 below; 202/216 (cedilla, ogonek, horn)
+        are attached to the letter and only checked for centring."""
+        ccc = unicodedata.combining(chr(rev[m]))
+        return "above" if ccc == 230 else "below" if ccc == 220 else "attached"
+
+    prefer = ["acutecomb", "gravecomb", "uni0302", "uni0303", "uni0308", "dotbelowcomb", "uni0331", "uni0327"]
+    fixed = 0
+    for lk in tt["GPOS"].table.LookupList.Lookup:
+        if lk.LookupType not in (4, 9):
+            continue
+        for st in _subtables(lk):
+            if not hasattr(st, "BaseCoverage") or not any(latin_mark(m) for m in st.MarkCoverage.glyphs):
+                continue
+            rep = {}  # class -> (mark glyph, mark anchor, kind)
+            members = {}  # class -> every Latin mark in it: (mark glyph, mark record)
+            for m, rec in zip(st.MarkCoverage.glyphs, st.MarkArray.MarkRecord, strict=True):
+                if not latin_mark(m) or not box(m):
+                    continue
+                members.setdefault(rec.Class, []).append((m, rec))
+                cur = rep.get(rec.Class)
+                if cur is None or (m in prefer and (cur[0] not in prefer or prefer.index(m) < prefer.index(cur[0]))):
+                    rep[rec.Class] = (m, rec.MarkAnchor, side(m))
+            bases = st.BaseCoverage.glyphs
+
+            def o_gap(m, ma, a, kind):
+                """How far mark m (anchor ma) clears o when o's anchor is a."""
+                mb = box(m); dx, dy = a.XCoordinate - ma.XCoordinate, a.YCoordinate - ma.YCoordinate
+                if kind == "above":
+                    return mb[1] + dy - extent("o", mb[0] + dx - 30, mb[2] + dx + 30, True)
+                return extent("o", mb[0] + dx - 30, mb[2] + dx + 30, False) - (mb[3] + dy)
+
+            # the gap each above/below class keeps on o (the reference shape), at least 40 units
+            gap = {}
+            if "o" in bases:
+                orec = st.BaseArray.BaseRecord[bases.index("o")]
+                for k, (m, ma, kind) in rep.items():
+                    a = orec.BaseAnchor[k]
+                    if a is not None and kind != "attached":
+                        gap[k] = min(max(o_gap(m, ma, a, kind), 40), 120)
+                # marks sharing a class but sitting closer to o than the class's main mark (̔ ̥ ̳ ͇ touched the
+                # letters) get their own anchor moved so they clear o by the same gap
+                for m, rec in zip(st.MarkCoverage.glyphs, st.MarkArray.MarkRecord, strict=True):
+                    k = rec.Class
+                    if not latin_mark(m) or not box(m) or k not in gap or orec.BaseAnchor[k] is None:
+                        continue
+                    ma, kind = rec.MarkAnchor, side(m)
+                    if kind != rep[k][2]:
+                        continue
+                    short = gap[k] - o_gap(m, ma, orec.BaseAnchor[k], kind)
+                    if short > 25:
+                        n = otTables.Anchor(); n.Format = 1; n.XCoordinate = ma.XCoordinate
+                        n.YCoordinate = round(ma.YCoordinate - short if kind == "above" else ma.YCoordinate + short)
+                        rec.MarkAnchor = n; fixed += 1
+            for g, brec in zip(bases, st.BaseArray.BaseRecord, strict=True):
+                if not latin_letter(g):
+                    continue
+                bx0, _, bx1, _ = box(g)
+                for k, (m, ma, kind) in rep.items():
+                    a = brec.BaseAnchor[k]
+                    if a is None:
+                        continue
+                    mb = box(m)
+                    nx, ny = a.XCoordinate, a.YCoordinate
+                    cx = (mb[0] + mb[2]) / 2 + nx - ma.XCoordinate
+                    if not (bx0 - 40 <= cx <= bx1 + 40):
+                        nx = round(nx + (bx0 + bx1) / 2 - cx)
+                    dx, dy = nx - ma.XCoordinate, ny - ma.YCoordinate
+                    if kind == "above":
+                        want = extent(g, mb[0] + dx - 30, mb[2] + dx + 30, True) + gap.get(k, 40)
+                        ceiling = max(want, box(g)[3] + gap.get(k, 40)) + 120  # too high above the whole letter
+                        if mb[1] + dy < want - 25:
+                            ny = round(ny + want - (mb[1] + dy))
+                        elif mb[1] + dy > ceiling:
+                            ny = round(ny - (mb[1] + dy - ceiling + 120))
+                    elif kind == "below":
+                        want = extent(g, mb[0] + dx - 30, mb[2] + dx + 30, False) - gap.get(k, 40)
+                        floor = min(want, box(g)[1] - gap.get(k, 40)) - 120  # too far below the whole letter
+                        if mb[3] + dy > want + 25:
+                            ny = round(ny - (mb[3] + dy - want))
+                        elif mb[3] + dy < floor:
+                            ny = round(ny + (floor + 120 - (mb[3] + dy)))
+                    if kind in ("above", "below"):
+                        # taller marks in the same class (fermata, combining small letters) must clear by 40 too
+                        need = 0
+                        for mm, rec in members.get(k, []):
+                            if side(mm) != kind:
+                                continue
+                            b2, ma2 = box(mm), rec.MarkAnchor
+                            ddx, ddy = nx - ma2.XCoordinate, ny - ma2.YCoordinate
+                            if kind == "above":
+                                need = max(need, extent(g, b2[0] + ddx - 30, b2[2] + ddx + 30, True) + 40 - (b2[1] + ddy))
+                            else:
+                                need = max(need, (b2[3] + ddy) - (extent(g, b2[0] + ddx - 30, b2[2] + ddx + 30, False) - 40))
+                        if need > 0:
+                            ny = round(ny + need if kind == "above" else ny - need)
+                    if (nx, ny) != (a.XCoordinate, a.YCoordinate):
+                        n = otTables.Anchor(); n.Format = 1; n.XCoordinate, n.YCoordinate = nx, ny
+                        brec.BaseAnchor[k] = n; fixed += 1
+    return fixed
+
+
 def smcp_before_liga(tt: TTFont):
     """Move the small-caps lookups to just before the first ligature lookup (FontBakery smallcaps_before_ligatures),
     so small caps apply before ligatures form. All lookup references (features, contextual rules) are renumbered."""
@@ -501,6 +649,7 @@ def build():
     rare_lao_anchors(merged, missing_lao)
     dotted_circle_bases(merged)
     latin_accents_everywhere(merged)
+    repair_latin_mark_positions(merged)
     smcp_before_liga(merged)
     widen_zero_width_bases(merged)
     finish(merged)

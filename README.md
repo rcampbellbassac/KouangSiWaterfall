@@ -1,16 +1,27 @@
 # Kouang Si Waterfall ນ້ຳຕົກຕາດກວາງຊີ
 _A Hand Painted Lao Signage Font, now with Thai, Khmer and Latin_
 
-**[Try it online](https://rcampbellbassac.github.io/KouangSiWaterfall/)** · **[Download version 0.230 (beta)](https://github.com/rcampbellbassac/KouangSiWaterfall/releases/latest/download/KouangSiWaterfall.zip)** · SIL Open Font License 1.1
+**[Try it online](https://rcampbellbassac.github.io/KouangSiWaterfall/)** · **[Download version 0.240 (beta)](https://github.com/rcampbellbassac/KouangSiWaterfall/releases/latest/download/KouangSiWaterfall.zip)** · SIL Open Font License 1.1
 
 ![Kouang Si Waterfall in Lao, Thai, Khmer and Latin](images/specimen.png)
 
-## What's new in 0.230 (beta)
+## What's new in 0.240 (beta)
+
+- **Accents land where they should on every Latin letter.** The build now checks the ink of every combining accent
+  on every Latin letter (755 letters × 94 accents) and moves any anchor that put an accent off the letter or into it.
+  Fixed: accents at the bottom left of ɨ ị ȋ ĳ (so ɨ̂ and ɨ̧̂ now work), through the ascender of b ɓ d, far off ɩ ţ ṵ,
+  and the reversed comma ̔, ring below ̥, double low line ̳ and equals below ͇ touching most letters.
+  Ink audit: 3,499 touching or misplaced pairs in 0.230, 0 in 0.240. Accents that were already right are untouched.
+- **Ɤ redrawn from this font's hand-drawn Ɣ**, resting on the baseline at capital height, so it matches the weight of
+  the other capitals (0.230 scaled up the lowercase ɤ, whose loop is filled, and came out heavy).
+- No change to the Lao, Thai or Khmer letters or their mark positions. FontBakery: 1 FAIL (the beta version number).
+
+## In 0.230 (beta)
 
 - **African Latin.** The font now covers Google Fonts' Latin Core and Latin African sets: Ɓɓ Ɗɗ Ɖɖ Ɛɛ Ɔɔ Ɲɲ Əə Ɨɨ Ʉʉ
   Ʊʊ Ʋʋ Ɣɣ Ʒʒ and more, modifier letters (ʷ ʸ ᵃ ᵉ …), the tone marks U+1DC4–1DC7 and ʻ, for languages such as
   Hausa, Fula, Bambara, Twi, Ewe and Dan. These letters are drawn the same way as the other Noto-based extras;
-  **Ɤ** (U+A7CB) is built from this font's ɤ until it is drawn properly. Ʀ Ⱥ Ⱦ were removed (no lowercase in the font).
+  **Ɤ** (U+A7CB) was built from this font's ɤ (redrawn in 0.240). Ʀ Ⱥ Ⱦ were removed (no lowercase in the font).
 - **Accents attach to every Latin letter** and to the dotted circle ◌, including Thai marks on ◌.
 - Small-caps lookups now run before ligatures.
 - FontBakery (googlefonts): 1 FAIL left, the beta version number. No change to the Lao, Thai or Khmer letters.
